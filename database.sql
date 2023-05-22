@@ -35,25 +35,25 @@ CREATE TABLE "client_posts" (
 
 
 --Inserting Test Data:
-INSERT INTO "user"
-("username", "password", "email")
-VALUES
-('Joe', '123', 'joe@gmail.com');
+-- INSERT INTO "user"
+-- ("username", "password", "email")
+-- VALUES
+-- ('Joe', '123', 'joe@gmail.com'); -- This wont work because password isnt encrypted.
 
---
-INSERT INTO "user_clients"
-("user_id", "client_initials", "start_date", "client_note", "card_color")
-VALUES
-('1', 'BK', '2023/04/10', 'This client is nice.', 'blue');
+----
+-- INSERT INTO "user_clients"
+-- ("user_id", "client_initials", "start_date", "client_note", "card_color")
+-- VALUES
+-- ('1', 'BK', '2023/04/10', 'This client is nice.', 'blue');
 
-INSERT INTO "user_clients"
-("user_id", "client_initials", "start_date", "end_date", "is_still_subscribed", "client_note", "card_color")
-VALUES
-('1', 'AB', '2002/07/20', '2023/01/01', 'FALSE', 'This client is nice.', 'red');
---
+-- INSERT INTO "user_clients"
+-- ("user_id", "client_initials", "start_date", "end_date", "is_still_subscribed", "client_note", "card_color")
+-- VALUES
+-- ('1', 'AB', '2002/07/20', '2023/01/01', 'FALSE', 'This client is nice.', 'red');
+----
 
 
-INSERT INTO "client_posts"
-("client_id", "date", "hours_worked", "miles_driven", "task_details")
-VALUES
-('1', '2022/06/15', '5', '15', 'Drove to Andover.');
+-- INSERT INTO "client_posts"
+-- ("client_id", "date", "hours_worked", "miles_driven", "task_details")
+-- VALUES
+-- ('1', '2022/06/15', '5', '15', 'Drove to Andover.');
