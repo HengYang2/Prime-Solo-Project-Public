@@ -8,17 +8,17 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import Nav from './Nav/Nav';
+import Footer from './Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import AboutPage from './ViewPages/AboutPage/AboutPage';
+import UserPage from './ViewPages/UserPage/UserPage';
+import InfoPage from './ViewPages/InfoPage/InfoPage';
+import LandingPage from './ViewPages/LandingPage/LandingPage';
+import LoginPage from './ViewPages/LoginPage/LoginPage';
+import RegisterPage from './ViewPages/RegisterPage/RegisterPage';
 
 import './App.css';
 
@@ -34,7 +34,6 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -45,6 +44,7 @@ function App() {
             exact
             path="/about"
           >
+            <Nav />
             <AboutPage />
           </Route>
 
@@ -57,6 +57,7 @@ function App() {
             exact
             path="/user"
           >
+            <Nav />
             <UserPage />
           </ProtectedRoute>
 
@@ -65,6 +66,7 @@ function App() {
             exact
             path="/info"
           >
+            <Nav />
             <InfoPage />
           </ProtectedRoute>
 
