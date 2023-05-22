@@ -27,6 +27,13 @@ function Nav() {
                 Home
               </Link>
             </div>
+
+            <div>
+              <Link className="navLink" to="/postLibrary">
+                Post Library
+              </Link>
+            </div>
+
             <div>
               <Link className="navLink" to="/info">
                 Info Page
@@ -38,9 +45,6 @@ function Nav() {
           </>
         )}
 
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
