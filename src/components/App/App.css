@@ -2,24 +2,18 @@ html,
 body,
 #react-root {
   height: 100%;
+  
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  
 }
 
 img {
   display: inline-block;
   max-width: 100%;
-}
-
-/* --------------------------------------------------------------------------------
-Container
--------------------------------------------------------------------------------- */
-
-.container {
-  padding: 20px;
 }
 
 /* --------------------------------------------------------------------------------

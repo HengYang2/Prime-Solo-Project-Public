@@ -8,7 +8,6 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from './Nav/Nav';
 import Footer from './Footer/Footer';
 
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
@@ -44,7 +43,6 @@ function App() {
             exact
             path="/about"
           >
-            <Nav />
             <AboutPage />
           </Route>
 
@@ -57,7 +55,6 @@ function App() {
             exact
             path="/user"
           >
-            <Nav />
             <UserPage />
           </ProtectedRoute>
 
@@ -66,7 +63,6 @@ function App() {
             exact
             path="/info"
           >
-            <Nav />
             <InfoPage />
           </ProtectedRoute>
 
@@ -117,7 +113,7 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );
