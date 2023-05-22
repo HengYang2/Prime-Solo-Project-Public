@@ -24,7 +24,7 @@ function Nav() {
           <>
             <div>
               <Link className="navLink" to="/user">
-                Home
+                Client Cards
               </Link>
             </div>
 

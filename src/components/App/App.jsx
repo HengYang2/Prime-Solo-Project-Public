@@ -13,7 +13,7 @@ import Footer from './Footer/Footer';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 import PostLibraryPage from './ViewPages/PostLibraryPage/PostLibraryPage';
-import UserPage from './ViewPages/UserPage/UserPage';
+import ClientCardsPage from './ViewPages/ClientCardsPage/ClientCardsPage';
 import InfoPage from './ViewPages/InfoPage/InfoPage';
 import LandingPage from './ViewPages/LandingPage/LandingPage';
 import LoginPage from './ViewPages/LoginPage/LoginPage';
@@ -46,7 +46,7 @@ function App() {
             exact
             path="/user"
           >
-            <UserPage />
+            <ClientCardsPage />
           </ProtectedRoute>
 
 
