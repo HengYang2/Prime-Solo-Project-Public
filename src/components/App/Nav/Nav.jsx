@@ -23,7 +23,7 @@ function Nav() {
         {user.id && (
           <>
             <div>
-              <Link className="navLink" to="/user">
+              <Link className="navLink" to="/clientCards">
                 Client Cards
               </Link>
             </div>
@@ -35,8 +35,8 @@ function Nav() {
             </div>
 
             <div>
-              <Link className="navLink" to="/info">
-                Info Page
+              <Link className="navLink" to="/graphData">
+                Graph Data
               </Link>
             </div>
             <div>

@@ -14,7 +14,7 @@ import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 import PostLibraryPage from './ViewPages/PostLibraryPage/PostLibraryPage';
 import ClientCardsPage from './ViewPages/ClientCardsPage/ClientCardsPage';
-import InfoPage from './ViewPages/InfoPage/InfoPage';
+import GraphDataPage from './ViewPages/GraphDataPage/GraphDataPage';
 import LandingPage from './ViewPages/LandingPage/LandingPage';
 import LoginPage from './ViewPages/LoginPage/LoginPage';
 import RegisterPage from './ViewPages/RegisterPage/RegisterPage';
@@ -44,7 +44,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/clientCards"
           >
             <ClientCardsPage />
           </ProtectedRoute>
@@ -59,11 +59,11 @@ function App() {
 
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows GraphDataPage else shows LoginPage
             exact
-            path="/info"
+            path="/graphData"
           >
-            <InfoPage />
+            <GraphDataPage />
           </ProtectedRoute>
 
           <Route
@@ -73,7 +73,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/clientCards" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -87,7 +87,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/clientCards" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -101,7 +101,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/clientCards" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
