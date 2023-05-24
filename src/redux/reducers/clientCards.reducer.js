@@ -1,6 +1,7 @@
 //Dummy data for testing:
 const clientA = {
-    client_initals: AA,
+    id: 0,
+    client_initials: 'AA',
     start_date:'2002-12-12',
     end_date:'',
     is_still_subscribed: true,
@@ -10,7 +11,8 @@ const clientA = {
 };
 
 const clientB = {
-    client_initals: BB,
+    id: 1,
+    client_initials: 'BB',
     start_date:'2002-12-12',
     end_date:'2004-07-13',
     is_still_subscribed: false,
@@ -19,7 +21,7 @@ const clientB = {
     is_card_disabled: false
 };
 
-const clientCardsReducer = (state = [{clientA, clientB}], action) => {
+const clientCardsReducer = (state = [clientA, clientB], action) => {
     // switch (action.type) {
     //   case 'SET_USER':
     //     return action.payload;
