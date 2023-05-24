@@ -6,6 +6,9 @@ import Header from '../../Header/Header';
 //Import nav bar component:
 import Nav from '../../Nav/Nav';
 
+//Import ClientCard component:
+import ClientCard from './ClientCard/ClientCard';
+
 function ClientCardsPage() {
 
   //Name of the page: This is to be passed down as a prop to the Header component:
@@ -13,7 +16,6 @@ function ClientCardsPage() {
 
   //import in reducers using useSelector:
   const clientCardsReducer = useSelector(store => store.clientCardsReducer);
-  console.log("CLIENTCARDSREDUCER --->", clientCardsReducer);
   
   return (
     <div className="container">
@@ -24,7 +26,9 @@ function ClientCardsPage() {
         />
         <section>
         {clientCardsReducer.map((clientCard) => (
-            <h1>{clientCard.id}</h1>
+            <ClientCard 
+              key={clientCard.id}
+            />
           ))}
         </section>
       </div>
