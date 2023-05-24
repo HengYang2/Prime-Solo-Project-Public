@@ -1,16 +1,21 @@
 import React from 'react';
+// import { useSelector } from 'react-redux';
+import '../ClientCardsPage/Universal.css';
+import Header from '../../Header/Header';
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
+//Import nav bar component:
+import Nav from '../../Nav/Nav';
 
-function InfoPage() {
+function GraphDataPage() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <Nav />
+      <div className='rightside_page_render'>
+        <Header />
+        <h1>Graph Data Page</h1>
+      </div>
     </div>
   );
 }
 
-export default InfoPage;
+export default GraphDataPage;
