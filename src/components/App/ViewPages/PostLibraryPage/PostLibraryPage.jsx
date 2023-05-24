@@ -6,14 +6,18 @@ import Header from '../../Header/Header';
 //Import nav bar component:
 import Nav from '../../Nav/Nav';
 
-function ClientCardsPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
-  // const user = useSelector((store) => store.user);
+function PostLibraryPage() {
+
+  //Name of the page: This is to be passed down as a prop to the Header component:
+  let titleName = 'Post Library'
+
   return (
     <div className="container">
       <Nav />
       <div className='rightside_page_render'>
-        <Header />
+        <Header 
+           titleName={titleName}
+        />
         <h1>POST LIBRARY</h1>
       </div>
     </div>
@@ -21,4 +25,4 @@ function ClientCardsPage() {
 }
 
 // this allows us to use <App /> in index.js
-export default ClientCardsPage;
+export default PostLibraryPage;

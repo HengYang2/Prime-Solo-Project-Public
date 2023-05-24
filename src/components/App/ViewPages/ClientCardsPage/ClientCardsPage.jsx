@@ -7,15 +7,17 @@ import Header from '../../Header/Header';
 import Nav from '../../Nav/Nav';
 
 function ClientCardsPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
-  const user = useSelector((store) => store.user);
+  
+  //Name of the page: This is to be passed down as a prop to the Header component:
+  let titleName = 'Client Cards'
+  
   return (
     <div className="container">
       <Nav />
       <div className='rightside_page_render'>
-        <Header />
-        <h2>Welcome, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
+        <Header
+          titleName={titleName}
+        />
       </div>
     </div>
   );
