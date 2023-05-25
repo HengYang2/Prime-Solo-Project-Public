@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './Universal.css';
 import Header from '../../Header/Header';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 //Import nav bar component:
 import Nav from '../../Nav/Nav';
@@ -11,11 +13,18 @@ import ClientCard from './ClientCard/ClientCard';
 
 function ClientCardsPage() {
 
+  const dispatch = useDispatch();
+
   //Name of the page: This is to be passed down as a prop to the Header component:
   let titleName = 'Client Cards'
 
   //import in reducers using useSelector:
   const clientCardsReducer = useSelector(store => store.clientCardsReducer);
+
+  //Use 'useEffect' hook to refresh the clientCardsReducer data:
+  useEffect(() => {
+    dispatch({ type: 'FETCH_CLIENTCARDS' });
+}, []);
   
   return (
     <div className="container">
