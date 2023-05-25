@@ -11,15 +11,25 @@
     min-width: 85%;
     min-height: 100%;
     background-color: red;
+    padding-top: 0%;
 }
 
 .main_header {
+    display: flex;
+    justify-content: center;
     text-align: center;
     background-color: brown;
     min-width: 100%;
     min-height: 15%;
-
+    padding: 2.5%;
 }
+
+/* .main_header h1{
+  position: absolute;
+  /* background-color: blue; */
+  /* margin-top: 2.5%;
+  margin-left: 35%;
+} */ */
 
 
 /* NAV BAR */

@@ -1,0 +1,21 @@
+.clientCard {
+    display: inline-block;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+    font-size: 0.1em;
+    background-color: white;
+    border: 0.1em solid black;
+    max-width: 30%;
+    min-height: 75%;
+    flex-direction: column;
+
+}
+
+.clientCardGrid {
+    background-color: blanchedalmond;
+    display: flexbox;
+    justify-content: space-between;
+    flex-direction: row;
+    min-height: 50%;
+}

@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './Universal.css';
+import './ClientCardGrid.css';
 import Header from '../../Header/Header';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 
 //Import nav bar component:
 import Nav from '../../Nav/Nav';
@@ -34,7 +36,7 @@ function ClientCardsPage() {
         <Header
           titleName={titleName}
         />
-        <section>
+        <section className='clientCardGrid'>
           {clientCardsReducer.map((clientCard) => (
             <ClientCard
               key={clientCard.id}
