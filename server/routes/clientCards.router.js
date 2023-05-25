@@ -1,13 +1,17 @@
+//GET route that checks the database's 'user_clients' table to find the requested clients
+//for a given user:
+
 const express = require('express');
 const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
+const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
+const router = express.Router();
 
-//GET route that checks the database's 'user_clients' table to find the requested clients
-//for a given user:
-router.get('/clientCards', rejectUnauthenticated, (req, res) => {
-
+// Handles Ajax request for user information if user is authenticated
+router.get('/', rejectUnauthenticated, (req, res) => {
+  
     const userId = user.id;
     const sqlValues = [userId]
     const sqlText = `SELECT * FROM "user_clients"
@@ -23,3 +27,5 @@ router.get('/clientCards', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
         });
 });
+
+module.exports = router;
