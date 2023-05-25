@@ -24,8 +24,9 @@ function ClientCardsPage() {
   //Use 'useEffect' hook to refresh the clientCardsReducer data:
   useEffect(() => {
     dispatch({ type: 'FETCH_CLIENTCARDS' });
-}, []);
-  
+  }, []);
+
+  // console.log('clientCardsReducer VALUE --->', clientCardsReducer);
   return (
     <div className="container">
       <Nav />
@@ -34,9 +35,10 @@ function ClientCardsPage() {
           titleName={titleName}
         />
         <section>
-        {clientCardsReducer.map((clientCard) => (
-            <ClientCard 
+          {clientCardsReducer.map((clientCard) => (
+            <ClientCard
               key={clientCard.id}
+              clientInfo={clientCard}
             />
           ))}
         </section>

@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchClientCards() {
+
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },
@@ -13,7 +15,7 @@ function* fetchClientCards() {
 
     yield put({ type: 'SET_CLIENTCARDS', payload: response.data });
   } catch (error) {
-    console.log('User get request failed', error);
+    console.log('Client card get request failed', error);
   }
 }
 
