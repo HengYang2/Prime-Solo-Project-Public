@@ -1,3 +1,4 @@
+import { func } from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -9,10 +10,15 @@ function CCCModalRender(props) {
     const [endDate, setEndDate] = useState('');
     const [clientNote, setClientNote] = useState('');
     const [cardColor, setCardColor] = useState('grey');
-    const [isStillSubscribed, setIsStillSubscribed] = useState(true);
+    const [isStillSubscribed, setIsStillSubscribed] = useState(false);
 
-    let unformattedStartDate = '';
-    let unformattedEndDate = '';
+    //This is for displaying the date in mm/dd/yyyy format to the users in the DOM.
+    const [reformattedStartDate, setReformattedStartDate] = useState('');
+    const [reformattedEndDate, setReformattedEndDate] = useState('');
+
+    //A cache to hold previous reformattedEndDate:
+    const [endDateCache, setEndDateCache] = useState('');
+
 
     //Function that will convert date format: yyyy/mm/dd --> mm/dd/yyyy
     function reformatDate(date) {
@@ -20,10 +26,47 @@ function CCCModalRender(props) {
         const mm = date[5] + date[6];
         const dd = date[8] + date[9];
         const reformattedDate = mm + '/' + dd + '/' + yyyy;
-        // console.log(unformattedStartDate);
-        // console.log(unformattedEndDate);
         return reformattedDate;
     }
+
+    //Function will set the value for reformattedStartDate and reformattedEndDate based
+    //on the second passed in parameter, 'startOrEnd':
+    const handleDate = (date, startOrEnd) => {
+        
+        //Reformat Date
+        const reformattedDate = reformatDate(date);
+
+        //Assign it to reformattedStartDate or reformattedEndDate:
+        if (startOrEnd == 'start') {
+            setReformattedStartDate(reformattedDate);
+        } else {
+            setReformattedEndDate(reformattedDate);
+        }
+    }
+
+    //Conditionally rendered endDate component:
+    const conRenderedEndDate = () => {
+        if (isStillSubscribed == false) {
+            return (
+                <h3 className="endDate">{reformattedEndDate}</h3>
+            )
+        } else {
+            return (
+                <h3 className="endDate">Present Day</h3>
+            )
+        }
+    }
+
+    //Toggle isStillSubscribed:
+    function handleIsStillSubscribed() {
+        if (isStillSubscribed == false) {
+            setIsStillSubscribed(true);
+        } else {
+            setIsStillSubscribed(false);
+        }
+    }
+
+
 
     //onClose is a passed in function that sets isOpen in 'ClientCardsPage.jsx' to false:
     const onClose = props.onClose;
@@ -36,33 +79,27 @@ function CCCModalRender(props) {
     //Dispatches for when Create Client Card is pressed:
     const dispatch = useDispatch();
     function submitClientCard() {
+
+        //If is_still_subscribed
+        console.log('IN submitClientCard function');
+        const clientCard = {
+            client_initials: clientInitials.toUpperCase(),
+            start_date: startDate,
+            end_date: endDate,
+            is_still_subscribed: isStillSubscribed,
+            client_note: clientNote,
+            cardColor: cardColor,
+        }
+
+        console.log('CLIENT CARD Object:', clientCard);
+        //Make a dispatch to postClientCard.saga.js:
         dispatch({
-            type: "SET_CLIENTINITIALS",
-            payload: clientInitials
-        });
-        dispatch({
-            type: "SET_STARTDATE",
-            payload: unformattedStartDate
-        }); 
-        dispatch({
-            type: "SET_ENDDATE",
-            payload: unformattedEndDate
-        });
-        dispatch({
-            type: "SET_ISSTILLSUBSCRIBED",
-            payload: isStillSubscribed
-        });
-        dispatch({
-            type: "SET_CLIENTNOTE",
-            payload: clientNote
-        });
-        dispatch({
-            type: "SET_CARDCOLOR",
-            payload: cardColor
-        });
+            type: "POST_CLIENTCARD",
+            payload: clientCard
+        })
     }
 
-  
+
 
     return (
         <>
@@ -72,9 +109,9 @@ function CCCModalRender(props) {
                 <div className="leftSideOfModal" style={cardColorStyles}>
                     <h2 className="clientInitials">{clientInitials}</h2>
                     <div className="timeWithCompany">
-                        <h3 className="startDate">{startDate}</h3>
+                        <h3 className="startDate">{reformattedStartDate}</h3>
                         <h3 className="to">to</h3>
-                        <h3 className="endDate">{endDate}</h3>
+                        {conRenderedEndDate()}
                     </div>
                     <p className="clientNote">{clientNote}</p>
                 </div>
@@ -96,7 +133,7 @@ function CCCModalRender(props) {
                     <div className="inputDiv">
                         <h4 className="inputHeader">Start Date:</h4>
                         <input className="inputElement"
-                            onChange={(event) => { unformattedStartDate = event.target.value; let reformattedDate = reformatDate(event.target.value); setStartDate(reformattedDate);}}
+                            onChange={(event) => { setStartDate(event.target.value); handleDate(event.target.value, 'start'); }}
                             type='date'
                             placeholder='Start Date'
                         />
@@ -105,7 +142,7 @@ function CCCModalRender(props) {
                     <div className="inputDiv">
                         <h4 className="inputHeader">End Date:</h4>
                         <input className="inputElement"
-                            onChange={(event) => { unformattedEndDate = event.target.value; let reformattedDate = reformatDate(event.target.value); setEndDate(reformattedDate);}}
+                            onChange={(event) => { setEndDate(event.target.value); handleDate(event.target.value, 'end'); }}
                             type='date'
                             placeholder='End Date'
                         />
@@ -138,12 +175,12 @@ function CCCModalRender(props) {
                         <div className="clientIsCurrentlySubscribed">
                             <h1 className="checkboxHeader">Check this box if client is currently <br /> with the company:</h1>
                             <input className="checkboxElement"
-                                onChange={(event) => { if (isStillSubscribed) { setIsStillSubscribed(false) } else { setIsStillSubscribed(true) } }}
+                                onChange={(event) => { handleIsStillSubscribed() }}
                                 type='checkbox'
                             />
                         </div>
 
-                        <button className="createClientCardButton" onClick={() => {submitClientCard}}>Create Client Card</button>
+                        <button className="createClientCardButton" onClick={submitClientCard}>Create Client Card</button>
                     </div>
                 </div>
             </div>

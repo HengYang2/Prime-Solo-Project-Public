@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
 // worker Saga: will be fired on "FETCH_USER" actions
-function* postClientCard() {
+function* postClientCard(action) {
 
   try {
     const config = {
@@ -11,7 +11,7 @@ function* postClientCard() {
       withCredentials: true,
     };
 
-    const response = yield axios.get('/api/clientCards', config);
+    const response = yield axios.post('/api/clientCards', config);
 
     yield put({ type: 'SET_CLIENTCARDS', payload: response.data });
   } catch (error) {

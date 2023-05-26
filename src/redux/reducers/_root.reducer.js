@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import clientCardsReducer from './clientCards.reducer';
 
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -12,7 +13,8 @@ import clientCardsReducer from './clientCards.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  clientCardsReducer // Containts an array of client card objects
+  clientCardsReducer, // Contains an array of client card objects
+
 });
 
 export default rootReducer;
