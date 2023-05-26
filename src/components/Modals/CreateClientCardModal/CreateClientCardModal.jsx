@@ -19,42 +19,68 @@ function CreateClientCardModal(props) {
             <>
                 <div className="modalOverlay"></div>
                 <div className="modalContainer">
-                    <div className="left_side_of_modal">
-                        <h2></h2>
-                        <h3></h3>
-                        <h3>to</h3>
-                        <h3></h3>
-                        <p></p>
-                        <button> Edit Client Card</button>
+
+                    <div className="leftSideOfModal">
+                        <h2 className="clientInitials">HY</h2>
+                        <div className="timeWithCompany">
+                            <h3 className="startDate">2001/12/10</h3>
+                            <h3 className="to">to</h3>
+                            <h3 className="endDate">2002/03/04</h3>
+                        </div>
+                        <p className="clientNote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum perferendis quis pariatur quibusdam doloremque non laboriosam iusto nulla omnis totam quam ratione aspernatur, fugit laborum ex minus repellat nemo odio!</p>
                     </div>
-                    <div className="right_side_of_modal">
-                        <button onClick={onClose}> X </button>
-                        <h2>Create New Client Card</h2>
-                        <input
-                            // onChange={handlePriceChange}
-                            type='text'
-                            placeholder='Client Initials'
-                        />
-                        <input
-                            // onChange={handlePriceChange}
-                            type='text'
-                            placeholder='Start Date'
-                        />
-                        <input
-                            // onChange={handlePriceChange}
-                            type='text'
-                            placeholder='End Date'
-                        />
-                        <input
-                            // onChange={handlePriceChange}
-                            type='text'
-                            placeholder='Client Note'
-                        />
-                        <input
-                            // onChange={handlePriceChange}
-                            type='text'
-                            placeholder='Card Color'
-                        />
+
+                    <div className="rightSideOfModal">
+                        <button className="exitButton" onClick={onClose}> X </button>
+
+                        <div className="inputDiv">
+                            <h4 className="inputHeader">Initials:</h4>
+                            <input className="inputElement"
+                                // onChange={handlePriceChange}
+                                type='text'
+                                placeholder='Client Initials'
+                            />
+                        </div>
+
+                        <div className="inputDiv">
+                            <h4 className="inputHeader">Start Date:</h4>
+                            <input className="inputElement"
+                                // onChange={handlePriceChange}
+                                type='text'
+                                placeholder='Start Date'
+                            />
+                        </div>
+
+                        <div className="inputDiv">
+                            <h4 className="inputHeader">End Date:</h4>
+                            <input className="inputElement"
+                                // onChange={handlePriceChange}
+                                type='text'
+                                placeholder='End Date'
+                            />
+                        </div>
+
+                        <div className="inputDiv">
+                            <h4 className="inputHeader">Client Note:</h4>
+                            <textarea className="textAreaElement"
+                                // onChange={handlePriceChange}
+                                wrap="soft"
+                                rows={1}
+                                type='text'
+                                maxLength={216}
+                                placeholder='Client Note'
+                            />
+                        </div>
+
+                        <div className="inputDiv">
+                            <h4 className="inputHeader">Colors:</h4>
+                            <div className="colorDivElement" />
+                            <button id="red" className="colorButton">red</button>
+                            <button id="blue" className="colorButton">blue</button>
+                            <button id="green" className="colorButton">green</button>
+                            <button id="yellow" className="colorButton">yellow</button>
+                            <button id="purple" className="colorButton">purple</button>
+                        </div>
                     </div>
                 </div>
             </>,

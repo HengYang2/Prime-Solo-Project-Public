@@ -8,7 +8,7 @@
 }
 
 .rightside_page_render {
-    min-width: 85%;
+    width: 85%;
     min-height: 100%;
     background-color: red;
     padding-top: 0%;
@@ -19,7 +19,7 @@
     justify-content: center;
     text-align: center;
     background-color: brown;
-    min-width: 100%;
+    width: 95%;
     min-height: 15%;
     padding: 2.5%;
 }
