@@ -14,7 +14,7 @@ function CreateClientCardModal(props) {
 
     //onClose is a passed in function that sets isOpen in 'ClientCardsPage.jsx' to false:
     const onClose = props.onClose;
-    
+
     if (!isOpen) {
         return null;
     } else {

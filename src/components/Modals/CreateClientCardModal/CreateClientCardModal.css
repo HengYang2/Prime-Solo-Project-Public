@@ -55,6 +55,7 @@
     height: 10%;
     border: 2px solid black;
     border-radius: 25px;
+    text-transform: uppercase;
 }
 
 .timeWithCompany {
@@ -92,6 +93,7 @@
     border: 2px solid black;
     border-radius: 25px;
     height: 29%;
+    word-break: break-all;
 }
 
 

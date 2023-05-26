@@ -1,39 +1,56 @@
+import { useState } from "react";
+
 function CCCModalRender(props) {
+
+    //useStates to keep track of user inputs:
+    const [clientInitials, setClientInitials] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [clientNote, setClientNote] = useState('');
+    const [cardColor, setCardColor] = useState('grey');
+    const [isStillSubscribed, setIsStillSubscribed] = useState(true);
 
     //onClose is a passed in function that sets isOpen in 'ClientCardsPage.jsx' to false:
     const onClose = props.onClose;
+
+    //Css styling for lefSideOfModal and rightSideOfModal:
+    let cardColorStyles = {
+        backgroundColor: cardColor
+    }
 
     return (
         <>
             <div className="modalOverlay"></div>
             <div className="modalContainer">
 
-                <div className="leftSideOfModal">
-                    <h2 className="clientInitials">HY</h2>
+                <div className="leftSideOfModal" style={cardColorStyles}>
+                    <h2 className="clientInitials">{clientInitials}</h2>
                     <div className="timeWithCompany">
-                        <h3 className="startDate">2001/12/10</h3>
+                        <h3 className="startDate">{startDate}</h3>
                         <h3 className="to">to</h3>
-                        <h3 className="endDate">2002/03/04</h3>
+                        <h3 className="endDate">{endDate}</h3>
                     </div>
-                    <p className="clientNote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum perferendis quis pariatur quibusdam doloremque non laboriosam iusto nulla omnis totam quam ratione aspernatur, fugit laborum ex minus repellat nemo odio!</p>
+                    <p className="clientNote">{clientNote}</p>
                 </div>
 
-                <div className="rightSideOfModal">
+                <div className="rightSideOfModal" style={cardColorStyles}>
                     <button className="exitButton" onClick={onClose}> X </button>
 
                     <div className="inputDiv">
                         <h4 className="inputHeader">Initials:</h4>
                         <input className="inputElement"
-                            // onChange={handlePriceChange}
+                            onChange={(event) => setClientInitials(event.target.value)}
                             type='text'
                             placeholder='Client Initials'
+                            maxLength={4}
+                            style={{textTransform: 'uppercase'}}
                         />
                     </div>
 
                     <div className="inputDiv">
                         <h4 className="inputHeader">Start Date:</h4>
                         <input className="inputElement"
-                            // onChange={handlePriceChange}
+                     onChange={(event) => setStartDate(event.target.value)}
                             type='date'
                             placeholder='Start Date'
                         />
@@ -42,7 +59,7 @@ function CCCModalRender(props) {
                     <div className="inputDiv">
                         <h4 className="inputHeader">End Date:</h4>
                         <input className="inputElement"
-                            // onChange={handlePriceChange}
+                                          onChange={(event) => setEndDate(event.target.value)}
                             type='date'
                             placeholder='End Date'
                         />
@@ -51,7 +68,7 @@ function CCCModalRender(props) {
                     <div className="inputDiv">
                         <h4 className="inputHeader">Client Note:</h4>
                         <textarea className="textAreaElement"
-                            // onChange={handlePriceChange}
+                                       onChange={(event) => setClientNote(event.target.value)}
                             wrap="soft"
                             rows={1}
                             type='text'
@@ -63,11 +80,11 @@ function CCCModalRender(props) {
                     <div className="inputDiv">
                         <h4 className="inputHeader">Colors:</h4>
                         <div className="colorDivElement">
-                            <button id="red" className="colorButton"></button>
-                            <button id="blue" className="colorButton"></button>
-                            <button id="green" className="colorButton"></button>
-                            <button id="yellow" className="colorButton"></button>
-                            <button id="purple" className="colorButton"></button>
+                            <button id="red" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
+                            <button id="blue" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
+                            <button id="green" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
+                            <button id="yellow" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
+                            <button id="purple" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
                         </div>
                     </div>
 
@@ -75,7 +92,7 @@ function CCCModalRender(props) {
                         <div className="clientIsCurrentlySubscribed">
                             <h1 className="checkboxHeader">Check this box if client is currently <br /> with the company:</h1>
                             <input className="checkboxElement"
-                                // onChange={handlePriceChange}
+                                       onChange={(event) => {if (isStillSubscribed) {setIsStillSubscribed(false)} else {setIsStillSubscribed(true)}}}
                                 type='checkbox'
                             />
                         </div>
