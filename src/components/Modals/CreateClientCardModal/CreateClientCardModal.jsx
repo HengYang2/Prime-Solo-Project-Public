@@ -46,7 +46,7 @@ function CreateClientCardModal(props) {
                             <h4 className="inputHeader">Start Date:</h4>
                             <input className="inputElement"
                                 // onChange={handlePriceChange}
-                                type='text'
+                                type='date'
                                 placeholder='Start Date'
                             />
                         </div>
@@ -55,7 +55,7 @@ function CreateClientCardModal(props) {
                             <h4 className="inputHeader">End Date:</h4>
                             <input className="inputElement"
                                 // onChange={handlePriceChange}
-                                type='text'
+                                type='date'
                                 placeholder='End Date'
                             />
                         </div>
@@ -74,12 +74,25 @@ function CreateClientCardModal(props) {
 
                         <div className="inputDiv">
                             <h4 className="inputHeader">Colors:</h4>
-                            <div className="colorDivElement" />
-                            <button id="red" className="colorButton">red</button>
-                            <button id="blue" className="colorButton">blue</button>
-                            <button id="green" className="colorButton">green</button>
-                            <button id="yellow" className="colorButton">yellow</button>
-                            <button id="purple" className="colorButton">purple</button>
+                            <div className="colorDivElement">
+                                <button id="red" className="colorButton"></button>
+                                <button id="blue" className="colorButton"></button>
+                                <button id="green" className="colorButton"></button>
+                                <button id="yellow" className="colorButton"></button>
+                                <button id="purple" className="colorButton"></button>
+                            </div>
+                        </div>
+
+                        <div className="footerOfModal">
+                            <div className="clientIsCurrentlySubscribed">
+                                <h1 className="checkboxHeader">Check this box if client is currently <br /> with the company:</h1>
+                                <input className="checkboxElement"
+                                    // onChange={handlePriceChange}
+                                    type='checkbox'
+                                />
+                            </div>
+
+                            <button className="createClientCardButton">Create Client Card</button>
                         </div>
                     </div>
                 </div>

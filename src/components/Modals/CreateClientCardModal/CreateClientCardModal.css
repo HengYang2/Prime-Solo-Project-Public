@@ -141,7 +141,7 @@
     justify-items: center;
 }
 
-.inputElement, .colorDivElement {
+.inputElement {
     text-align: center;
     position: relative;
     border: 2px black solid;
@@ -153,6 +153,7 @@
     margin-bottom: -10%;
 }
 
+/*TextArea*/
 .textAreaElement {
     text-align: center;
     position: relative;
@@ -173,8 +174,89 @@
     resize: none;
 }
 
+
+/*Colors*/
+.colorDivElement {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+
+    border: 2px black solid;
+    border-radius: 25px;
+    background-color: white;
+    width: 93%;
+    height: 55%;
+    margin-left: 2%;
+    margin-bottom: -10%;
+    padding-left: 3%;
+}
+
 .colorButton {
+    display: inline;
+    width: 3%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+#red {
+    background-color: red;
+}
+#blue {
+    background-color: blue;
+}
+#green {
+    background-color: green;
+}
+#yellow {
+    background-color: yellow;
+}
+#purple {
+    background-color: purple;
+}
+
+
+/*footerOfModal*/
+.footerOfModal {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 2%;
+    /* background-color: red; */
 }
+
+/*Checkbox*/
+.clientIsCurrentlySubscribed{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 1%;
+    display: inline-block;
+    margin-left: -35%;
+    text-align: center;
+}
+
+.checkboxHeader {
+  font-size: 10px;
+  text-align: center;
+  margin-left: ;
+}
+
+.checkboxElement {
+}
+
+/*CreateClientCardButton*/
+.createClientCardButton {
+    display: inline-block;
+    border: 2px black solid;
+    border-radius: 25px;
+    background-color: white;
+    width: 30%;
+    height: 75%;
+    margin-left: 6%;
+}
+
