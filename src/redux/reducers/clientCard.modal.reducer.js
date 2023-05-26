@@ -20,7 +20,7 @@ const clientInitialsReducer = (state = '', action) => {
 
 const startDateReducer = (state = '', action) => {
     switch (action.type) {
-        case 'SET_CLIENTCARDINITIALS':
+        case 'SET_STARTDATE':
             return action.payload;
         default:
             return state;
@@ -29,7 +29,7 @@ const startDateReducer = (state = '', action) => {
 
 const endDateReducer = (state = '', action) => {
     switch (action.type) {
-        case 'SET_CLIENTCARDINITIALS':
+        case 'SET_ENDDATE':
             return action.payload;
         default:
             return state;
@@ -38,7 +38,7 @@ const endDateReducer = (state = '', action) => {
 
 const isStillSubscribedReducer = (state = true, action) => {
     switch (action.type) {
-        case 'SET_CLIENTCARDINITIALS':
+        case 'SET_ISSTILLSUBSCRIBED':
             return action.payload;
         default:
             return state;
@@ -47,7 +47,7 @@ const isStillSubscribedReducer = (state = true, action) => {
 
 const clientNoteReducer = (state = '', action) => {
     switch (action.type) {
-        case 'SET_CLIENTCARDINITIALS':
+        case 'SET_CLIENTNOTE':
             return action.payload;
         default:
             return state;
@@ -56,7 +56,7 @@ const clientNoteReducer = (state = '', action) => {
 
 const cardColorReducer = (state = '', action) => {
     switch (action.type) {
-        case 'SET_CLIENTCARDINITIALS':
+        case 'SET_CARDCOLOR':
             return action.payload;
         default:
             return state;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 function CCCModalRender(props) {
 
@@ -10,6 +11,20 @@ function CCCModalRender(props) {
     const [cardColor, setCardColor] = useState('grey');
     const [isStillSubscribed, setIsStillSubscribed] = useState(true);
 
+    let unformattedStartDate = '';
+    let unformattedEndDate = '';
+
+    //Function that will convert date format: yyyy/mm/dd --> mm/dd/yyyy
+    function reformatDate(date) {
+        const yyyy = date[0] + date[1] + date[2] + date[3];
+        const mm = date[5] + date[6];
+        const dd = date[8] + date[9];
+        const reformattedDate = mm + '/' + dd + '/' + yyyy;
+        // console.log(unformattedStartDate);
+        // console.log(unformattedEndDate);
+        return reformattedDate;
+    }
+
     //onClose is a passed in function that sets isOpen in 'ClientCardsPage.jsx' to false:
     const onClose = props.onClose;
 
@@ -17,6 +32,37 @@ function CCCModalRender(props) {
     let cardColorStyles = {
         backgroundColor: cardColor
     }
+
+    //Dispatches for when Create Client Card is pressed:
+    const dispatch = useDispatch();
+    function submitClientCard() {
+        dispatch({
+            type: "SET_CLIENTINITIALS",
+            payload: clientInitials
+        });
+        dispatch({
+            type: "SET_STARTDATE",
+            payload: unformattedStartDate
+        }); 
+        dispatch({
+            type: "SET_ENDDATE",
+            payload: unformattedEndDate
+        });
+        dispatch({
+            type: "SET_ISSTILLSUBSCRIBED",
+            payload: isStillSubscribed
+        });
+        dispatch({
+            type: "SET_CLIENTNOTE",
+            payload: clientNote
+        });
+        dispatch({
+            type: "SET_CARDCOLOR",
+            payload: cardColor
+        });
+    }
+
+  
 
     return (
         <>
@@ -43,14 +89,14 @@ function CCCModalRender(props) {
                             type='text'
                             placeholder='Client Initials'
                             maxLength={4}
-                            style={{textTransform: 'uppercase'}}
+                            style={{ textTransform: 'uppercase' }}
                         />
                     </div>
 
                     <div className="inputDiv">
                         <h4 className="inputHeader">Start Date:</h4>
                         <input className="inputElement"
-                     onChange={(event) => setStartDate(event.target.value)}
+                            onChange={(event) => { unformattedStartDate = event.target.value; let reformattedDate = reformatDate(event.target.value); setStartDate(reformattedDate);}}
                             type='date'
                             placeholder='Start Date'
                         />
@@ -59,7 +105,7 @@ function CCCModalRender(props) {
                     <div className="inputDiv">
                         <h4 className="inputHeader">End Date:</h4>
                         <input className="inputElement"
-                                          onChange={(event) => setEndDate(event.target.value)}
+                            onChange={(event) => { unformattedEndDate = event.target.value; let reformattedDate = reformatDate(event.target.value); setEndDate(reformattedDate);}}
                             type='date'
                             placeholder='End Date'
                         />
@@ -68,7 +114,7 @@ function CCCModalRender(props) {
                     <div className="inputDiv">
                         <h4 className="inputHeader">Client Note:</h4>
                         <textarea className="textAreaElement"
-                                       onChange={(event) => setClientNote(event.target.value)}
+                            onChange={(event) => setClientNote(event.target.value)}
                             wrap="soft"
                             rows={1}
                             type='text'
@@ -92,12 +138,12 @@ function CCCModalRender(props) {
                         <div className="clientIsCurrentlySubscribed">
                             <h1 className="checkboxHeader">Check this box if client is currently <br /> with the company:</h1>
                             <input className="checkboxElement"
-                                       onChange={(event) => {if (isStillSubscribed) {setIsStillSubscribed(false)} else {setIsStillSubscribed(true)}}}
+                                onChange={(event) => { if (isStillSubscribed) { setIsStillSubscribed(false) } else { setIsStillSubscribed(true) } }}
                                 type='checkbox'
                             />
                         </div>
 
-                        <button className="createClientCardButton">Create Client Card</button>
+                        <button className="createClientCardButton" onClick={() => {submitClientCard}}>Create Client Card</button>
                     </div>
                 </div>
             </div>
