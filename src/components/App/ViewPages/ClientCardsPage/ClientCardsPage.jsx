@@ -7,15 +7,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 
-//Import templateModal:
-import '../../../Modal/TemplateModal';
+//Import CreateClientCardModal:
+import CreateClientCardModal from '../../../Modals/CreateClientCardModal/CreateClientCardModal';
 
 //Import nav bar component:
 import Nav from '../../Nav/Nav';
 
 //Import ClientCard component:
 import ClientCard from './ClientCard/ClientCard';
-import TemplateModal from '../../../Modal/TemplateModal';
+
 
 function ClientCardsPage() {
 
@@ -55,7 +55,7 @@ function ClientCardsPage() {
           ))}
         </section>
         <section >
-          <TemplateModal
+          <CreateClientCardModal
             isOpen={isOpen}
             onClose={() => { setIsOpen(false) }}
           />
