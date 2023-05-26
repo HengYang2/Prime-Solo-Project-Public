@@ -1,0 +1,26 @@
+import axios from 'axios';
+import { put, takeLatest } from 'redux-saga/effects';
+
+
+// worker Saga: will be fired on "FETCH_USER" actions
+function* createClientCardSaga() {
+
+  try {
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    };
+
+    const response = yield axios.get('/api/clientCards', config);
+
+    yield put({ type: 'SET_CLIENTCARDS', payload: response.data });
+  } catch (error) {
+    console.log('Client card get request failed', error);
+  }
+}
+
+function* clientCardsSaga() {
+  yield takeLatest('CREATE_CLIENTCARD', createClientCard);
+}
+
+export default createClientCardSaga;
