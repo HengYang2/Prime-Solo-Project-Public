@@ -6,9 +6,9 @@ import Header from '../../Header/Header';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+
 //Import templateModal:
 import '../../../Modal/TemplateModal';
-
 
 //Import nav bar component:
 import Nav from '../../Nav/Nav';
@@ -46,12 +46,6 @@ function ClientCardsPage() {
         <Header
           titleName={titleName}
         />
-        <TemplateModal
-          isOpen={isOpen}
-          onClose={() => {setIsOpen(false)}}
-        >
-          TemplateModal
-        </TemplateModal>
         <section className='clientCardGrid'>
           {clientCardsReducer.map((clientCard) => (
             <ClientCard
@@ -60,8 +54,12 @@ function ClientCardsPage() {
             />
           ))}
         </section>
-        <section>
-          <button onClick={() => {setIsOpen(true)}}>Create New Client</button>
+        <section >
+          <TemplateModal
+            isOpen={isOpen}
+            onClose={() => { setIsOpen(false) }}
+          />
+          <button onClick={() => { setIsOpen(true) }}>Create New Client</button>
         </section>
       </div>
     </div>

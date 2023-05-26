@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDom from "react-dom";
 
 //Css styling for the Modal:
 const MODAL_STYLES = {
@@ -8,7 +9,7 @@ const MODAL_STYLES = {
     transform: 'translate(-50%,-50%)',
     backgroundColor: '#FFF',
     paddding: '50px',
-    zIndex: 1000
+    zIndex: 10000
 }
 const OVERLAY_STYLES = {
     position: 'fixed',
@@ -17,7 +18,7 @@ const OVERLAY_STYLES = {
     right: 0,
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    zIndex: 1000
+    zIndex: 10000
 }
 
 function TemplateModal(props) {
@@ -30,7 +31,7 @@ function TemplateModal(props) {
     if (!isOpen) {
         return null;
     } else {
-        return (
+        return ReactDom.createPortal (
 
             <>
                 <div style={OVERLAY_STYLES}></div>
@@ -38,8 +39,9 @@ function TemplateModal(props) {
                     <button onClick={onClose}> X </button>
                     <h1>MODAL</h1>
                 </div>
-            </>
-        );
+            </>,
+            document.getElementById('portal')
+        )
     }
 }
 
