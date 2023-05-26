@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
 // worker Saga: will be fired on "FETCH_USER" actions
-function* createClientCardSaga() {
+function* postClientCard() {
 
   try {
     const config = {
@@ -19,8 +19,8 @@ function* createClientCardSaga() {
   }
 }
 
-function* clientCardsSaga() {
-  yield takeLatest('CREATE_CLIENTCARD', createClientCard);
+function* postClientCardSaga() {
+  yield takeLatest('POST_CLIENTCARD', postClientCard);
 }
 
-export default createClientCardSaga;
+export default postClientCardSaga;
