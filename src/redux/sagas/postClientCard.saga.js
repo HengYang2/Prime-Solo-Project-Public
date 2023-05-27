@@ -11,8 +11,8 @@ function* postClientCard(action) {
       withCredentials: true,
     };
 
-    const response = yield axios.post('/api/clientCards', config);
-
+    const response = yield axios.post('/api/clientCards', config, action.payload);
+   
     yield put({ type: 'SET_CLIENTCARDS', payload: response.data });
   } catch (error) {
     console.log('Client card get request failed', error);

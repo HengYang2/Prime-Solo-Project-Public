@@ -100,11 +100,11 @@ function CCCModalRender(props) {
             }
         }
 
-        //Make a dispatch to postClientCard.saga.js:
-        // dispatch({
-        //     type: "POST_CLIENTCARD",
-        //     payload: clientCard
-        // })
+        // Make a dispatch to postClientCard.saga.js:
+        dispatch({
+            type: "POST_CLIENTCARD",
+            payload: clientCard
+        })
     }
 
 
