@@ -16,9 +16,6 @@ function CCCModalRender(props) {
     const [reformattedStartDate, setReformattedStartDate] = useState('');
     const [reformattedEndDate, setReformattedEndDate] = useState('');
 
-    //A cache to hold previous reformattedEndDate:
-    const [endDateCache, setEndDateCache] = useState('');
-
 
     //Function that will convert date format: yyyy/mm/dd --> mm/dd/yyyy
     function reformatDate(date) {
@@ -32,7 +29,7 @@ function CCCModalRender(props) {
     //Function will set the value for reformattedStartDate and reformattedEndDate based
     //on the second passed in parameter, 'startOrEnd':
     const handleDate = (date, startOrEnd) => {
-        
+
         //Reformat Date
         const reformattedDate = reformatDate(date);
 
@@ -58,7 +55,7 @@ function CCCModalRender(props) {
     }
 
     //Toggle isStillSubscribed:
-    function handleIsStillSubscribed() {
+    function toggleIsStillSubscribed() {
         if (isStillSubscribed == false) {
             setIsStillSubscribed(true);
         } else {
@@ -80,23 +77,34 @@ function CCCModalRender(props) {
     const dispatch = useDispatch();
     function submitClientCard() {
 
-        //If is_still_subscribed
-        console.log('IN submitClientCard function');
-        const clientCard = {
-            client_initials: clientInitials.toUpperCase(),
-            start_date: startDate,
-            end_date: endDate,
-            is_still_subscribed: isStillSubscribed,
-            client_note: clientNote,
-            cardColor: cardColor,
+        let clientCard = {};
+
+        //If is_still_subscribed set the value of endDate to null:
+        if (isStillSubscribed) {
+            clientCard = {
+                client_initials: clientInitials.toUpperCase(),
+                start_date: startDate,
+                end_date: null,
+                is_still_subscribed: isStillSubscribed,
+                client_note: clientNote,
+                cardColor: cardColor,
+            }
+        } else {
+            clientCard = {
+                client_initials: clientInitials.toUpperCase(),
+                start_date: startDate,
+                end_date: endDate,
+                is_still_subscribed: isStillSubscribed,
+                client_note: clientNote,
+                cardColor: cardColor,
+            }
         }
 
-        console.log('CLIENT CARD Object:', clientCard);
         //Make a dispatch to postClientCard.saga.js:
-        dispatch({
-            type: "POST_CLIENTCARD",
-            payload: clientCard
-        })
+        // dispatch({
+        //     type: "POST_CLIENTCARD",
+        //     payload: clientCard
+        // })
     }
 
 
@@ -175,7 +183,7 @@ function CCCModalRender(props) {
                         <div className="clientIsCurrentlySubscribed">
                             <h1 className="checkboxHeader">Check this box if client is currently <br /> with the company:</h1>
                             <input className="checkboxElement"
-                                onChange={(event) => { handleIsStillSubscribed() }}
+                                onChange={(event) => { toggleIsStillSubscribed() }}
                                 type='checkbox'
                             />
                         </div>
