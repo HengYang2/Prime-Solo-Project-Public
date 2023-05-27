@@ -87,7 +87,7 @@ function CCCModalRender(props) {
                 end_date: null,
                 is_still_subscribed: isStillSubscribed,
                 client_note: clientNote,
-                cardColor: cardColor,
+                card_color: cardColor,
             }
         } else {
             clientCard = {
@@ -96,7 +96,7 @@ function CCCModalRender(props) {
                 end_date: endDate,
                 is_still_subscribed: isStillSubscribed,
                 client_note: clientNote,
-                cardColor: cardColor,
+                card_color: cardColor,
             }
         }
 

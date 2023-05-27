@@ -6,16 +6,17 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* postClientCard(action) {
 
   try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    };
+    // const config = {
+    //   headers: { 'Content-Type': 'application/json' },
+    //   withCredentials: true,
+    // };
 
-    const response = yield axios.post('/api/clientCards', config, action.payload);
+    const response = yield axios.post('/api/clientCards', action.payload);
    
-    yield put({ type: 'SET_CLIENTCARDS', payload: response.data });
+    //Fetch client cards after the new post was made:
+    yield put({ type: 'FETCH_CLIENTCARDS'});
   } catch (error) {
-    console.log('Client card get request failed', error);
+    console.log('Client card post request failed', error);
   }
 }
 
