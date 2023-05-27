@@ -50,6 +50,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
   const clientCard = req.body;
   const userId = req.user.id;
+
+  //If 
+
   const sqlValues = [userId, clientCard.client_initials, clientCard.start_date,
                      clientCard.end_date, clientCard.is_still_subscribed, 
                      clientCard.client_note, clientCard.card_color];

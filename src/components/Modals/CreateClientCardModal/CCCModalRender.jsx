@@ -7,7 +7,7 @@ function CCCModalRender(props) {
     //useStates to keep track of user inputs:
     const [clientInitials, setClientInitials] = useState('');
     const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [endDate, setEndDate] = useState(null);
     const [clientNote, setClientNote] = useState('');
     const [cardColor, setCardColor] = useState('grey');
     const [isStillSubscribed, setIsStillSubscribed] = useState(false);
@@ -53,6 +53,7 @@ function CCCModalRender(props) {
             )
         }
     }
+    
 
     //Toggle isStillSubscribed:
     function toggleIsStillSubscribed() {
@@ -62,7 +63,6 @@ function CCCModalRender(props) {
             setIsStillSubscribed(false);
         }
     }
-
 
 
     //onClose is a passed in function that sets isOpen in 'ClientCardsPage.jsx' to false:
@@ -75,7 +75,17 @@ function CCCModalRender(props) {
 
     //Dispatches for when Create Client Card is pressed:
     const dispatch = useDispatch();
-    function submitClientCard() {
+
+    function submitClientCard(event) {
+
+        event.preventDefault();
+
+        //If all required fields are not filled out, don't let the user make a post request:
+        if (clientInitials == '' || startDate == '') {
+            return console.log('Missing requried field');
+        } else if (isStillSubscribed == false && endDate == null) {
+            return console.log('End date required');
+        }
 
         let clientCard = {};
 
