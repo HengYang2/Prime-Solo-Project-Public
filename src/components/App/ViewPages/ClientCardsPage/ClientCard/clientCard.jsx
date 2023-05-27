@@ -22,7 +22,6 @@ function ClientCard(props) {
         <h3>to</h3>
         <h3>{endDate}</h3>
         <p>{clientInfo.client_note}</p>
-
     </div>
   );
 }

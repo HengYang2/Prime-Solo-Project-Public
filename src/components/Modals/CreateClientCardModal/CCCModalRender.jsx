@@ -9,7 +9,7 @@ function CCCModalRender(props) {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState(null);
     const [clientNote, setClientNote] = useState('');
-    const [cardColor, setCardColor] = useState('grey');
+    const [cardColor, setCardColor] = useState('red');
     const [isStillSubscribed, setIsStillSubscribed] = useState(false);
 
     //This is for displaying the date in mm/dd/yyyy format to the users in the DOM.
@@ -53,7 +53,7 @@ function CCCModalRender(props) {
             )
         }
     }
-    
+
 
     //Toggle isStillSubscribed:
     function toggleIsStillSubscribed() {
