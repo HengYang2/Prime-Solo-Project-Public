@@ -98,13 +98,16 @@ function CCCModalRender(props) {
                 client_note: clientNote,
                 card_color: cardColor,
             }
-        }
+        };
 
         // Make a dispatch to postClientCard.saga.js:
         dispatch({
             type: "POST_CLIENTCARD",
             payload: clientCard
-        })
+        });
+
+        //Close modal view:
+        onClose();
     }
 
 
