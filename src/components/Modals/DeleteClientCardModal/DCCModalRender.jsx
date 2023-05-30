@@ -69,9 +69,10 @@ function DCCModalRender(props) {
     function deleteClientCard(clientCardInfo) {
 
 
-        // Make a dispatch to postClientCard.saga.js:
+        // Make a dispatch to deleteClientCard.saga.js:
         dispatch({
-            type: "POST_CLIENTCARD",
+            type: "DELETE_CLIENTCARD",
+            payload: clientId
         });
 
         //Close modal view:
