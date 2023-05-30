@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 
 //Import CreateClientCardModal:
 import CreateClientCardModal from '../../../Modals/CreateClientCardModal/CreateClientCardModal';
+import DeleteClientCardModal from '../../../Modals/DeleteClientCardModal/DeleteClientCardModal'
 
 //Import nav bar component:
 import Nav from '../../Nav/Nav';
@@ -23,6 +24,7 @@ function ClientCardsPage() {
 
   //useState to tell that the modal is open:
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenD, setIsOpenD] = useState(false);
 
   //Name of the page: This is to be passed down as a prop to the Header component:
   let titleName = 'Client Cards'
@@ -59,7 +61,12 @@ function ClientCardsPage() {
             isOpen={isOpen}
             onClose={() => { setIsOpen(false) }}
           />
+          <DeleteClientCardModal
+               isOpenD={isOpenD}
+               onCloseD={() => { setIsOpenD(false) }}
+          />
           <button onClick={() => { setIsOpen(true) }}>Create New Client</button>
+          <button onClick={() => { setIsOpenD(true) }}>Delete New Client</button>
         </section>
       </div>
     </div>
