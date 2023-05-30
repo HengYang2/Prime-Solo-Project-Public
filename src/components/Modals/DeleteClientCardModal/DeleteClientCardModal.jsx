@@ -5,7 +5,7 @@ import ReactDom from "react-dom";
 import DCCModalRender from './DCCModalRender';
 
 //Import css styling for the Modal:
-import '../CreateClientCardModal/CreateClientCardModal.css';
+import './DeleteClientCardModal.css';
 
 function DeleteClientCardModal(props) {
 
