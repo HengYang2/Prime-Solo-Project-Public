@@ -15,8 +15,13 @@ function ClientCard(props) {
 
   isClientStillSubscribed();
 
+  const setIsOpenQ = props.setIsOpenQ;
+  const setSelectedClientCard = props.setSelectedClientCard
+
+  //onCloseQ is a passed in function that sets isOpenQ in 'ClientCardsPage.jsx' to false:
+
   return (
-    <div className="clientCard" key={clientInfo.id}>
+    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenQ(true), setSelectedClientCard(clientInfo) }}>
         <h2>{clientInfo.client_initials}</h2>
         <h3>{clientInfo.start_date}</h3>
         <h3>to</h3>
