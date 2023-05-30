@@ -10,10 +10,10 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-// Handles Ajax request for user information if user is authenticated
+// Handles Axios request for user information if user is authenticated
 router.get('/', rejectUnauthenticated, (req, res) => {
 
-    console.log("HEY IM IN THE CLIENT CAARDS ROUTTTTEEEERRR!");
+    console.log("HEY IM IN THE CLIENT CAARDS GET ROUTTTTEEEERRR!");
     const userId = req.user.id;
     const sqlValues = [userId]
     const sqlText = `SELECT * FROM "user_clients"
@@ -51,8 +51,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const clientCard = req.body;
   const userId = req.user.id;
 
-  //If 
-
   const sqlValues = [userId, clientCard.client_initials, clientCard.start_date,
                      clientCard.end_date, clientCard.is_still_subscribed, 
                      clientCard.client_note, clientCard.card_color];
@@ -70,6 +68,32 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       })
       .catch((err) => {
       console.log('Error trying to post client card:', err);
+      res.sendStatus(500);
+      });
+});
+
+
+//Delete an existing client card from the user in the database:
+router.delete(`/:id`, rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE CLIENT CAARDS DELETE ROUTTTTEEEERRR!");
+
+  const clientCardId = req.params.id;
+  const userId = req.user.id;
+
+  console.log('REQ PARAMS:', clientCardId);
+
+  const sqlValues = [clientCardId, userId];
+
+  const sqlText = `DELETE FROM "user_clients"
+                   WHERE id=$1 AND user_id=$2;`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+      console.log('Error trying to delete client card:', err);
       res.sendStatus(500);
       });
 });
