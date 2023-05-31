@@ -7,7 +7,8 @@ import clientCardsReducer from './clientCards.reducer';
 import isOpenMainReducer from './openOrClosedModalReducers/isOpenMain.reducer';
 
 //Import reducers for conditionally rendered components:
-import isEditingClientCardReducer from './conditonalRenderReducers/isEditingClientCard.reducer';
+import isEditingClientCardReducer from './conditionalRenderReducers/isEditingClientCard.reducer';
+import conditionalModalRenderReducer from './conditionalRenderReducers/conditionalModalRender.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,8 +21,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   clientCardsReducer, // Contains an array of client card objects
   isOpenMainReducer,
-  isEditingClientCardReducer
-
+  isEditingClientCardReducer,
+  conditionalModalRenderReducer
 });
 
 export default rootReducer;

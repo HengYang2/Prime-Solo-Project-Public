@@ -4,29 +4,62 @@ import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 
 //Import conditional renders:
+import MainRender from "./ConditionalRenders/MainRender/MainRender";
 import CreatePostRender from './ConditionalRenders/CreatePostRender/CreatePostRender';
+import UpdatePostRender from "./ConditionalRenders/UpdatePostRender/UpdatePostRender";
+import DeletePostRender from "./ConditionalRenders/DeletePostRender/DeletePostRender";
+import EditClientCardRender from "./ConditionalRenders/EditClientCardRender/EditClientCardRender";
 
 function MainModalRender(props) {
 
-    const dispatch = useDispatch();
-    const isOpenMain = useSelector(store => store.isOpenMainReducer);
-    //function to change value of isOpenMain to true:
-    function setIsOpenMain(boolean) {
-        dispatch({
-            type: "SET_ISOPENMAIN",
-            payload: boolean
-        })
+
+    const conditionalModalRenderReducer = useSelector(store => store.conditionalModalRenderReducer);
+
+    // function setConditonalModalRender(nameOfRender) {
+    //     dispatch({
+    //         type: "SET_CONDITONALMODALRENDER",
+    //         payload: nameOfRender
+    //     })
+    // }
+
+    //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
+    function loadConditionalRender() {
+        console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer);
+        switch (conditionalModalRenderReducer) {
+            case 'MainRender':
+                return MainRender();
+            case 'CreatePostRender':
+                return CreatePostRender();
+            case 'UpdatePostRender':
+                return UpdatePostRender();
+            case 'DeletePostRender':
+                return DeletePostRender();
+            case 'EditClientCardRender':
+                return EditClientCardRender();
+            default:
+                return MainRender();
+        }
     }
 
-    //Use useSelector for conditonally rendering 'Edit Client Card' button:
+    // //function to change value of isOpenMain to true:
+    // function setIsOpenMain(boolean) {
+    //     dispatch({
+    //         type: "SET_ISOPENMAIN",
+    //         payload: boolean
+    //     })
+    // }
+
+    const dispatch = useDispatch();
+    // //Use useSelector for conditonally rendering 'Edit Client Card' button:
     const isEditingClientCard = useSelector(store => store.isEditingClientCardReducer);
-    //Toggle for isEditingClientCard useState:
+    //For setting isEditingClientCard reducer:
     function setIsEditingClientCard(boolean) {
         dispatch({
             type: "SET_ISEDITINGCLIENTCARD",
             payload: boolean
         })
     }
+
     //Conditonally Rendered Button for 'Edit Client Card':
     function conRenEditClientCardButton() {
         if (isEditingClientCard == false) {
@@ -39,66 +72,6 @@ function MainModalRender(props) {
             )
         }
     }
-
-
-    //Conditional render: (Main)
-    const MainRender = () => {
-        return (<>
-            <button className="exitButton" onClick={() => { setIsOpenMain(false) }}> X </button>
-
-            <div className="headerOfModal">
-                <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
-            </div>
-            <div className="bodyOfModal">
-                <button onClick={() => { setConditonalModalRender(CreatePostRender()), setIsEditingClientCard(true) }}>Create new post</button>
-                <button onClick={() => { setConditonalModalRender(UpdatePostRender()), setIsEditingClientCard(true) }}>Update existing post</button>
-                <button onClick={() => { setConditonalModalRender(DeletePostRender()), setIsEditingClientCard(true) }}>Delete existing post</button>
-            </div>
-        </>)
-    };
-
-
-    //Conditional render: (Create Post)
-
-
-    //Conditional render: (Update Post)
-    const UpdatePostRender = () => {
-        return (
-            <>
-                <button className="backButton" onClick={() => { setConditonalModalRender(MainRender()); setIsEditingClientCard(false) }}> {'<-'} </button>
-                <button className="exitButton" onClick={() => { setIsOpenMain(false) }}> X </button>
-                <h1>UPDATE POST CONDITIONAL RENDER</h1>
-            </>
-        )
-    }
-
-    //Conditional render: (Delete Post)
-    const DeletePostRender = () => {
-        return (
-            <>
-                <button className="backButton" onClick={() => { setConditonalModalRender(MainRender()); setIsEditingClientCard(false) }}> {'<-'} </button>
-                <button className="exitButton" onClick={() => { setIsOpenMain(false) }}> X </button>
-                <h1>DELETE POST CONDITIONAL RENDER</h1>
-            </>
-        )
-    }
-
-    //Conditional render: (Edit Client Card)
-    const EditClientCardRender = () => {
-        return (
-            <>
-                <button className="backButton" onClick={() => { setConditonalModalRender(MainRender()); setIsEditingClientCard(false) }}> {'<-'} </button>
-                <button className="exitButton" onClick={() => { setIsOpenMain(false) }}> X </button>
-                <h1>EDIT CLIENT CARD RENDER</h1>
-
-            </>
-        )
-    }
-
-
-
-    //useState for conditional modal renders:
-    const [conditonalModalRender, setConditonalModalRender] = useState(MainRender);
 
 
     //Selected Client Card:
@@ -205,7 +178,7 @@ function MainModalRender(props) {
                 </div>
 
                 <div className="rightSideOfModal" style={cardColorStyles}>
-                    {conditonalModalRender}
+                    {loadConditionalRender()}
                 </div>
             </div>
         </>

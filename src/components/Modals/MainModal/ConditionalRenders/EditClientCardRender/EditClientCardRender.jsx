@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-function DeletePostRender() {
+function EditClientCardRender() {
 
     const dispatch = useDispatch();
 
@@ -31,9 +31,9 @@ function DeletePostRender() {
         <>
             <button className="backButton" onClick={() => { setConditionalModalRender("MainRender"); setIsEditingClientCard(false) }}> {'<-'} </button>
             <button className="exitButton" onClick={() => { setConditionalModalRender("MainRender"); setIsOpenMain(false) }}> X </button>
-            <h1>DELETE POST CONDITIONAL RENDER</h1>
+            <h1>EDIT CLIENT CARD CONDITIONAL RENDER</h1>
         </>
     )
 }
 
-export default DeletePostRender;
+export default EditClientCardRender;
