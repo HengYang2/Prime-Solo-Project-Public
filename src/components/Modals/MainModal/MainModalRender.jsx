@@ -9,7 +9,8 @@ function MainModalRender(props) {
     //onCloseD is a passed in function that sets isOpenQ in 'ClientCardsPage.jsx' to false:
     const onCloseM = props.onCloseM;
 
-    //Main conditional modal render for QuestionModalRender.jsx
+
+    //Conditional render: (Main)
     const MainRender = () => {
         return (<>
             <button className="exitButton" onClick={onCloseM}> X </button>
@@ -18,25 +19,49 @@ function MainModalRender(props) {
                 <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
             </div>
             <div className="bodyOfModal">
-                <button onClick={() => { setconditonalModalRender(CreatePostRender), console.log("Create post button clicked."); }}>Create new post</button>
-                <button>Update existing post</button>
-                <button>Delete existing post</button>
+                <button onClick={() => { setConditonalModalRender(CreatePostRender()) }}>Create new post</button>
+                <button onClick={() => { setConditonalModalRender(UpdatePostRender()) }}>Update existing post</button>
+                <button onClick={() => { setConditonalModalRender(DeletePostRender()) }}>Delete existing post</button>
             </div>
         </>)
     };
 
 
-    //useState for conditional modal renders:
-    const [conditonalModalRender, setconditonalModalRender] = useState(MainRender);
-
-
-    //CreatePost conditional render:
+    //Conditional render: (Create Post)
     const CreatePostRender = () => {
         return (
-            <h1>CREATE POST CONDITIONAL RENDER</h1>
+            <>
+                <button className="backButton" onClick={() => { setConditonalModalRender(MainRender()) }}> {'<-'} </button>
+                <button className="exitButton" onClick={onCloseM}> X </button>
+                <h1>CREATE POST CONDITIONAL RENDER</h1>
+            </>
         )
     }
 
+    //Conditional render: (Update Post)
+    const UpdatePostRender = () => {
+        return (
+            <>
+                <button className="backButton" onClick={() => { setConditonalModalRender(MainRender()) }}> {'<-'} </button>
+                <button className="exitButton" onClick={onCloseM}> X </button>
+                <h1>UPDATE POST CONDITIONAL RENDER</h1>
+            </>
+        )
+    }
+
+    //Conditional render: (Delete Post)
+    const DeletePostRender = () => {
+        return (
+            <>
+                <button className="backButton" onClick={() => { setConditonalModalRender(MainRender()) }}> {'<-'} </button>
+                <button className="exitButton" onClick={onCloseM}> X </button>
+                <h1>DELETE POST CONDITIONAL RENDER</h1>
+            </>
+        )
+    }
+
+    //useState for conditional modal renders:
+    const [conditonalModalRender, setConditonalModalRender] = useState(MainRender);
 
 
     //Selected Client Card:
