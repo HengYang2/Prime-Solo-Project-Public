@@ -1,24 +1,24 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-//Import html return from QuestionModalRender.jsx file:
-import QuestionModalRender from './QuestionModalRender';
+//Import html return from MainModalRender.jsx file:
+import MainModalRender from './MainModalRender';
 
 //Import css styling for the Modal:
-import './QuestionModalRender';
+import './MainModal.css';
 
-function QuestionModal(props) {
+function MainModal(props) {
 
-    const isOpenQ = props.isOpenQ;
-    const onCloseQ = props.onCloseQ;
+    const isOpenM = props.isOpenM;
+    const onCloseM = props.onCloseM;
     const selectedClientCard = props.selectedClientCard;
 
-    if (!isOpenQ) {
+    if (!isOpenM) {
         return null;
     } else {
         return ReactDom.createPortal(
-            <QuestionModalRender 
-                onCloseQ={onCloseQ}
+            <MainModalRender 
+                onCloseM={onCloseM}
                 selectedClientCard={selectedClientCard}
             />,
             document.getElementById('portal')
@@ -26,4 +26,4 @@ function QuestionModal(props) {
     }
 }
 
-export default QuestionModal;
+export default MainModal;

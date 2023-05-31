@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 //Import CreateClientCardModal:
 import CreateClientCardModal from '../../../Modals/CreateClientCardModal/CreateClientCardModal';
 import DeleteClientCardModal from '../../../Modals/DeleteClientCardModal/DeleteClientCardModal'
-import QuestionModal from '../../../Modals/QuestionModal/QuestionModal';
+import MainModal from '../../../Modals/MainModal/MainModal';
 
 //Import nav bar component:
 import Nav from '../../Nav/Nav';
@@ -26,7 +26,7 @@ function ClientCardsPage() {
   //useState to tell that the modal is open:
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenD, setIsOpenD] = useState(false);
-  const [isOpenQ, setIsOpenQ] = useState(false);
+  const [isOpenM, setIsOpenM] = useState(false);
 
   //useState of the selected client card:
   const [selectedClientCard, setSelectedClientCard] = useState('');
@@ -58,7 +58,7 @@ function ClientCardsPage() {
             <ClientCard
               key={clientCard.id}
               clientInfo={clientCard}
-              setIsOpenQ={setIsOpenQ}
+              setIsOpenM={setIsOpenM}
               setSelectedClientCard={setSelectedClientCard}
             />
           ))}
@@ -72,9 +72,9 @@ function ClientCardsPage() {
             isOpenD={isOpenD}
             onCloseD={() => { setIsOpenD(false) }}
           />
-          <QuestionModal
-            isOpenQ={isOpenQ}
-            onCloseQ={() => { setIsOpenQ(false) }}
+          <MainModal
+            isOpenM={isOpenM}
+            onCloseM={() => { setIsOpenM(false) }}
             selectedClientCard={selectedClientCard}
           />
           <button onClick={() => { setIsOpen(true) }}>Create New Client</button>

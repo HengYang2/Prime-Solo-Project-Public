@@ -4,22 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 
 
-//Import modals for CreatePost, UpdatePost and DeletePost:
-import CreatePostModal from './ConditionalRenders/CreatePostModal/CreatePostModal';
-import DeletePostModal from './ConditionalRenders/DeletePostModal/DeletePostModal';
-import UpdatePostModal from "./ConditionalRenders/UpdatePostModal/UpdatePostModal";
-
-function DCCModalRender(props) {
+function MainModalRender(props) {
 
     //onCloseD is a passed in function that sets isOpenQ in 'ClientCardsPage.jsx' to false:
-    const onCloseQ = props.onCloseQ;
-    //useState to tell that the modal is open:
-    const [isOpenCPost, setIsOpenCPost] = useState(false);
+    const onCloseM = props.onCloseM;
 
     //Main conditional modal render for QuestionModalRender.jsx
     const MainRender = () => {
         return (<>
-            <button className="exitButton" onClick={onCloseQ}> X </button>
+            <button className="exitButton" onClick={onCloseM}> X </button>
 
             <div className="headerOfModal">
                 <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
@@ -28,12 +21,6 @@ function DCCModalRender(props) {
                 <button onClick={() => { setconditonalModalRender(CreatePostRender), console.log("Create post button clicked."); }}>Create new post</button>
                 <button>Update existing post</button>
                 <button>Delete existing post</button>
-            </div>
-            <div>
-                <CreatePostModal
-                    isOpenCPost={isOpenCPost}
-                    onCloseCPost={() => { setIsOpenCPost(false) }}
-                />
             </div>
         </>)
     };
@@ -164,6 +151,6 @@ function DCCModalRender(props) {
     )
 }
 
-export default DCCModalRender;
+export default MainModalRender;
 
 
