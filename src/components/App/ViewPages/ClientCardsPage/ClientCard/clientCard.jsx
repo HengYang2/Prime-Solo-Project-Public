@@ -1,3 +1,6 @@
+import { bool } from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+
 function ClientCard(props) {
 
   const clientInfo = props.clientInfo
@@ -15,13 +18,22 @@ function ClientCard(props) {
 
   isClientStillSubscribed();
 
-  const setIsOpenM = props.setIsOpenM;
+  const dispatch = useDispatch();
+  const isOpenMain = useSelector(store => store.isOpenMainReducer);
+  //function to change value of isOpenMain to true:
+  function setIsOpenMain(boolean) {
+    dispatch({
+      type: "SET_ISOPENMAIN",
+      payload: boolean
+    })
+  }
+
   const setSelectedClientCard = props.setSelectedClientCard
 
   //onCloseQ is a passed in function that sets isOpenQ in 'ClientCardsPage.jsx' to false:
 
   return (
-    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenM(true), setSelectedClientCard(clientInfo) }}>
+    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenMain(true), setSelectedClientCard(clientInfo) }}>
         <h2>{clientInfo.client_initials}</h2>
         <h3>{clientInfo.start_date}</h3>
         <h3>to</h3>

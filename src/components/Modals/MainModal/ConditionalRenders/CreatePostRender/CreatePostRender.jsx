@@ -1,13 +1,25 @@
 import React from "react";
+// import { useDispatch } from "react-redux";
 
-function CreatePostModalRender(props) {
+function CreatePostRender() {
 
-    const onCloseCPost = props.onCloseCPost;
-    const selectedClientCard = props.selectedClientCard;
+    // const dispatch = useDispatch();
+    // function setIsOpenMain(boolean) {
+    //     dispatch({
+    //         type: "SET_ISOPENMAIN",
+    //         payload: boolean
+    //     })
+    // }
 
-    return(
-        <h1 >CREATE POST MODAL</h1>
-    ) 
+    return (
+        <>
+            <button className="backButton" onClick={() => { setConditonalModalRender(MainRender()); setIsEditingClientCard(false) }}> {'<-'} </button>
+            <button className="exitButton" > X </button>
+            <h1>CREATE POST CONDITIONAL RENDER</h1>
+        </>
+    )
 }
 
-export default CreatePostModalRender;
+export default CreatePostRender;
+
+// onClick={() => { setIsOpenMain(false) }}

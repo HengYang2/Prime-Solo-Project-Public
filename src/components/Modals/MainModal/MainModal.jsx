@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
+import { useSelector } from "react-redux";
 
 //Import html return from MainModalRender.jsx file:
 import MainModalRender from './MainModalRender';
@@ -9,16 +10,15 @@ import './MainModal.css';
 
 function MainModal(props) {
 
-    const isOpenM = props.isOpenM;
-    const onCloseM = props.onCloseM;
+    const isOpenMain = useSelector(store => store.isOpenMainReducer);
+
     const selectedClientCard = props.selectedClientCard;
 
-    if (!isOpenM) {
+    if (!isOpenMain) {
         return null;
     } else {
         return ReactDom.createPortal(
             <MainModalRender 
-                onCloseM={onCloseM}
                 selectedClientCard={selectedClientCard}
             />,
             document.getElementById('portal')

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './Universal.css';
 import './ClientCardGrid.css';
 import Header from '../../Header/Header';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+
 
 
 //Import CreateClientCardModal:
@@ -26,7 +26,7 @@ function ClientCardsPage() {
   //useState to tell that the modal is open:
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenD, setIsOpenD] = useState(false);
-  const [isOpenM, setIsOpenM] = useState(false);
+
 
   //useState of the selected client card:
   const [selectedClientCard, setSelectedClientCard] = useState('');
@@ -58,7 +58,7 @@ function ClientCardsPage() {
             <ClientCard
               key={clientCard.id}
               clientInfo={clientCard}
-              setIsOpenM={setIsOpenM}
+              // setIsOpenM={setIsOpenM}
               setSelectedClientCard={setSelectedClientCard}
             />
           ))}
@@ -73,8 +73,8 @@ function ClientCardsPage() {
             onCloseD={() => { setIsOpenD(false) }}
           />
           <MainModal
-            isOpenM={isOpenM}
-            onCloseM={() => { setIsOpenM(false) }}
+            // isOpenM={isOpenM}
+            // onCloseM={() => { setIsOpenM(false) }}
             selectedClientCard={selectedClientCard}
           />
           <button onClick={() => { setIsOpen(true) }}>Create New Client</button>
