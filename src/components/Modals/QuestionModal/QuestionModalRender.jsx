@@ -1,8 +1,56 @@
 import { func } from "prop-types";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+
+
+//Import modals for CreatePost, UpdatePost and DeletePost:
+import CreatePostModal from './ConditionalRenders/CreatePostModal/CreatePostModal';
+import DeletePostModal from './ConditionalRenders/DeletePostModal/DeletePostModal';
+import UpdatePostModal from "./ConditionalRenders/UpdatePostModal/UpdatePostModal";
 
 function DCCModalRender(props) {
+
+    //onCloseD is a passed in function that sets isOpenQ in 'ClientCardsPage.jsx' to false:
+    const onCloseQ = props.onCloseQ;
+    //useState to tell that the modal is open:
+    const [isOpenCPost, setIsOpenCPost] = useState(false);
+
+    //Main conditional modal render for QuestionModalRender.jsx
+    const MainRender = () => {
+        return (<>
+            <button className="exitButton" onClick={onCloseQ}> X </button>
+
+            <div className="headerOfModal">
+                <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
+            </div>
+            <div className="bodyOfModal">
+                <button onClick={() => { setconditonalModalRender(CreatePostRender), console.log("Create post button clicked."); }}>Create new post</button>
+                <button>Update existing post</button>
+                <button>Delete existing post</button>
+            </div>
+            <div>
+                <CreatePostModal
+                    isOpenCPost={isOpenCPost}
+                    onCloseCPost={() => { setIsOpenCPost(false) }}
+                />
+            </div>
+        </>)
+    };
+
+
+    //useState for conditional modal renders:
+    const [conditonalModalRender, setconditonalModalRender] = useState(MainRender);
+
+
+    //CreatePost conditional render:
+    const CreatePostRender = () => {
+        return (
+            <h1>CREATE POST CONDITIONAL RENDER</h1>
+        )
+    }
+
+
 
     //Selected Client Card:
     const selectedClientCard = props.selectedClientCard;
@@ -58,9 +106,6 @@ function DCCModalRender(props) {
     }
 
 
-    //onCloseD is a passed in function that sets isOpenD in 'ClientCardsPage.jsx' to false:
-    const onCloseQ = props.onCloseQ;
-
     //Css styling for lefSideOfModal and rightSideOfModal:
     let cardColorStyles = {
         backgroundColor: cardColor
@@ -90,11 +135,10 @@ function DCCModalRender(props) {
     useEffect(() => {
         dispatch({ type: 'FETCH_CLIENTCARDS' });
 
-      //Reformat start_date and end_date:
-      handleDate(selectedClientCard.start_date, 'start');
-      handleDate(selectedClientCard.start_date, 'end');
+        //Reformat start_date and end_date:
+        handleDate(selectedClientCard.start_date, 'start');
+        handleDate(selectedClientCard.start_date, 'end');
     }, []);
-
 
 
     return (
@@ -113,21 +157,7 @@ function DCCModalRender(props) {
                 </div>
 
                 <div className="rightSideOfModal" style={cardColorStyles}>
-                    <button className="exitButton" onClick={onCloseQ}> X </button>
-
-                    <div className="headerOfModal">
-                        <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
-                    </div>
-                    <div className="bodyOfModal">
-                        {clientCardsReducer.map((clientCard) => (
-                            <button key={clientCard.id} onClick={() => {setAllUseStates(clientCard)}}>
-                                <h4>{clientCard.client_initials}</h4>
-                            </button>
-                        ))}
-                    </div>
-                    <div className="footerOfModal">
-                        <button className="createClientCardButton" onClick={deleteClientCard}>Delete Client Card</button>
-                    </div>
+                    {conditonalModalRender}
                 </div>
             </div>
         </>
@@ -135,3 +165,5 @@ function DCCModalRender(props) {
 }
 
 export default DCCModalRender;
+
+

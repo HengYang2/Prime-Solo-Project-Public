@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-//Import html return from DCCModalRender.jsx file:
-import DCCModalRender from './QuestionModalRender';
+//Import html return from QuestionModalRender.jsx file:
+import QuestionModalRender from './QuestionModalRender';
 
 //Import css styling for the Modal:
 import './QuestionModalRender';
@@ -17,7 +17,7 @@ function QuestionModal(props) {
         return null;
     } else {
         return ReactDom.createPortal(
-            <DCCModalRender 
+            <QuestionModalRender 
                 onCloseQ={onCloseQ}
                 selectedClientCard={selectedClientCard}
             />,

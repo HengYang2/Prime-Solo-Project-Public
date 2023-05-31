@@ -69,13 +69,13 @@ function ClientCardsPage() {
             onClose={() => { setIsOpen(false) }}
           />
           <DeleteClientCardModal
-               isOpenD={isOpenD}
-               onCloseD={() => { setIsOpenD(false) }}
+            isOpenD={isOpenD}
+            onCloseD={() => { setIsOpenD(false) }}
           />
           <QuestionModal
-                        isOpenQ={isOpenQ}
-                        onCloseQ={() => { setIsOpenQ(false) }}
-                        selectedClientCard={selectedClientCard}
+            isOpenQ={isOpenQ}
+            onCloseQ={() => { setIsOpenQ(false) }}
+            selectedClientCard={selectedClientCard}
           />
           <button onClick={() => { setIsOpen(true) }}>Create New Client</button>
           <button onClick={() => { setIsOpenD(true) }}>Delete New Client</button>
