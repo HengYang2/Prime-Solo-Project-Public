@@ -30,7 +30,7 @@ function UpdatePostRender() {
     return (
         <>
             <button className="backButton" onClick={() => { setConditionalModalRender("MainRender"); setIsEditingClientCard(false) }}> {'<-'} </button>
-            <button className="exitButton" onClick={() => { setConditionalModalRender("MainRender"); setIsOpenMain(false) }}> X </button>
+            <button className="exitButton" onClick={() => { setConditionalModalRender("MainRender"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
             <h1>UPDATE POST CONDITIONAL RENDER</h1>
         </>
     )
