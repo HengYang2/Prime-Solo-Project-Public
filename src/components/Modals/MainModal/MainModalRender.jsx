@@ -12,15 +12,10 @@ import EditClientCardRender from "./ConditionalRenders/EditClientCardRender/Edit
 
 function MainModalRender(props) {
 
+    //Selected Client Card:
+    const selectedClientCard = props.selectedClientCard;
 
     const conditionalModalRenderReducer = useSelector(store => store.conditionalModalRenderReducer);
-
-    // function setConditonalModalRender(nameOfRender) {
-    //     dispatch({
-    //         type: "SET_CONDITONALMODALRENDER",
-    //         payload: nameOfRender
-    //     })
-    // }
 
     //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
     function loadConditionalRender() {
@@ -41,13 +36,14 @@ function MainModalRender(props) {
         }
     }
 
-    // //function to change value of isOpenMain to true:
-    // function setIsOpenMain(boolean) {
-    //     dispatch({
-    //         type: "SET_ISOPENMAIN",
-    //         payload: boolean
-    //     })
-    // }
+    //Function that changes the value of conditionalModalRenderReducer through dispatch:
+    //The value of conditionalModalRenderReducer will determin what html elements are loaded onto the Modal:
+    function setConditionalModalRender(nameOfRender) {
+        dispatch({
+            type: "SET_CONDITIONALMODALRENDER",
+            payload: nameOfRender
+        })
+    }
 
     const dispatch = useDispatch();
     // //Use useSelector for conditonally rendering 'Edit Client Card' button:
@@ -64,7 +60,7 @@ function MainModalRender(props) {
     function conRenEditClientCardButton() {
         if (isEditingClientCard == false) {
             return (
-                <button onClick={() => { setConditonalModalRender(EditClientCardRender()), setIsEditingClientCard(true) }}>Edit Client Card</button>
+                <button onClick={() => { setConditionalModalRender('EditClientCardRender'), setIsEditingClientCard(true) }}>Edit Client Card</button>
             )
         } else {
             return (
@@ -73,9 +69,6 @@ function MainModalRender(props) {
         }
     }
 
-
-    //Selected Client Card:
-    const selectedClientCard = props.selectedClientCard;
 
     //useStates to read client data:
     const [clientId, setClientId] = useState(selectedClientCard.id);
@@ -131,20 +124,6 @@ function MainModalRender(props) {
     //Css styling for lefSideOfModal and rightSideOfModal:
     let cardColorStyles = {
         backgroundColor: cardColor
-    }
-
-
-    function deleteClientCard(clientCardInfo) {
-
-
-        // Make a dispatch to deleteClientCard.saga.js:
-        dispatch({
-            type: "DELETE_CLIENTCARD",
-            payload: clientId
-        });
-
-        //Close modal view:
-        // onCloseD();
     }
 
 
