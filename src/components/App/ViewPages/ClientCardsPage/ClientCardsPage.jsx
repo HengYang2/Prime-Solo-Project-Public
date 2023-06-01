@@ -58,8 +58,6 @@ function ClientCardsPage() {
             <ClientCard
               key={clientCard.id}
               clientInfo={clientCard}
-              // setIsOpenM={setIsOpenM}
-              setSelectedClientCard={setSelectedClientCard}
             />
           ))}
         </section>
@@ -73,8 +71,6 @@ function ClientCardsPage() {
             onCloseD={() => { setIsOpenD(false) }}
           />
           <MainModal
-            // isOpenM={isOpenM}
-            // onCloseM={() => { setIsOpenM(false) }}
             selectedClientCard={selectedClientCard}
           />
           <button onClick={() => { setIsOpen(true) }}>Create New Client</button>

@@ -28,12 +28,17 @@ function ClientCard(props) {
     })
   }
 
-  const setSelectedClientCard = props.setSelectedClientCard
+  function setSelectedClientCard() {
+    dispatch({
+      type: "SET_SELECTED_CLIENTCARD",
+      payload: clientInfo
+    })
+  }
 
   //onCloseQ is a passed in function that sets isOpenQ in 'ClientCardsPage.jsx' to false:
 
   return (
-    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenMain(true), setSelectedClientCard(clientInfo) }}>
+    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenMain(true), setSelectedClientCard() }}>
         <h2>{clientInfo.client_initials}</h2>
         <h3>{clientInfo.start_date}</h3>
         <h3>to</h3>

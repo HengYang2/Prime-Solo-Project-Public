@@ -12,15 +12,11 @@ function MainModal(props) {
 
     const isOpenMain = useSelector(store => store.isOpenMainReducer);
 
-    const selectedClientCard = props.selectedClientCard;
-
     if (!isOpenMain) {
         return null;
     } else {
         return ReactDom.createPortal(
-            <MainModalRender 
-                selectedClientCard={selectedClientCard}
-            />,
+            <MainModalRender />,
             document.getElementById('portal')
         )
     }

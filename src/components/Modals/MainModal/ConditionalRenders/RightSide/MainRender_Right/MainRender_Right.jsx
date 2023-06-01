@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-function MainRender() {
+function MainRender_Right() {
 
     const dispatch = useDispatch();
 
@@ -43,4 +43,4 @@ function MainRender() {
 
 }
 
-export default MainRender;
+export default MainRender_Right;

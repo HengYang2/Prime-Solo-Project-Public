@@ -3,6 +3,9 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import clientCardsReducer from './clientCards.reducer';
 
+//Import selectedClientCard:
+import selectedClientCardReducer from './selectedClientCard.reducer';
+
 //Import modal reducers to tell if certain modals are opened or closed:
 import isOpenMainReducer from './openOrClosedModalReducers/isOpenMain.reducer';
 
@@ -24,7 +27,8 @@ const rootReducer = combineReducers({
   isOpenMainReducer,
   isEditingClientCardReducer,
   conditionalModalRenderReducer_Right,
-  conditionalModalRenderReducer_Left
+  conditionalModalRenderReducer_Left,
+  selectedClientCardReducer
 });
 
 export default rootReducer;
