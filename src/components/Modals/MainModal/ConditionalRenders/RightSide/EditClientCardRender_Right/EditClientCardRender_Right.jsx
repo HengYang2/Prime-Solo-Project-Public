@@ -1,3 +1,4 @@
+import { func } from "prop-types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,7 +7,16 @@ function EditClientCardRender_Right() {
     const dispatch = useDispatch();
 
     // //Edit client card reducer:
+    const editClientInitialsReducer = useSelector(store => store.editClientInitialsReducer);
+    const editStartDateReducer = useSelector(store => store.editStartDateReducer);
+    const editEndDateReducer = useSelector(store => store.editEndDateReducer);
     const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
+    const editClientNoteReducer = useSelector(store => store.editClientNoteReducer);
+    const editCardColorReducer = useSelector(store => store.editCardColorReducer);
+
+    const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
+
+
 
     function setConditionalModalRender_right(nameOfRender) {
         dispatch({
@@ -81,19 +91,41 @@ function EditClientCardRender_Right() {
         })
     }
 
-        //Toggle isStillSubscribed:
-        function toggleIsStillSubscribedReducer() {
-            if (editIsStillSubscribedReducer == false) {
-                setEditIsStillSubscribedReducer(true);
-            } else {
-                setEditIsStillSubscribedReducer(false);
-            }
+    //Toggle isStillSubscribed:
+    function toggleIsStillSubscribedReducer() {
+        if (editIsStillSubscribedReducer == false) {
+            setEditIsStillSubscribedReducer(true);
+        } else {
+            setEditIsStillSubscribedReducer(false);
         }
+    }
+
+
+    //When the 'Submit Changes' button is pressed: Dispatch to a SAGA that will then combine all the 
+    //'edit' reducers and Send it to the server as a PUT request:
+    function submitClientCardChanges() {
+
+        const updatedClientCard = {
+            client_card_id: selectedClientCardReducer.id,
+            client_initials: editClientInitialsReducer,
+            start_date: editStartDateReducer,
+            end_date: editEndDateReducer,
+            is_still_subscribed: editIsStillSubscribedReducer,
+            client_note: editClientNoteReducer,
+            card_color: editCardColorReducer
+        };
+
+        dispatch({
+            type: "SAGA_UPDATE_CLIENT_CARD",
+            payload: updatedClientCard
+        })
+    }
+
 
     return (
         <>
-            <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); ; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
-            <button className="exitButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); ; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
+            <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
+            <button className="exitButton" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
 
             <div className="inputDiv">
                 <h4 className="inputHeader">Initials:</h4>
@@ -109,7 +141,7 @@ function EditClientCardRender_Right() {
             <div className="inputDiv">
                 <h4 className="inputHeader">Start Date:</h4>
                 <input className="inputElement"
-                    onChange={(event) => { setEditStartDateReducer(event.target.value)}}
+                    onChange={(event) => { setEditStartDateReducer(event.target.value) }}
                     type='date'
                     placeholder='Start Date'
                 />
@@ -118,7 +150,7 @@ function EditClientCardRender_Right() {
             <div className="inputDiv">
                 <h4 className="inputHeader">End Date:</h4>
                 <input className="inputElement"
-                    onChange={(event) => { setEditEndDateReducer(event.target.value)}}
+                    onChange={(event) => { setEditEndDateReducer(event.target.value) }}
                     type='date'
                     placeholder='End Date'
                 />
@@ -151,12 +183,12 @@ function EditClientCardRender_Right() {
                 <div className="clientIsCurrentlySubscribed">
                     <h1 className="checkboxHeader">Check this box if client is currently <br /> with the company:</h1>
                     <input className="checkboxElement"
-                        onChange={(event) => {toggleIsStillSubscribedReducer()}}
+                        onChange={(event) => { toggleIsStillSubscribedReducer() }}
                         type='checkbox'
                     />
                 </div>
 
-                <button className="createClientCardButton" >Submit Changes</button>
+                <button className="createClientCardButton" onClick={() => {submitClientCardChanges()}}>Submit Changes</button>
             </div>
         </>
     )

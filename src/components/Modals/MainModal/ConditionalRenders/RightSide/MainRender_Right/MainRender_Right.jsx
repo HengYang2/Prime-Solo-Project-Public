@@ -5,8 +5,15 @@ function MainRender_Right() {
 
     const dispatch = useDispatch();
 
-    //To match number of hook renders:
+    //To match number of hook renders: 
+    const editClientInitialsReducer = useSelector(store => store.editClientInitialsReducer);
+    const editStartDateReducer = useSelector(store => store.editStartDateReducer);
+    const editEndDateReducer = useSelector(store => store.editEndDateReducer);
     const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
+    const editClientNoteReducer = useSelector(store => store.editClientNoteReducer);
+    const editCardColorReducer = useSelector(store => store.editCardColorReducer);
+
+    const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
 
     function setConditionalModalRender_right(nameOfRender) {
         dispatch({

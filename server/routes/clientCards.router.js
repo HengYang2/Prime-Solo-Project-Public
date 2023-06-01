@@ -98,4 +98,33 @@ router.delete(`/:id`, rejectUnauthenticated, (req, res) => {
       });
 });
 
+
+
+//Update an existing client card from the user in the database:
+router.put(`/:id`, rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE CLIENT CAARDS PUT ROUTTTTEEEERRR!");
+
+  const clientCardId = req.params.id;
+  const userId = req.user.id;
+  const updatedClientCard = req.body;
+
+  console.log('REQ PARAMS:', clientCardId);
+
+  const sqlValues = [updatedClientCard.client_initials, updatedClientCard.start_date, updatedClientCard.end_date, updatedClientCard.is_still_subscribed, updatedClientCard.client_note, updatedClientCard.card_color, clientCardId, userId];
+
+  const sqlText = `UPDATE "user_clients"
+                    SET client_initials=$1, start_date=$2, end_date=$3, is_still_subscribed=$4, client_note=$5, card_color=$6 
+                    WHERE id=$7 AND user_id=$8;`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+      console.log('Error trying to delete client card:', err);
+      res.sendStatus(500);
+      });
+});
+
 module.exports = router;
