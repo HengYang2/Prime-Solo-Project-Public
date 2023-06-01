@@ -21,7 +21,23 @@ function MainModalRender(props) {
     const conditionalModalRenderReducer_Right = useSelector(store => store.conditionalModalRenderReducer_Right);
     const conditionalModalRenderReducer_Left = useSelector(store => store.conditionalModalRenderReducer_Left);
     const isEditingClientCard = useSelector(store => store.isEditingClientCardReducer);
+
+    //Used for coloring modals:
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
+    const editCardColorReducer = useSelector(store => store.editCardColorReducer);
+
+    //Change editCardColorReducer value to selectedClientCardReducer.card_color:
+    useEffect(() => {
+        dispatch({
+            type: "SET_CARDCOLOR",
+            payload: selectedClientCardReducer.card_color
+        })
+    }, [])
+
+    //Css styling for lefSideOfModal and rightSideOfModal:
+    let cardColorStyles = {
+        backgroundColor: editCardColorReducer
+    }
 
     //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
     function loadConditionalModalRenderReducer_Right() {
@@ -92,12 +108,6 @@ function MainModalRender(props) {
                 <></>
             )
         }
-    }
-
-
-    //Css styling for lefSideOfModal and rightSideOfModal:
-    let cardColorStyles = {
-        backgroundColor: selectedClientCardReducer.card_color
     }
 
 

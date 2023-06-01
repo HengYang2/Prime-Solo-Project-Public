@@ -1,6 +1,7 @@
 import { func } from "prop-types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import editStartEndReducer from "../../../../../../redux/reducers/editClientCardReducers/editEndDate.reducer";
 
 function EditClientCardRender_Right() {
 
@@ -15,7 +16,6 @@ function EditClientCardRender_Right() {
     const editCardColorReducer = useSelector(store => store.editCardColorReducer);
 
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
-
 
 
     function setConditionalModalRender_right(nameOfRender) {
@@ -101,18 +101,41 @@ function EditClientCardRender_Right() {
     }
 
 
+
     //When the 'Submit Changes' button is pressed: Dispatch to a SAGA that will then combine all the 
     //'edit' reducers and Send it to the server as a PUT request:
     function submitClientCardChanges() {
 
-        const updatedClientCard = {
-            client_card_id: selectedClientCardReducer.id,
-            client_initials: editClientInitialsReducer,
-            start_date: editStartDateReducer,
-            end_date: editEndDateReducer,
-            is_still_subscribed: editIsStillSubscribedReducer,
-            client_note: editClientNoteReducer,
-            card_color: editCardColorReducer
+        //If all required fields are not filled out, don't let the user make a post request:
+        if (editClientInitialsReducer == '' || editStartDateReducer == '') {
+            return console.log('Missing requried field');
+        } else if (editIsStillSubscribedReducer == false && editEndDateReducer == null) {
+            return console.log('End date required');
+        }
+
+        let updatedClientCard = {};
+
+        //If is_still_subscribed set the value of endDate to null:
+        if (editIsStillSubscribedReducer) {
+            updatedClientCard = {
+                client_card_id: selectedClientCardReducer.id,
+                client_initials: editClientInitialsReducer.toUpperCase(),
+                start_date: editStartDateReducer,
+                end_date: null,
+                is_still_subscribed: editIsStillSubscribedReducer,
+                client_note: editClientNoteReducer,
+                card_color: editCardColorReducer,
+            }
+        } else {
+            updatedClientCard = {
+                client_card_id: selectedClientCardReducer.id,
+                client_initials: editClientInitialsReducer.toUpperCase(),
+                start_date: editStartDateReducer,
+                end_date: editEndDateReducer,
+                is_still_subscribed: editIsStillSubscribedReducer,
+                client_note: editClientNoteReducer,
+                card_color: editCardColorReducer,
+            }
         };
 
         dispatch({
@@ -188,7 +211,7 @@ function EditClientCardRender_Right() {
                     />
                 </div>
 
-                <button className="createClientCardButton" onClick={() => {submitClientCardChanges()}}>Submit Changes</button>
+                <button className="createClientCardButton" onClick={() => { submitClientCardChanges() }}>Submit Changes</button>
             </div>
         </>
     )
