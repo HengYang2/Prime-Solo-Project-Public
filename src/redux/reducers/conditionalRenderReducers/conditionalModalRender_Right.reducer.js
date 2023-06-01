@@ -1,4 +1,4 @@
-const conditionalModalRenderReducer_Right = (state = 'MainRender', action) => {
+const conditionalModalRenderReducer_Right = (state = 'MainRender_Right', action) => {
     switch (action.type) {
         case 'SET_CONDITIONALMODALRENDER_RIGHT':
             return action.payload;

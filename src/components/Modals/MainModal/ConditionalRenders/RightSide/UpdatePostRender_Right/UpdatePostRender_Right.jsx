@@ -29,8 +29,8 @@ function UpdatePostRender() {
 
     return (
         <>
-            <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender"); setIsEditingClientCard(false) }}> {'<-'} </button>
-            <button className="exitButton" onClick={() => { setConditionalModalRender_right("MainRender"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
+            <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
+            <button className="exitButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
             <h1>UPDATE POST CONDITIONAL RENDER</h1>
         </>
     )

@@ -35,9 +35,9 @@ function MainRender() {
             <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
         </div>
         <div className="bodyOfModal">
-            <button onClick={() => { setConditionalModalRender_right("CreatePostRender"); setIsEditingClientCard(true) }}>Create new post</button>
-            <button onClick={() => { setConditionalModalRender_right("UpdatePostRender"); setIsEditingClientCard(true) }}>Update existing post</button>
-            <button onClick={() => { setConditionalModalRender_right("DeletePostRender"); setIsEditingClientCard(true) }}>Delete existing post</button>
+            <button onClick={() => { setConditionalModalRender_right("CreatePostRender_Right"); setIsEditingClientCard(true) }}>Create new post</button>
+            <button onClick={() => { setConditionalModalRender_right("UpdatePostRender_Right"); setIsEditingClientCard(true) }}>Update existing post</button>
+            <button onClick={() => { setConditionalModalRender_right("DeletePostRender_Right"); setIsEditingClientCard(true) }}>Delete existing post</button>
         </div>
     </>)
 

@@ -21,15 +21,15 @@ function MainModalRender(props) {
     function loadConditionalModalRenderReducer_Right() {
         console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer_Right);
         switch (conditionalModalRenderReducer_Right) {
-            case 'MainRender':
+            case 'MainRender_Right':
                 return MainRender_Right();
-            case 'CreatePostRender':
+            case 'CreatePostRender_Right':
                 return CreatePostRender_Right();
-            case 'UpdatePostRender':
+            case 'UpdatePostRender_Right':
                 return UpdatePostRender_Right();
-            case 'DeletePostRender':
+            case 'DeletePostRender_Right':
                 return DeletePostRender_Right();
-            case 'EditClientCardRender':
+            case 'EditClientCardRender_Right':
                 return EditClientCardRender_Right();
             default:
                 return MainRender_Right();
@@ -60,7 +60,7 @@ function MainModalRender(props) {
     function conRenEditClientCardButton() {
         if (isEditingClientCard == false) {
             return (
-                <button onClick={() => { setConditionalModalRender_Right('EditClientCardRender'), setIsEditingClientCard(true) }}>Edit Client Card</button>
+                <button onClick={() => { setConditionalModalRender_Right('EditClientCardRender_Right'), setIsEditingClientCard(true) }}>Edit Client Card</button>
             )
         } else {
             return (
