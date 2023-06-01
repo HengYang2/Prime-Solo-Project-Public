@@ -17,6 +17,12 @@ import conditionalModalRenderReducer_Left from './conditionalRenderReducers/cond
 
 //Import reducer for editing client card:
 import editClientInitialsReducer from './editClientCardReducers/editClientInitials.reducer';
+import editStartDateReducer from './editClientCardReducers/editStartDate.reducer';
+import editEndDateReducer from './editClientCardReducers/editEndDate.reducer';
+import editClientNoteReducer from './editClientCardReducers/editClientNote.reducer';
+import editIsStillSubscribedReducer from './editClientCardReducers/editIsStillSubscribed.reducer';
+import editCardColorReducer from './editClientCardReducers/editCardColor.reducer';
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -33,7 +39,12 @@ const rootReducer = combineReducers({
   conditionalModalRenderReducer_Right,
   conditionalModalRenderReducer_Left,
   selectedClientCardReducer,
-  editClientInitialsReducer
+  editClientInitialsReducer,
+  editStartDateReducer,
+  editEndDateReducer,
+  editClientNoteReducer,
+  editIsStillSubscribedReducer,
+  editCardColorReducer
 });
 
 export default rootReducer;
