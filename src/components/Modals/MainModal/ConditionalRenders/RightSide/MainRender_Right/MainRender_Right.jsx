@@ -5,9 +5,9 @@ function MainRender() {
 
     const dispatch = useDispatch();
 
-    function setConditionalModalRender(nameOfRender) {
+    function setConditionalModalRender_right(nameOfRender) {
         dispatch({
-            type: "SET_CONDITIONALMODALRENDER",
+            type: "SET_CONDITIONALMODALRENDER_RIGHT",
             payload: nameOfRender
         })
     }
@@ -35,9 +35,9 @@ function MainRender() {
             <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
         </div>
         <div className="bodyOfModal">
-            <button onClick={() => { setConditionalModalRender("CreatePostRender"); setIsEditingClientCard(true) }}>Create new post</button>
-            <button onClick={() => { setConditionalModalRender("UpdatePostRender"); setIsEditingClientCard(true) }}>Update existing post</button>
-            <button onClick={() => { setConditionalModalRender("DeletePostRender"); setIsEditingClientCard(true) }}>Delete existing post</button>
+            <button onClick={() => { setConditionalModalRender_right("CreatePostRender"); setIsEditingClientCard(true) }}>Create new post</button>
+            <button onClick={() => { setConditionalModalRender_right("UpdatePostRender"); setIsEditingClientCard(true) }}>Update existing post</button>
+            <button onClick={() => { setConditionalModalRender_right("DeletePostRender"); setIsEditingClientCard(true) }}>Delete existing post</button>
         </div>
     </>)
 

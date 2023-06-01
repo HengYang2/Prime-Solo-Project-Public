@@ -4,43 +4,43 @@ import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 
 //Import conditional renders:
-import MainRender from "./ConditionalRenders/MainRender/MainRender";
-import CreatePostRender from './ConditionalRenders/CreatePostRender/CreatePostRender';
-import UpdatePostRender from "./ConditionalRenders/UpdatePostRender/UpdatePostRender";
-import DeletePostRender from "./ConditionalRenders/DeletePostRender/DeletePostRender";
-import EditClientCardRender from "./ConditionalRenders/EditClientCardRender/EditClientCardRender";
+import MainRender_Right from "./ConditionalRenders/RightSide/MainRender_Right/MainRender_Right";
+import CreatePostRender_Right from './ConditionalRenders/RightSide/CreatePostRender_Right/CreatePostRender_Right';
+import UpdatePostRender_Right from "./ConditionalRenders/RightSide/UpdatePostRender_Right/UpdatePostRender_Right";
+import DeletePostRender_Right from "./ConditionalRenders/RightSide/DeletePostRender_Right/DeletePostRender_Right";
+import EditClientCardRender_Right from "./ConditionalRenders/RightSide/EditClientCardRender_Right/EditClientCardRender_Right";
 
 function MainModalRender(props) {
 
     //Selected Client Card:
     const selectedClientCard = props.selectedClientCard;
 
-    const conditionalModalRenderReducer = useSelector(store => store.conditionalModalRenderReducer);
+    const conditionalModalRenderReducer_Right = useSelector(store => store.conditionalModalRenderReducer_Right);
 
     //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
-    function loadConditionalRender() {
-        console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer);
-        switch (conditionalModalRenderReducer) {
+    function loadConditionalModalRenderReducer_Right() {
+        console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer_Right);
+        switch (conditionalModalRenderReducer_Right) {
             case 'MainRender':
-                return MainRender();
+                return MainRender_Right();
             case 'CreatePostRender':
-                return CreatePostRender();
+                return CreatePostRender_Right();
             case 'UpdatePostRender':
-                return UpdatePostRender();
+                return UpdatePostRender_Right();
             case 'DeletePostRender':
-                return DeletePostRender();
+                return DeletePostRender_Right();
             case 'EditClientCardRender':
-                return EditClientCardRender();
+                return EditClientCardRender_Right();
             default:
-                return MainRender();
+                return MainRender_Right();
         }
     }
 
     //Function that changes the value of conditionalModalRenderReducer through dispatch:
     //The value of conditionalModalRenderReducer will determin what html elements are loaded onto the Modal:
-    function setConditionalModalRender(nameOfRender) {
+    function setConditionalModalRender_Right(nameOfRender) {
         dispatch({
-            type: "SET_CONDITIONALMODALRENDER",
+            type: "SET_CONDITIONALMODALRENDER_RIGHT",
             payload: nameOfRender
         })
     }
@@ -60,7 +60,7 @@ function MainModalRender(props) {
     function conRenEditClientCardButton() {
         if (isEditingClientCard == false) {
             return (
-                <button onClick={() => { setConditionalModalRender('EditClientCardRender'), setIsEditingClientCard(true) }}>Edit Client Card</button>
+                <button onClick={() => { setConditionalModalRender_Right('EditClientCardRender'), setIsEditingClientCard(true) }}>Edit Client Card</button>
             )
         } else {
             return (
@@ -157,7 +157,7 @@ function MainModalRender(props) {
                 </div>
 
                 <div className="rightSideOfModal" style={cardColorStyles}>
-                    {loadConditionalRender()}
+                    {loadConditionalModalRenderReducer_Right()}
                 </div>
             </div>
         </>

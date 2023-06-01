@@ -5,9 +5,9 @@ function DeletePostRender() {
 
     const dispatch = useDispatch();
 
-    function setConditionalModalRender(nameOfRender) {
+    function setConditionalModalRender_right(nameOfRender) {
         dispatch({
-            type: "SET_CONDITIONALMODALRENDER",
+            type: "SET_CONDITIONALMODALRENDER_RIGHT",
             payload: nameOfRender
         })
     }
@@ -29,8 +29,8 @@ function DeletePostRender() {
 
     return (
         <>
-            <button className="backButton" onClick={() => { setConditionalModalRender("MainRender"); setIsEditingClientCard(false) }}> {'<-'} </button>
-            <button className="exitButton" onClick={() => { setConditionalModalRender("MainRender"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
+            <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender"); setIsEditingClientCard(false) }}> {'<-'} </button>
+            <button className="exitButton" onClick={() => { setConditionalModalRender_right("MainRender"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
             <h1>DELETE POST CONDITIONAL RENDER</h1>
         </>
     )
