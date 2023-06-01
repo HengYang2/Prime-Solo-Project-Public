@@ -6,7 +6,7 @@ function EditClientCardRender_Right() {
     const dispatch = useDispatch();
 
     // //Edit client card reducer:
-    // const editClientInitialsReducer = useSelector(store => store.editClientInitialsReducer);
+    const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
 
     function setConditionalModalRender_right(nameOfRender) {
         dispatch({
@@ -38,6 +38,58 @@ function EditClientCardRender_Right() {
     }
 
 
+    //Setting reducers that correspond to each input in the return below:
+    function setEditClientInitialsReducer(inputValue) {
+        dispatch({
+            type: "SET_CLIENTINITIALS",
+            payload: inputValue
+        })
+    }
+
+    function setEditStartDateReducer(inputValue) {
+        dispatch({
+            type: "SET_STARTDATE",
+            payload: inputValue
+        })
+    }
+
+    function setEditEndDateReducer(inputValue) {
+        dispatch({
+            type: "SET_ENDDATE",
+            payload: inputValue
+        })
+    }
+
+    function setEditIsStillSubscribedReducer(inputValue) {
+        dispatch({
+            type: "SET_ISSTILLSUBSCRIBED",
+            payload: inputValue
+        })
+    }
+
+    function setEditClientNoteReducer(inputValue) {
+        dispatch({
+            type: "SET_CLIENTNOTE",
+            payload: inputValue
+        })
+    }
+
+    function setEditCardColorReducer(inputValue) {
+        dispatch({
+            type: "SET_CARDCOLOR",
+            payload: inputValue
+        })
+    }
+
+        //Toggle isStillSubscribed:
+        function toggleIsStillSubscribedReducer() {
+            if (editIsStillSubscribedReducer == false) {
+                setEditIsStillSubscribedReducer(true);
+            } else {
+                setEditIsStillSubscribedReducer(false);
+            }
+        }
+
     return (
         <>
             <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); ; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
@@ -46,7 +98,7 @@ function EditClientCardRender_Right() {
             <div className="inputDiv">
                 <h4 className="inputHeader">Initials:</h4>
                 <input className="inputElement"
-                    onChange={(event) => setClientInitials(event.target.value)}
+                    onChange={(event) => setEditClientInitialsReducer(event.target.value)}
                     type='text'
                     placeholder='Client Initials'
                     maxLength={4}
@@ -57,7 +109,7 @@ function EditClientCardRender_Right() {
             <div className="inputDiv">
                 <h4 className="inputHeader">Start Date:</h4>
                 <input className="inputElement"
-                    onChange={(event) => { setStartDate(event.target.value); handleDate(event.target.value, 'start'); }}
+                    onChange={(event) => { setEditStartDateReducer(event.target.value)}}
                     type='date'
                     placeholder='Start Date'
                 />
@@ -66,7 +118,7 @@ function EditClientCardRender_Right() {
             <div className="inputDiv">
                 <h4 className="inputHeader">End Date:</h4>
                 <input className="inputElement"
-                    onChange={(event) => { setEndDate(event.target.value); handleDate(event.target.value, 'end'); }}
+                    onChange={(event) => { setEditEndDateReducer(event.target.value)}}
                     type='date'
                     placeholder='End Date'
                 />
@@ -75,7 +127,7 @@ function EditClientCardRender_Right() {
             <div className="inputDiv">
                 <h4 className="inputHeader">Client Note:</h4>
                 <textarea className="textAreaElement"
-                    onChange={(event) => setClientNote(event.target.value)}
+                    onChange={(event) => setEditClientNoteReducer(event.target.value)}
                     wrap="soft"
                     rows={1}
                     type='text'
@@ -87,11 +139,11 @@ function EditClientCardRender_Right() {
             <div className="inputDiv">
                 <h4 className="inputHeader">Colors:</h4>
                 <div className="colorDivElement">
-                    <button id="red" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
-                    <button id="blue" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
-                    <button id="green" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
-                    <button id="yellow" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
-                    <button id="purple" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
+                    <button id="red" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                    <button id="blue" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                    <button id="green" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                    <button id="yellow" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                    <button id="purple" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
                 </div>
             </div>
 
@@ -99,7 +151,7 @@ function EditClientCardRender_Right() {
                 <div className="clientIsCurrentlySubscribed">
                     <h1 className="checkboxHeader">Check this box if client is currently <br /> with the company:</h1>
                     <input className="checkboxElement"
-                        onChange={(event) => { toggleIsStillSubscribed() }}
+                        onChange={(event) => {toggleIsStillSubscribedReducer()}}
                         type='checkbox'
                     />
                 </div>

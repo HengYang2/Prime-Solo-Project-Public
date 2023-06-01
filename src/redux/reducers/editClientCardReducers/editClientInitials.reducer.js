@@ -1,4 +1,4 @@
-const editClientInitialsReducer = (state = 'A', action) => {
+const editClientInitialsReducer = (state = '', action) => {
     switch (action.type) {
         case 'SET_CLIENTINITIALS':
             return action.payload;

@@ -1,4 +1,4 @@
-const editClientNoteReducer = (state = 'Yellow?', action) => {
+const editClientNoteReducer = (state = '', action) => {
     switch (action.type) {
         case 'SET_CLIENTNOTE':
             return action.payload;

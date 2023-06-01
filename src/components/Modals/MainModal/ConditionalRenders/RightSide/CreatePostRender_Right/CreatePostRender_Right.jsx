@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 function CreatePostRender() {
 
-    const reducer = useSelector(store => store.editClientInitialsReducer);
+    //To match number of hook renders:
+    const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
 
     const dispatch = useDispatch();
 

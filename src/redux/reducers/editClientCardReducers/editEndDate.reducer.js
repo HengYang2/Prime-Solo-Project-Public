@@ -1,4 +1,4 @@
-const editStartEndReducer = (state = 'mm/dd/yy', action) => {
+const editStartEndReducer = (state = '', action) => {
     switch (action.type) {
         case 'SET_ENDDATE':
             return action.payload;

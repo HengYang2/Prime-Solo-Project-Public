@@ -1,4 +1,4 @@
-const editIsStillSubscribedReducer = (state = 'mm/dd/yy', action) => {
+const editIsStillSubscribedReducer = (state = '', action) => {
     switch (action.type) {
         case 'SET_ISSTILLSUBSCRIBED':
             return action.payload;

@@ -1,9 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function DeletePostRender() {
 
     const dispatch = useDispatch();
+
+    //To match number of hook renders:
+    const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
+  
+
 
     function setConditionalModalRender_right(nameOfRender) {
         dispatch({

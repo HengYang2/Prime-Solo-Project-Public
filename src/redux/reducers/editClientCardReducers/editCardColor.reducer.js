@@ -1,4 +1,4 @@
-const editCardColorReducer = (state = 'A', action) => {
+const editCardColorReducer = (state = '', action) => {
     switch (action.type) {
         case 'SET_CARDCOLOR':
             return action.payload;

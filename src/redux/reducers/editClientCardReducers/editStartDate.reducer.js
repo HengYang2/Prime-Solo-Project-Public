@@ -1,4 +1,4 @@
-const editStartDateReducer = (state = 'mm/dd/yy', action) => {
+const editStartDateReducer = (state = '', action) => {
     switch (action.type) {
         case 'SET_STARTDATE':
             return action.payload;
