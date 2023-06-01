@@ -85,8 +85,6 @@ function MainModalRender(props) {
     }
 
 
-
-
     //Css styling for lefSideOfModal and rightSideOfModal:
     let cardColorStyles = {
         backgroundColor: selectedClientCardReducer.card_color
