@@ -14,6 +14,10 @@ import isEditingClientCardReducer from './conditionalRenderReducers/isEditingCli
 import conditionalModalRenderReducer_Right from './conditionalRenderReducers/conditionalModalRender_Right.reducer';
 import conditionalModalRenderReducer_Left from './conditionalRenderReducers/conditionalModalRender_Left.reducer';
 
+
+//Import reducer for editing client card:
+import editClientInitialsReducer from './editClientCardReducers/editClientInitials.reducer';
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -28,7 +32,8 @@ const rootReducer = combineReducers({
   isEditingClientCardReducer,
   conditionalModalRenderReducer_Right,
   conditionalModalRenderReducer_Left,
-  selectedClientCardReducer
+  selectedClientCardReducer,
+  editClientInitialsReducer
 });
 
 export default rootReducer;

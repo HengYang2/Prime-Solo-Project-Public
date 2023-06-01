@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 function MainRender_Left() {
 
@@ -57,7 +57,7 @@ function MainRender_Left() {
     }
 
     const reformattedStartDate = handleDate(selectedClientCardReducer.start_date, 'start');
-    
+
 
     return (<>
         <h2 className="clientInitials">{selectedClientCardReducer.client_initials}</h2>

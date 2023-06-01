@@ -10,17 +10,22 @@ import CreatePostRender_Right from './ConditionalRenders/RightSide/CreatePostRen
 import UpdatePostRender_Right from "./ConditionalRenders/RightSide/UpdatePostRender_Right/UpdatePostRender_Right";
 import DeletePostRender_Right from "./ConditionalRenders/RightSide/DeletePostRender_Right/DeletePostRender_Right";
 import EditClientCardRender_Right from "./ConditionalRenders/RightSide/EditClientCardRender_Right/EditClientCardRender_Right";
+import EditClientCardRender_Left from "./ConditionalRenders/LeftSide/EditClientCardRender_Left/EditClientCardRender_Left";
 
 function MainModalRender(props) {
 
     //Selected Client Card:
-    const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
 
+
+    const dispatch = useDispatch();
     const conditionalModalRenderReducer_Right = useSelector(store => store.conditionalModalRenderReducer_Right);
+    const conditionalModalRenderReducer_Left = useSelector(store => store.conditionalModalRenderReducer_Left);
+    const isEditingClientCard = useSelector(store => store.isEditingClientCardReducer);
+    const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
 
     //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
     function loadConditionalModalRenderReducer_Right() {
-        console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer_Right);
+        // console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer_Right);
         switch (conditionalModalRenderReducer_Right) {
             case 'MainRender_Right':
                 return MainRender_Right();
@@ -46,36 +51,41 @@ function MainModalRender(props) {
         })
     }
 
-    const dispatch = useDispatch();
-    // //Use useSelector for conditonally rendering 'Edit Client Card' button:
-    const isEditingClientCard = useSelector(store => store.isEditingClientCardReducer);
-    //For setting isEditingClientCard reducer:
-    function setIsEditingClientCard(boolean) {
-        dispatch({
-            type: "SET_ISEDITINGCLIENTCARD",
-            payload: boolean
-        })
-    }
-
-
-    const conditionalModalRenderReducer_Left = useSelector(store => store.conditionalModalRenderReducer_Left);
-
+   
     //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
     function loadConditionalModalRenderReducer_Left() {
-        console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer_Left);
+        // console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer_Left);
         switch (conditionalModalRenderReducer_Left) {
             case 'MainRender_Left':
                 return MainRender_Left();
+            case 'EditClientCardRender_Left':
+                return EditClientCardRender_Left();
             default:
                 return MainRender_Left();
         }
     }
 
+    function setConditionalModalRender_Left(nameOfRender) {
+        dispatch({
+            type: "SET_CONDITIONALMODALRENDER_LEFT",
+            payload: nameOfRender
+        })
+    }
+
+
+  //For setting isEditingClientCard reducer:
+  function setIsEditingClientCard(boolean) {
+      dispatch({
+          type: "SET_ISEDITINGCLIENTCARD",
+          payload: boolean
+      })
+  }
+
     //Conditonally Rendered Button for 'Edit Client Card':
     function conRenEditClientCardButton() {
         if (isEditingClientCard == false) {
             return (
-                <button onClick={() => { setConditionalModalRender_Right('EditClientCardRender_Right'), setIsEditingClientCard(true) }}>Edit Client Card</button>
+                <button onClick={() => { setConditionalModalRender_Left('EditClientCardRender_Left'); setConditionalModalRender_Right('EditClientCardRender_Right'); setIsEditingClientCard(true) }}>Edit Client Card</button>
             )
         } else {
             return (

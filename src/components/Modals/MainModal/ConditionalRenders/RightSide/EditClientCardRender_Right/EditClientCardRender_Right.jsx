@@ -1,13 +1,23 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-function EditClientCardRender() {
+function EditClientCardRender_Right() {
 
     const dispatch = useDispatch();
+
+    // //Edit client card reducer:
+    // const editClientInitialsReducer = useSelector(store => store.editClientInitialsReducer);
 
     function setConditionalModalRender_right(nameOfRender) {
         dispatch({
             type: "SET_CONDITIONALMODALRENDER_RIGHT",
+            payload: nameOfRender
+        })
+    }
+
+    function setConditionalModalRender_left(nameOfRender) {
+        dispatch({
+            type: "SET_CONDITIONALMODALRENDER_LEFT",
             payload: nameOfRender
         })
     }
@@ -27,10 +37,11 @@ function EditClientCardRender() {
         })
     }
 
+
     return (
         <>
-            <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
-            <button className="exitButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
+            <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); ; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
+            <button className="exitButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); ; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
 
             <div className="inputDiv">
                 <h4 className="inputHeader">Initials:</h4>
@@ -99,4 +110,4 @@ function EditClientCardRender() {
     )
 }
 
-export default EditClientCardRender;
+export default EditClientCardRender_Right;
