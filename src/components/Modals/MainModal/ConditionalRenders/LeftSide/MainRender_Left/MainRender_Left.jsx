@@ -7,17 +7,17 @@ function MainRender_Left() {
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
 
     //useStates to read client data:
-    const [clientId, setClientId] = useState(selectedClientCardReducer.id);
-    const [clientInitials, setClientInitials] = useState(selectedClientCardReducer.client_initials);
-    const [startDate, setStartDate] = useState(selectedClientCardReducer.start_date);
-    const [endDate, setEndDate] = useState(selectedClientCardReducer.end_date);
-    const [clientNote, setClientNote] = useState(selectedClientCardReducer.client_note);
-    const [cardColor, setCardColor] = useState(selectedClientCardReducer.card_color);
-    const [isStillSubscribed, setIsStillSubscribed] = useState(selectedClientCardReducer.is_still_subscribed);
+    // const [clientId, setClientId] = useState(selectedClientCardReducer.id);
+    // const [clientInitials, setClientInitials] = useState(selectedClientCardReducer.client_initials);
+    // const [startDate, setStartDate] = useState(selectedClientCardReducer.start_date);
+    // const [endDate, setEndDate] = useState(selectedClientCardReducer.end_date);
+    // const [clientNote, setClientNote] = useState(selectedClientCardReducer.client_note);
+    // const [cardColor, setCardColor] = useState(selectedClientCardReducer.card_color);
+    // const [isStillSubscribed, setIsStillSubscribed] = useState(selectedClientCardReducer.is_still_subscribed);
 
     //This is for displaying the date in mm/dd/yyyy format to the users in the DOM.
-    const [reformattedStartDate, setReformattedStartDate] = useState('');
-    const [reformattedEndDate, setReformattedEndDate] = useState('');
+    // const [reformattedStartDate, setReformattedStartDate] = useState('');
+    // const [reformattedEndDate, setReformattedEndDate] = useState('');
 
     //Function that will convert date format: yyyy/mm/dd --> mm/dd/yyyy
     function reformatDate(date) {
@@ -37,17 +37,17 @@ function MainRender_Left() {
 
         //Assign it to reformattedStartDate or reformattedEndDate:
         if (startOrEnd == 'start') {
-            setReformattedStartDate(reformattedDate);
+            return reformattedDate;
         } else {
-            setReformattedEndDate(reformattedDate);
+            return reformattedDate;
         }
     }
 
     //Conditionally rendered endDate component:
-    const conRenderedEndDate = () => {
-        if (isStillSubscribed == false) {
+    const conditionallyRenderedEndDate = () => {
+        if (selectedClientCardReducer.is_still_subscribed == false) {
             return (
-                <h3 className="endDate">{reformattedEndDate}</h3>
+                <h3 className="endDate">{handleDate(selectedClientCardReducer.end_date, 'end')}</h3>
             )
         } else {
             return (
@@ -56,22 +56,17 @@ function MainRender_Left() {
         }
     }
 
-    //Use 'useEffect' hook to refresh the clientCardsReducer data:
-    useEffect(() => {
-        //Reformat start_date and end_date:
-        console.log("selectedClientCardReducer value ---->", selectedClientCardReducer);
-        handleDate(selectedClientCardReducer.start_date, 'start');
-        handleDate(selectedClientCardReducer.start_date, 'end');
-    }, []);
+    const reformattedStartDate = handleDate(selectedClientCardReducer.start_date, 'start');
+    
 
     return (<>
-        <h2 className="clientInitials">{clientInitials}</h2>
+        <h2 className="clientInitials">{selectedClientCardReducer.client_initials}</h2>
         <div className="timeWithCompany">
             <h3 className="startDate">{reformattedStartDate}</h3>
             <h3 className="to">to</h3>
-            {conRenderedEndDate()}
+            {conditionallyRenderedEndDate()}
         </div>
-        <p className="clientNote">{clientNote}</p>
+        <p className="clientNote">{selectedClientCardReducer.client_note}</p>
     </>)
 
 }
