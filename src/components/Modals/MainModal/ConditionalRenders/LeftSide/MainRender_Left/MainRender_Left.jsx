@@ -1,10 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import editClientInitialsReducer from "../../../../../../redux/reducers/editClientCardReducers/editClientInitials.reducer";
 // import { useEffect, useState } from 'react';
 
 function MainRender_Left() {
 
+    const dispatch = useDispatch();
+
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
+    const editClientInitialsReducer = useSelector(store => store.editClientInitialsReducer);
+    const editStartDateReducer = useSelector(store => store.editStartDateReducer);
+    const editEndDateReducer = useSelector(store => store.editEndDateReducer);
+    const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
+    const editClientNoteReducer = useSelector(store => store.editClientNoteReducer);
 
     //useStates to read client data:
     // const [clientId, setClientId] = useState(selectedClientCardReducer.id);

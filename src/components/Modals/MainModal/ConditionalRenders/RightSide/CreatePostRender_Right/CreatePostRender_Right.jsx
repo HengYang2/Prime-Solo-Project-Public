@@ -1,7 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function CreatePostRender() {
+
+    const reducer = useSelector(store => store.editClientInitialsReducer);
 
     const dispatch = useDispatch();
 
