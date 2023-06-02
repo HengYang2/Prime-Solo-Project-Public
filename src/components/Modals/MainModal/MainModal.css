@@ -206,15 +206,19 @@
 #red {
     background-color: red;
 }
+
 #blue {
     background-color: blue;
 }
+
 #green {
     background-color: green;
 }
+
 #yellow {
     background-color: yellow;
 }
+
 #purple {
     background-color: purple;
 }
@@ -232,7 +236,7 @@
 }
 
 /*Checkbox*/
-.clientIsCurrentlySubscribed{
+.clientIsCurrentlySubscribed {
     background-color: white;
     border: 2px solid black;
     border-radius: 10px;
@@ -243,13 +247,11 @@
 }
 
 .checkboxHeader {
-  font-size: 10px;
-  text-align: center;
-  margin-left: ;
+    font-size: 10px;
+    text-align: center;
+
 }
 
-.checkboxElement {
-}
 
 /*CreateClientCardButton*/
 .createClientCardButton {
@@ -262,3 +264,164 @@
     margin-left: 6%;
 }
 
+
+.modalHeader{
+    text-align: center;
+    background-color: blue;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 85%;
+}
+.modalBody{
+    background-color: red;
+    height: 75%;
+}
+.modalFooter{
+    display: flex;
+    align-items: center;
+    background-color: yellow;
+    height: 15%;
+}
+
+
+.exitButtonCombo {
+    display: inline-block;
+    height: 60%;
+    width: 5%;
+    margin-left: 0% ;
+    margin-bottom: 0%;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.exitButton {
+    display: inline-block;
+    height: 60%;
+    width: 5%;
+    margin-left: 90% ;
+    margin-bottom: 0%;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.backButton {
+    display: inline-block;
+    height: 60%;
+    width: 5%;
+    margin-left: 0;
+}
+
+
+
+.mainHeaderPrompt {
+    text-align: center;
+    font-size: 25px;
+    background-color: gainsboro;
+    height: 10%;
+}
+
+
+.mainFlexDiv {
+    background-color: turquoise;
+    height: 82%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+}
+
+.mainFlexBtn {
+    width: 95%;
+    height: 20%;
+    margin-left: 2.5%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.editCCFlexDiv {
+    background-color: turquoise;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5%;
+}
+
+.createPostFlexDiv {
+    background-color: turquoise;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6%;
+}
+
+.submitChangesBtn {
+    height: 75%;
+    width: 25%;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 7%;
+}
+
+.createPostBtn {
+    height: 75%;
+    width: 25%;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 37%;
+}
+
+.checkboxDiv {
+    background-color: blueviolet;
+    width: 25%;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items:center ;
+    margin-left: 5%;
+}
+.checkboxHeader {
+    width: 100%;
+}
+
+.checkboxElement {
+    width: 50%;
+}
+
+/* .createPostBtn {
+   display: block;
+   width: 95%;
+   height: 20%;
+   margin-left: 2.5%;
+   border: 2px solid black;
+   border-radius: 10px;
+}
+.updatePostBtn {
+    display: block;
+    width: 95%;
+    height: 20%;
+    margin-left: 2.5%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.deletePostBtn {
+    display: block;
+    width: 95%;
+    height: 20%;
+    margin-left: 2.5%;
+    border: 2px solid black;
+    border-radius: 10px;
+} */
+
+.postListHeader {
+    background-color: red;
+}
+
+.postListDiv {
+    background-color: aqua;
+}

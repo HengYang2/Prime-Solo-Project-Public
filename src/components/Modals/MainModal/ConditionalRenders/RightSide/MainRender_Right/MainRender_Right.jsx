@@ -39,15 +39,22 @@ function MainRender_Right() {
 
 
     return (<>
-        <button className="exitButton" onClick={() => { setIsOpenMain(false) }}> X </button>
 
-        <div className="headerOfModal">
-            <h1 className="inputHeader">Which Client Card Action Would You Like To Perform?:</h1>
+        <div className="modalHeader">
+            <button className="exitButton" onClick={() => { setIsOpenMain(false) }}> X </button>
         </div>
-        <div className="bodyOfModal">
-            <button onClick={() => { setConditionalModalRender_right("CreatePostRender_Right"); setIsEditingClientCard(true) }}>Create new post</button>
-            <button onClick={() => { setConditionalModalRender_right("UpdatePostRender_Right"); setIsEditingClientCard(true) }}>Update existing post</button>
-            <button onClick={() => { setConditionalModalRender_right("DeletePostRender_Right"); setIsEditingClientCard(true) }}>Delete existing post</button>
+
+        <div className="modalBody">
+            <h1 className="mainHeaderPrompt">Which Client Card Action Would You Like To Perform?</h1>
+            <div className="mainFlexDiv">
+                <button className="mainFlexBtn" onClick={() => { setConditionalModalRender_right("CreatePostRender_Right"); setIsEditingClientCard(true) }}>Create new post</button>
+                <button className="mainFlexBtn" onClick={() => { setConditionalModalRender_right("UpdatePostRender_Right"); setIsEditingClientCard(true) }}>Update existing post</button>
+                <button className="mainFlexBtn" onClick={() => { setConditionalModalRender_right("DeletePostRender_Right"); setIsEditingClientCard(true) }}>Delete existing post</button>
+            </div>
+        </div>
+
+        <div className="modalFooter">
+        
         </div>
     </>)
 

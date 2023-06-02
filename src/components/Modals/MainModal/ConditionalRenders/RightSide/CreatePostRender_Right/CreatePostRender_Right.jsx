@@ -119,57 +119,61 @@ function CreatePostRender() {
 
     return (
         <>
-            <>
+            <div className="modalHeader">
                 <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers() }}> {'<-'} </button>
-                <button className="exitButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers(); setIsOpenMain(false) }}> X </button>
+                <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers(); setIsOpenMain(false) }}> X </button>
+            </div>
 
 
-                <div className="inputDiv">
-                    <h4 className="inputHeader">Select Date:</h4>
-                    <input className="inputElement"
-                        onChange={(event) => { setCreatePostDateReducer(event.target.value) }}
-                        type='date'
-                    />
+            <div className="modalBody">
+                <div className="createPostFlexDiv">
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">Select Date:</h4>
+                        <input className="inputElement"
+                            onChange={(event) => { setCreatePostDateReducer(event.target.value) }}
+                            type='date'
+                        />
+                    </div>
+
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">Input Hours Worked:</h4>
+                        <input className="inputElement"
+                            onChange={(event) => setCreatePostHoursReducer(event.target.value)}
+                            type='number'
+                            placeholder='0'
+                            maxLength={4}
+                        />
+                    </div>
+
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">Input Miles Driven:</h4>
+                        <input className="inputElement"
+                            onChange={(event) => setCreatePostMileageReducer(event.target.value)}
+                            type='number'
+                            placeholder='0'
+                            maxLength={4}
+                        />
+                    </div>
+
+
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">Task Details:</h4>
+                        <textarea className="textAreaElement"
+                            onChange={(event) => setCreatePostTaskDetailsReducer(event.target.value)}
+                            wrap="soft"
+                            rows={1}
+                            type='text'
+                            maxLength={216}
+                            placeholder='Task details are optional...'
+                        />
+                    </div>
                 </div>
-
-                <div className="inputDiv">
-                    <h4 className="inputHeader">Input Hours Worked:</h4>
-                    <input className="inputElement"
-                        onChange={(event) => setCreatePostHoursReducer(event.target.value)}
-                        type='number'
-                        placeholder='0'
-                        maxLength={4}
-                    />
-                </div>
-
-                <div className="inputDiv">
-                    <h4 className="inputHeader">Input Miles Driven:</h4>
-                    <input className="inputElement"
-                        onChange={(event) => setCreatePostMileageReducer(event.target.value)}
-                        type='number'
-                        placeholder='0'
-                        maxLength={4}
-                    />
-                </div>
+            </div>
 
 
-                <div className="inputDiv">
-                    <h4 className="inputHeader">Task Details:</h4>
-                    <textarea className="textAreaElement"
-                        onChange={(event) => setCreatePostTaskDetailsReducer(event.target.value)}
-                        wrap="soft"
-                        rows={1}
-                        type='text'
-                        maxLength={216}
-                        placeholder='Task details are optional...'
-                    />
-                </div>
-
-
-                <div className="footerOfModal">
-                    <button className="createClientCardButton" onClick={() => { createPost() }}>Create Post</button>
-                </div>
-            </>
+            <div className="modalFooter">
+                <button className="createPostBtn" onClick={() => { createPost() }}>Create Post</button>
+            </div>
         </>
     )
 }

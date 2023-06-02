@@ -53,13 +53,11 @@ function UpdatePostRender() {
                 <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers() }}> {'<-'} </button>
                 <button className="exitButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers(); setIsOpenMain(false) }}> X </button>
 
-                <div className="inputDiv">
-                    <h4 className="inputHeader">Post Library:</h4>
-                    <div className="postListDiv">
-                        {postListReducer.map((post) => (
-                            <PostListing key={post.id} postInfo={post} />
-                        ))}
-                    </div>
+                <h4 className="postListHeader">Post Library:</h4>
+                <div className="postListDiv">
+                    {postListReducer.map((post) => (
+                        <PostListing key={post.id} postInfo={post} />
+                    ))}
                 </div>
 
                 <div className="footerOfModal">

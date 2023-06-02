@@ -101,8 +101,8 @@ function EditClientCardRender_Right() {
         }
     }
 
-     //Ressetting reducers that correspond to each input in the return below: 
-     function resetEditReducers() {
+    //Ressetting reducers that correspond to each input in the return below: 
+    function resetEditReducers() {
         setEditClientInitialsReducer('');
         setEditStartDateReducer('');
         setEditEndDateReducer(null);
@@ -166,7 +166,7 @@ function EditClientCardRender_Right() {
         //Reset modal to 'main' renders after changes have been successully updated on the server/database side.
         //Also reset edit reducers:
         resetEditReducers();
-        setIsOpenMain(false); 
+        setIsOpenMain(false);
         setConditionalModalRender_left("MainRender_Left");
         setConditionalModalRender_right("MainRender_Right");
         setIsEditingClientCard(false);
@@ -176,61 +176,69 @@ function EditClientCardRender_Right() {
 
     return (
         <>
-            <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetEditReducers() }}> {'<-'} </button>
-            <button className="exitButton" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetEditReducers(); setIsOpenMain(false) }}> X </button>
 
-            <div className="inputDiv">
-                <h4 className="inputHeader">Initials:</h4>
-                <input className="inputElement"
-                    onChange={(event) => setEditClientInitialsReducer(event.target.value)}
-                    type='text'
-                    placeholder='Client Initials'
-                    maxLength={4}
-                    style={{ textTransform: 'uppercase' }}
-                />
+            <div className="modalHeader">
+                <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetEditReducers() }}> {'<-'} </button>
+                <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetEditReducers(); setIsOpenMain(false) }}> X </button>
             </div>
 
-            <div className="inputDiv">
-                <h4 className="inputHeader">Start Date:</h4>
-                <input className="inputElement"
-                    onChange={(event) => { setEditStartDateReducer(event.target.value) }}
-                    type='date'
-                />
-            </div>
+            <div className="modalBody">
+                <div className="editCCFlexDiv">
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">Initials:</h4>
+                        <input className="inputElement"
+                            onChange={(event) => setEditClientInitialsReducer(event.target.value)}
+                            type='text'
+                            placeholder='Client Initials'
+                            maxLength={4}
+                            style={{ textTransform: 'uppercase' }}
+                        />
+                    </div>
 
-            <div className="inputDiv">
-                <h4 className="inputHeader">End Date:</h4>
-                <input className="inputElement"
-                    onChange={(event) => { setEditEndDateReducer(event.target.value) }}
-                    type='date'
-                />
-            </div>
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">Start Date:</h4>
+                        <input className="inputElement"
+                            onChange={(event) => { setEditStartDateReducer(event.target.value) }}
+                            type='date'
+                        />
+                    </div>
 
-            <div className="inputDiv">
-                <h4 className="inputHeader">Client Note:</h4>
-                <textarea className="textAreaElement"
-                    onChange={(event) => setEditClientNoteReducer(event.target.value)}
-                    wrap="soft"
-                    rows={1}
-                    type='text'
-                    maxLength={216}
-                    placeholder='Client Note'
-                />
-            </div>
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">End Date:</h4>
+                        <input className="inputElement"
+                            onChange={(event) => { setEditEndDateReducer(event.target.value) }}
+                            type='date'
+                        />
+                    </div>
 
-            <div className="inputDiv">
-                <h4 className="inputHeader">Colors:</h4>
-                <div className="colorDivElement">
-                    <button id="red" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
-                    <button id="blue" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
-                    <button id="green" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
-                    <button id="yellow" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
-                    <button id="purple" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">Client Note:</h4>
+                        <textarea className="textAreaElement"
+                            onChange={(event) => setEditClientNoteReducer(event.target.value)}
+                            wrap="soft"
+                            rows={1}
+                            type='text'
+                            maxLength={216}
+                            placeholder='Client Note'
+                        />
+                    </div>
+
+                    <div className="inputDiv">
+                        <h4 className="inputHeader">Colors:</h4>
+                        <div className="colorDivElement">
+                            <button id="red" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                            <button id="blue" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                            <button id="green" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                            <button id="yellow" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                            <button id="purple" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div className="footerOfModal">
-                <div className="clientIsCurrentlySubscribed">
+
+            <div className="modalFooter">
+                <div className="checkboxDiv">
                     <h1 className="checkboxHeader">Check this box if client is currently <br /> with the company:</h1>
                     <input className="checkboxElement"
                         onChange={(event) => { toggleIsStillSubscribedReducer() }}
@@ -238,8 +246,9 @@ function EditClientCardRender_Right() {
                     />
                 </div>
 
-                <button className="createClientCardButton" onClick={() => { submitClientCardChanges() }}>Submit Changes</button>
+                <button className="submitChangesBtn" onClick={() => { submitClientCardChanges() }}>Submit Changes</button>
             </div>
+
         </>
     )
 }
