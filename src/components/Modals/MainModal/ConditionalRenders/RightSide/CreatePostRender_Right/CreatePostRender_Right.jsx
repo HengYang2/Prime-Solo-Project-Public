@@ -73,13 +73,21 @@ function CreatePostRender() {
         })
     }
 
+    //Function for resetting reducer values:
+    function resetCreatePostReducers() {
+        setCreatePostDateReducer('');
+        setCreatePostHoursReducer(0);
+        setCreatePostMileageReducer(0);
+        setCreatePostTaskDetailsReducer('');
+    }
+
 
     //Function for 
     function createPost() {
 
         //Check to see if all required fields are filled out:
-        if (createPostDateReducer == '' || createPostHoursReducer == 0 || createPostMileageReducer == 0) {
-            return;
+        if (createPostDateReducer == '' || createPostHoursReducer == 0 || createPostHoursReducer == '') {
+            return console.log('Missing a required field');;
         }
 
         //Create an object variable containing all createPost reducers:
@@ -87,28 +95,24 @@ function CreatePostRender() {
             client_id: selectedClientCardReducer.id,
             date: createPostDateReducer,
             hours_worked: Number(createPostHoursReducer),
-            mileage_driven: Number(createPostMileageReducer),
+            miles_driven: Number(createPostMileageReducer),
             task_details: createPostTaskDetailsReducer
         }
 
         //Makes a saga_dispatch:
-        function setCreatePostTaskDetailsReducer(details) {
-            dispatch({
-                type: "SAGA_CREATE_POST",
-                payload: postData
-            })
-        }
+        dispatch({
+            type: "SAGA_CREATE_POST",
+            payload: postData
+        })
+
 
         //Reset the createPost reducers:
-        setCreatePostDateReducer('');
-        setCreatePostHoursReducer(0);
-        setCreatePostMileageReducer(0);
-        setCreatePostTaskDetailsReducer('');
+        resetCreatePostReducers();
 
 
         //Bring the user back to the MainRender of the modal:
         setConditionalModalRender_left("MainRender_Left");
-        setConditionalModalRender_right("MainRender_Right"); 
+        setConditionalModalRender_right("MainRender_Right");
         setIsEditingClientCard(false);
 
     }
@@ -116,8 +120,8 @@ function CreatePostRender() {
     return (
         <>
             <>
-                <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetEditReducers() }}> {'<-'} </button>
-                <button className="exitButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
+                <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers() }}> {'<-'} </button>
+                <button className="exitButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers(); setIsOpenMain(false) }}> X </button>
 
 
                 <div className="inputDiv">
