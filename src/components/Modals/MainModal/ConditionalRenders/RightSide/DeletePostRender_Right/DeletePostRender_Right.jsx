@@ -6,8 +6,16 @@ function DeletePostRender() {
     const dispatch = useDispatch();
 
     //To match number of hook renders:
-    const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
-  
+    const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
+    const editClientNoteReducer = useSelector(store => store.editClientNoteReducer);
+    const editCardColorReducer = useSelector(store => store.editCardColorReducer);
+
+    //Used hooks:
+    const createPostDateReducer = useSelector(store => store.createPostDateReducer);
+    const createPostHoursReducer = useSelector(store => store.createPostHoursReducer);
+    const createPostMileageReducer = useSelector(store => store.createPostMileageReducer);
+    const createPostTaskDetailsReducer = useSelector(store => store.createPostTaskDetailsReducer);
+
 
 
     function setConditionalModalRender_right(nameOfRender) {
@@ -34,9 +42,21 @@ function DeletePostRender() {
 
     return (
         <>
-            <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
-            <button className="exitButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
-            <h1>DELETE POST CONDITIONAL RENDER</h1>
+            <div className="modalHeader">
+                <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
+                <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
+            </div>
+
+
+            <div className="modalBody">
+                <h1>DELETE POST CONDITIONAL RENDER</h1>
+            </div>
+
+            <div className="modalFooter">
+
+            </div>
+
+
         </>
     )
 }
