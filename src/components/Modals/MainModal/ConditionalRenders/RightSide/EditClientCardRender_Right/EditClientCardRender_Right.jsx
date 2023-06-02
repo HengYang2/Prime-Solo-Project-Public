@@ -1,7 +1,7 @@
 import { func } from "prop-types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import editStartEndReducer from "../../../../../../redux/reducers/editClientCardReducers/editEndDate.reducer";
+import { useEffect } from "react";
 
 function EditClientCardRender_Right() {
 
@@ -16,6 +16,7 @@ function EditClientCardRender_Right() {
     const editCardColorReducer = useSelector(store => store.editCardColorReducer);
 
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
+
 
 
     function setConditionalModalRender_right(nameOfRender) {
@@ -100,6 +101,16 @@ function EditClientCardRender_Right() {
         }
     }
 
+     //Ressetting reducers that correspond to each input in the return below: 
+     function resetEditReducers() {
+        setEditClientInitialsReducer('');
+        setEditStartDateReducer('');
+        setEditEndDateReducer(null);
+        setEditIsStillSubscribedReducer(false);
+        setEditClientNoteReducer('');
+        setEditCardColorReducer(selectedClientCardReducer.card_color);
+    }
+
 
 
     //When the 'Submit Changes' button is pressed: Dispatch to a SAGA that will then combine all the 
@@ -142,12 +153,30 @@ function EditClientCardRender_Right() {
             type: "SAGA_UPDATE_CLIENT_CARD",
             payload: updatedClientCard
         })
+
+        //Setting new version of the selectedClientCardReducer:
+        dispatch({
+            type: "SET_SELECTED_CLIENTCARD",
+            payload: updatedClientCard
+        })
+
+
+
+
+        //Reset modal to 'main' renders after changes have been successully updated on the server/database side.
+        //Also reset edit reducers:
+        resetEditReducers();
+        setIsOpenMain(false); 
+        setConditionalModalRender_left("MainRender_Left");
+        setConditionalModalRender_right("MainRender_Right");
+        setIsEditingClientCard(false);
+
     }
 
 
     return (
         <>
-            <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false) }}> {'<-'} </button>
+            <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetEditReducers() }}> {'<-'} </button>
             <button className="exitButton" onClick={() => { setConditionalModalRender_left("MainRender_Left");; setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
 
             <div className="inputDiv">
@@ -166,7 +195,6 @@ function EditClientCardRender_Right() {
                 <input className="inputElement"
                     onChange={(event) => { setEditStartDateReducer(event.target.value) }}
                     type='date'
-                    placeholder='Start Date'
                 />
             </div>
 
@@ -175,7 +203,6 @@ function EditClientCardRender_Right() {
                 <input className="inputElement"
                     onChange={(event) => { setEditEndDateReducer(event.target.value) }}
                     type='date'
-                    placeholder='End Date'
                 />
             </div>
 

@@ -26,8 +26,35 @@ function MainModalRender(props) {
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
     const editCardColorReducer = useSelector(store => store.editCardColorReducer);
 
-    //Change editCardColorReducer value to selectedClientCardReducer.card_color:
+    //Set all the edit client card reducers to have the value of selectedClientCard:
     useEffect(() => {
+
+
+        // dispatch({
+        //     type: "SET_CLIENTINITIALS",
+        //     payload: selectedClientCardReducer.client_initials
+        // })
+
+        // dispatch({
+        //     type: "SET_STARTDATE",
+        //     payload: selectedClientCardReducer.start_date
+        // })
+
+        // dispatch({
+        //     type: "SET_ENDDATE",
+        //     payload: selectedClientCardReducer.end_date
+        // })
+
+        // dispatch({
+        //     type: "SET_ISSTILLSUBSCRIBED",
+        //     payload: selectedClientCardReducer.is_still_subscribed
+        // })
+
+        // dispatch({
+        //     type: "SET_CLIENTNOTE",
+        //     payload: selectedClientCardReducer.client_note
+        // })
+
         dispatch({
             type: "SET_CARDCOLOR",
             payload: selectedClientCardReducer.card_color
@@ -67,7 +94,7 @@ function MainModalRender(props) {
         })
     }
 
-   
+
     //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
     function loadConditionalModalRenderReducer_Left() {
         // console.log('condiontlModalRenderReducer Value:', conditionalModalRenderReducer_Left);
@@ -89,13 +116,13 @@ function MainModalRender(props) {
     }
 
 
-  //For setting isEditingClientCard reducer:
-  function setIsEditingClientCard(boolean) {
-      dispatch({
-          type: "SET_ISEDITINGCLIENTCARD",
-          payload: boolean
-      })
-  }
+    //For setting isEditingClientCard reducer:
+    function setIsEditingClientCard(boolean) {
+        dispatch({
+            type: "SET_ISEDITINGCLIENTCARD",
+            payload: boolean
+        })
+    }
 
     //Conditonally Rendered Button for 'Edit Client Card':
     function conRenEditClientCardButton() {
