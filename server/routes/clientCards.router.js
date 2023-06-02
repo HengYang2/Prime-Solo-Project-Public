@@ -40,13 +40,13 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
 
   console.log("HEY IM IN THE CLIENT CAARDS POST ROUTTTTEEEERRR!");
-  console.log("userid:", req.user.id);
-  console.log("initials:", req.body.client_initials);
-  console.log("startdate:", req.body.start_date);
-  console.log("enddate:", req.body.end_date);
-  console.log("isStillSubbed:", req.body.is_still_subscribed);
-  console.log("clientNote:", req.body.client_note);
-  console.log("cardColor:", req.body.card_color);
+  // console.log("userid:", req.user.id);
+  // console.log("initials:", req.body.client_initials);
+  // console.log("startdate:", req.body.start_date);
+  // console.log("enddate:", req.body.end_date);
+  // console.log("isStillSubbed:", req.body.is_still_subscribed);
+  // console.log("clientNote:", req.body.client_note);
+  // console.log("cardColor:", req.body.card_color);
 
   const clientCard = req.body;
   const userId = req.user.id;
@@ -68,6 +68,33 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       })
       .catch((err) => {
       console.log('Error trying to post client card:', err);
+      res.sendStatus(500);
+      });
+});
+
+//Creates a new post for the client:
+router.post('/posts', rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE CLIENT CAARDS POST/POSTSSS ROUTTTTEEEERRR!");
+  console.log("REQ.BODY VALUE --> ", req.body);
+
+  const postData = req.body;
+  // const userId = req.user.id;
+
+  const sqlValues = [postData.client_id, postData.date, postData.hours_worked, postData.miles_driven, postData.task_details];
+
+  const sqlText = `INSERT INTO "client_posts"
+                   ("client_id", "date", "hours_worked", "miles_driven",
+                    "task_details")
+                   VALUES
+                   ($1, $2, $3, $4, $5);`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+      console.log('Error trying to post post:', err);
       res.sendStatus(500);
       });
 });
