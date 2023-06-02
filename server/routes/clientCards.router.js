@@ -138,7 +138,8 @@ router.get('/posts/:id', rejectUnauthenticated, (req, res) => {
   const client_id = req.params.id
   const sqlValues = [client_id]
   const sqlText = `SELECT * FROM "client_posts"
-                   WHERE client_id=$1;`
+                   WHERE client_id=$1
+                   ORDER BY "date" DESC;`
                    
   pool.query(sqlText, sqlValues)
       .then((result) => {

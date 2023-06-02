@@ -2,6 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
+//
+import PostListing from "./PostListing/PostListing";
+
 function UpdatePostRender() {
 
     //Unused hooks - Needed to prevent hook erros:
@@ -54,9 +57,7 @@ function UpdatePostRender() {
                     <h4 className="inputHeader">Post Library:</h4>
                     <div className="postListDiv">
                         {postListReducer.map((post) => (
-                            <button key={post.id}> 
-                                post.date;    
-                            </button>
+                            <PostListing key={post.id} postInfo={post} />
                         ))}
                     </div>
                 </div>
