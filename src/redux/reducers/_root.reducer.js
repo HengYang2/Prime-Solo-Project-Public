@@ -29,6 +29,9 @@ import createPostHoursReducer from './createPostReducers/createPostHours.reducer
 import createPostMileageReducer from './createPostReducers/createPostMileage.reducer';
 import createPostTaskDetailsReducer from './createPostReducers/createPostTaskDetails.reducer';
 
+//Import postListReducer:
+import postListReducer from './postList.reducer';
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -53,7 +56,8 @@ const rootReducer = combineReducers({
   createPostDateReducer,
   createPostHoursReducer,
   createPostMileageReducer,
-  createPostTaskDetailsReducer
+  createPostTaskDetailsReducer,
+  postListReducer
 });
 
 export default rootReducer;
