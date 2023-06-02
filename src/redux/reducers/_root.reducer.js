@@ -15,7 +15,7 @@ import conditionalModalRenderReducer_Right from './conditionalRenderReducers/con
 import conditionalModalRenderReducer_Left from './conditionalRenderReducers/conditionalModalRender_Left.reducer';
 
 
-//Import reducer for editing client card:
+//Import reducers for editing client card:
 import editClientInitialsReducer from './editClientCardReducers/editClientInitials.reducer';
 import editStartDateReducer from './editClientCardReducers/editStartDate.reducer';
 import editEndDateReducer from './editClientCardReducers/editEndDate.reducer';
@@ -23,6 +23,11 @@ import editClientNoteReducer from './editClientCardReducers/editClientNote.reduc
 import editIsStillSubscribedReducer from './editClientCardReducers/editIsStillSubscribed.reducer';
 import editCardColorReducer from './editClientCardReducers/editCardColor.reducer';
 
+//Import reducers for creating posts for clients:
+import createPostDateReducer from './createPostReducers/createPostDate.reducer';
+import createPostHoursReducer from './createPostReducers/createPostHours.reducer';
+import createPostMileageReducer from './createPostReducers/createPostMileage.reducer';
+import createPostTaskDetailsReducer from './createPostReducers/createPostTaskDetails.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -44,7 +49,11 @@ const rootReducer = combineReducers({
   editEndDateReducer,
   editClientNoteReducer,
   editIsStillSubscribedReducer,
-  editCardColorReducer
+  editCardColorReducer,
+  createPostDateReducer,
+  createPostHoursReducer,
+  createPostMileageReducer,
+  createPostTaskDetailsReducer
 });
 
 export default rootReducer;
