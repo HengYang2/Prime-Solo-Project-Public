@@ -11,6 +11,7 @@ function UpdatePostRender() {
     const editEndDateReducer = useSelector(store => store.editEndDateReducer);
     const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
     const editClientNoteReducer = useSelector(store => store.editClientNoteReducer);
+    const editCardColorReducer = useSelector(store => store.editCardColorReducer);
 
 
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);

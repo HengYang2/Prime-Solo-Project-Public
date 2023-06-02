@@ -36,6 +36,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
+
 // Creates a new client card for the user in the database:
 router.post('/', rejectUnauthenticated, (req, res) => {
 
@@ -72,33 +73,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       });
 });
 
-//Creates a new post for the client:
-router.post('/posts', rejectUnauthenticated, (req, res) => {
-
-  console.log("HEY IM IN THE CLIENT CAARDS POST/POSTSSS ROUTTTTEEEERRR!");
-  console.log("REQ.BODY VALUE --> ", req.body);
-
-  const postData = req.body;
-  // const userId = req.user.id;
-
-  const sqlValues = [postData.client_id, postData.date, postData.hours_worked, postData.miles_driven, postData.task_details];
-
-  const sqlText = `INSERT INTO "client_posts"
-                   ("client_id", "date", "hours_worked", "miles_driven",
-                    "task_details")
-                   VALUES
-                   ($1, $2, $3, $4, $5);`
-                   
-  pool.query(sqlText, sqlValues)
-      .then((result) => {
-          res.sendStatus(200);
-      })
-      .catch((err) => {
-      console.log('Error trying to post post:', err);
-      res.sendStatus(500);
-      });
-});
-
 
 //Delete an existing client card from the user in the database:
 router.delete(`/:id`, rejectUnauthenticated, (req, res) => {
@@ -124,7 +98,6 @@ router.delete(`/:id`, rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
       });
 });
-
 
 
 //Update an existing client card from the user in the database:
@@ -153,5 +126,65 @@ router.put(`/:id`, rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
       });
 });
+
+
+
+
+
+router.get('/posts/:id', rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE CLIENT CAARDS /posts/:id ROUTTTTEEEERRR!");
+
+  const client_id = req.params.id
+  const sqlValues = [client_id]
+  const sqlText = `SELECT * FROM "client_posts"
+                   WHERE client_id=$1;`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          let postList = [];
+
+          for (let post of result.rows) {
+            postList.push(post);
+          }
+
+          console.log('RESULT.ROWS of get request -->', result.rows);
+          res.send(postList);
+      })
+      .catch((err) => {
+      console.log('Error trying to get client cards:', err);
+      res.sendStatus(500);
+      });
+});
+
+
+//Creates a new post for the client:
+router.post('/posts', rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE CLIENT CAARDS POST/POSTSSS ROUTTTTEEEERRR!");
+  console.log("REQ.BODY VALUE --> ", req.body);
+
+  const postData = req.body;
+  // const userId = req.user.id;
+
+  const sqlValues = [postData.client_id, postData.date, postData.hours_worked, postData.miles_driven, postData.task_details];
+
+  const sqlText = `INSERT INTO "client_posts"
+                   ("client_id", "date", "hours_worked", "miles_driven",
+                    "task_details")
+                   VALUES
+                   ($1, $2, $3, $4, $5);`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+      console.log('Error trying to post post:', err);
+      res.sendStatus(500);
+      });
+});
+
+
 
 module.exports = router;

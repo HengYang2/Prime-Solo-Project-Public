@@ -7,9 +7,9 @@ function* fetchPostList(action) {
     //   headers: { 'Content-Type': 'application/json' },
     //   withCredentials: true,
     // };
-
-    const response = yield axios.get(`/api/clientCards/post/${action.payload}`, );
-
+  
+    const response = yield axios.get(`/api/clientCards/posts/${action.payload}` );
+    console.log('POST LIST FROM DATBASE -->', response.data);
     yield put({ type: 'SET_POST_LIST', payload: response.data });
   } catch (error) {
     console.log('Client card get request failed', error);
