@@ -172,7 +172,7 @@ function CreatePostRender() {
 
 
             <div className="modalFooter">
-                <button className="createPostBtn" onClick={() => { createPost() }}>Create Post</button>
+                <button className="centeredBtn" onClick={() => { createPost() }}>Create Post</button>
             </div>
         </>
     )

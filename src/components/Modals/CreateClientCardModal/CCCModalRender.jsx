@@ -138,7 +138,11 @@ function CCCModalRender(props) {
                 </div>
 
                 <div className="rightSideOfModal" style={cardColorStyles}>
-                    <button className="exitButton" onClick={onClose}> X </button>
+
+                    <div className="modalHeader">
+                        <button className="exitButton" onClick={onClose}> X </button>
+                    </div>
+
 
                     <div className="inputDiv">
                         <h4 className="inputHeader">Initials:</h4>

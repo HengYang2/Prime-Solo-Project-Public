@@ -61,7 +61,7 @@ function ClientCardsPage() {
             />
           ))}
         </section>
-        <section >
+        <section className='clientCardFooter'>
           <CreateClientCardModal
             isOpen={isOpen}
             onClose={() => { setIsOpen(false) }}
@@ -73,8 +73,8 @@ function ClientCardsPage() {
           <MainModal
             selectedClientCard={selectedClientCard}
           />
-          <button onClick={() => { setIsOpen(true) }}>Create New Client</button>
-          <button onClick={() => { setIsOpenD(true) }}>Delete New Client</button>
+          <button className='clientCardFooterBtn' onClick={() => { setIsOpen(true) }}>Create New Client</button>
+          <button className='clientCardFooterBtn' onClick={() => { setIsOpenD(true) }}>Delete New Client</button>
         </section>
       </div>
     </div>

@@ -92,7 +92,7 @@ function DCCModalRender(props) {
     //When a client card button is selected from the list on the right-side-render; Set all the useStates
     //to display the information of that client on the left-side-render:
     function setAllUseStates(clientCardInfo) {
-        
+
         //Reformat start_date and end_date:
         handleDate(clientCardInfo.start_date, 'start');
         handleDate(clientCardInfo.start_date, 'end');
@@ -120,20 +120,23 @@ function DCCModalRender(props) {
                 </div>
 
                 <div className="rightSideOfModal" style={cardColorStyles}>
-                    <button className="exitButton" onClick={onCloseD}> X </button>
-
-                    <div className="headerOfModal">
-                        <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
+                    <div className="modalHeader">
+                        <button className="exitButton" onClick={onCloseD}> X </button>
                     </div>
-                    <div className="bodyOfModal">
+
+                    <div className="modalBody">
+                    <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
+                    <div className="deleteMapDiv">
                         {clientCardsReducer.map((clientCard) => (
-                            <button key={clientCard.id} onClick={() => {setAllUseStates(clientCard)}}>
+                            <button key={clientCard.id} onClick={() => { setAllUseStates(clientCard) }}>
                                 <h4>{clientCard.client_initials}</h4>
                             </button>
                         ))}
                     </div>
-                    <div className="footerOfModal">
-                        <button className="createClientCardButton" onClick={deleteClientCard}>Delete Client Card</button>
+                    </div>
+                
+                    <div className="modalFooter">
+                        <button className="centeredBtn" onClick={deleteClientCard}>Delete Client Card</button>
                     </div>
                 </div>
             </div>

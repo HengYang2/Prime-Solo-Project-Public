@@ -258,7 +258,7 @@
     display: inline-block;
     border: 2px black solid;
     border-radius: 25px;
-    background-color: white;
+    /* background-color: white; */
     width: 30%;
     height: 75%;
     margin-left: 6%;
@@ -267,7 +267,7 @@
 
 .modalHeader{
     text-align: center;
-    background-color: blue;
+    /* background-color: blue; */
     height: 10%;
     display: flex;
     align-items: center;
@@ -275,13 +275,13 @@
     gap: 85%;
 }
 .modalBody{
-    background-color: red;
+    /* background-color: red; */
     height: 75%;
 }
 .modalFooter{
     display: flex;
     align-items: center;
-    background-color: yellow;
+    /* background-color: yellow; */
     height: 15%;
 }
 
@@ -318,13 +318,13 @@
 .mainHeaderPrompt {
     text-align: center;
     font-size: 25px;
-    background-color: gainsboro;
+    /* background-color: gainsboro; */
     height: 10%;
 }
 
 
 .mainFlexDiv {
-    background-color: turquoise;
+    /* background-color: turquoise; */
     height: 82%;
     display: flex;
     flex-direction: column;
@@ -341,7 +341,7 @@
 }
 
 .editCCFlexDiv {
-    background-color: turquoise;
+    /* background-color: turquoise; */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -350,13 +350,15 @@
 }
 
 .createPostFlexDiv {
-    background-color: turquoise;
+    /* background-color: turquoise; */
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 6%;
 }
+
+
 
 .submitChangesBtn {
     height: 75%;
@@ -367,7 +369,7 @@
     margin-left: 7%;
 }
 
-.createPostBtn {
+.centeredBtn {
     height: 75%;
     width: 25%;
     border: 2px solid black;
@@ -377,13 +379,15 @@
 }
 
 .checkboxDiv {
-    background-color: blueviolet;
+    background-color: white;
     width: 25%;
     height: 100%;
     display: inline-flex;
     flex-direction: column;
     align-items:center ;
     margin-left: 5%;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 .checkboxHeader {
     width: 100%;
@@ -423,5 +427,5 @@
 }
 
 .postListDiv {
-    background-color: aqua;
+    /* background-color: aqua; */
 }

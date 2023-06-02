@@ -49,21 +49,23 @@ function UpdatePostRender() {
 
     return (
         <>
-            <>
-                <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers() }}> {'<-'} </button>
-                <button className="exitButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers(); setIsOpenMain(false) }}> X </button>
+            <div className="modalHeader">
+                <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false);  }}> {'<-'} </button>
+                <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false);  setIsOpenMain(false) }}> X </button>
+            </div>
 
+            <div className="modalBody">
                 <h4 className="postListHeader">Post Library:</h4>
                 <div className="postListDiv">
                     {postListReducer.map((post) => (
                         <PostListing key={post.id} postInfo={post} />
                     ))}
                 </div>
+            </div>
 
-                <div className="footerOfModal">
-                    <button className="createClientCardButton" onClick={() => { createPost() }}>Create Post</button>
-                </div>
-            </>
+            <div className="modalFooter">
+                <button className="centeredBtn" onClick={() => { createPost() }}>Select Post</button>
+            </div>
         </>
     )
 }

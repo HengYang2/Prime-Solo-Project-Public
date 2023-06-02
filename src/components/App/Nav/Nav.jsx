@@ -8,9 +8,12 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
-      <h2 className="nav-title">Know Your Hours</h2>
-      <div>
+    <div className="navBar">
+      <div className='navLogo'>
+        <h2 className="navLogoText">Know Your Hours</h2>
+      </div>
+
+      <div className='navFlexDiv'>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
