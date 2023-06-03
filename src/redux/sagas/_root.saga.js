@@ -8,6 +8,7 @@ import deleteClientCardSaga from './deleteClientCard.saga';
 import updateClientCardSaga from './updateClientCard.saga';
 import createPostSaga from './createPost.saga';
 import fetchPostListSaga from './fetchPostList.saga';
+import updatePostSaga from './updatePost.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -26,6 +27,7 @@ export default function* rootSaga() {
     deleteClientCardSaga(),
     updateClientCardSaga(),
     createPostSaga(),
-    fetchPostListSaga()
+    fetchPostListSaga(),
+    updatePostSaga()
   ]);
 }

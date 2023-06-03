@@ -188,4 +188,32 @@ router.post('/posts', rejectUnauthenticated, (req, res) => {
 
 
 
+//Updates existing post for the client:
+router.put('/posts/:id', rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE CLIENT CAARDS /posts/:id PUUUUUUT ROUTER!");
+
+  const updated_hours_worked = req.body.hours_worked;
+  const updated_miles_driven = req.body.miles_driven;
+  const updated_task_details = req.body.task_details;
+  const post_id = req.params.id
+
+  const sqlValues = [updated_hours_worked, updated_miles_driven, updated_task_details, post_id]
+  const sqlText = `UPDATE "client_posts"
+                   SET hours_worked=$1, miles_driven=$2, task_details=$3
+                   WHERE id=$4;`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          console.log("POST UDATE SUCCESSFUL!");
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+      console.log('Error trying to get client cards:', err);
+      res.sendStatus(500);
+      });
+});
+
+
+
 module.exports = router;

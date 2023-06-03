@@ -13,8 +13,8 @@ function* createPost(action) {
 
     const response = yield axios.post('/api/clientCards/posts', action.payload);
    
-    //Fetch client cards after the new post was made:
-    // yield put({ type: 'FETCH_CLIENTCARDS'});
+   //Fetch all posts for the client card again - refreshing client post list:
+    yield put({ type: 'FETCH_POST_LIST', payload: action.payload.client_id});
   } catch (error) {
     console.log('Client card post request failed', error);
   }

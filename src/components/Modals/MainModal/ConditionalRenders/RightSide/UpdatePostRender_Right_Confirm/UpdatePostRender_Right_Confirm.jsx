@@ -4,16 +4,33 @@ import { useDispatch, useSelector } from "react-redux";
 
 function confirmPostUpdate() {
 
-    //To match number of hook renders:
+    //UnUsed hooks To match number of hook renders:
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
-    const editClientNoteReducer = useSelector(store => store.editClientNoteReducer);
     const editCardColorReducer = useSelector(store => store.editCardColorReducer);
+    const createPostDateReducer = useSelector(store => store.createPostDateReducer);
 
     //Used hooks:
-    const createPostDateReducer = useSelector(store => store.createPostDateReducer);
+    const selectedPostReducer = useSelector(store => store.selectedPostReducer);
+
+    //Reused these 3 hooks instead of making 3 new reducers to keep track of 
+    //- createUpdate...Reducer:
     const createPostHoursReducer = useSelector(store => store.createPostHoursReducer);
     const createPostMileageReducer = useSelector(store => store.createPostMileageReducer);
     const createPostTaskDetailsReducer = useSelector(store => store.createPostTaskDetailsReducer);
+
+
+
+    //Function that will convert date format: yyyy/mm/dd --> mm/dd/yyyy
+    function reformatDate(date) {
+        const yyyy = date[0] + date[1] + date[2] + date[3];
+        const mm = date[5] + date[6];
+        const dd = date[8] + date[9];
+        const reformattedDate = mm + '/' + dd + '/' + yyyy;
+        return reformattedDate;
+    }
+
+    //reformattedDate:
+    const reformattedDate = reformatDate(selectedPostReducer.date);
 
 
 
@@ -83,17 +100,17 @@ function confirmPostUpdate() {
 
 
     //Function for 
-    function createPost() {
+    function updatePost() {
 
         //Check to see if all required fields are filled out:
-        if (createPostDateReducer == '' || createPostHoursReducer == 0 || createPostHoursReducer == '') {
-            return console.log('Missing a required field');;
-        }
+        // if (createPostHoursReducer == 0 || createPostHoursReducer == '') {
+        //     return console.log('Missing a required field');;
+        // }
 
         //Create an object variable containing all createPost reducers:
-        const postData = {
-            client_id: selectedClientCardReducer.id,
-            date: createPostDateReducer,
+        const updatedPostData = {
+            post_id: selectedPostReducer.id,
+            client_id: selectedPostReducer.client_id,
             hours_worked: Number(createPostHoursReducer),
             miles_driven: Number(createPostMileageReducer),
             task_details: createPostTaskDetailsReducer
@@ -101,8 +118,8 @@ function confirmPostUpdate() {
 
         //Makes a saga_dispatch:
         dispatch({
-            type: "SAGA_CREATE_POST",
-            payload: postData
+            type: "SAGA_UPDATE_POST",
+            payload: updatedPostData
         })
 
 
@@ -129,10 +146,9 @@ function confirmPostUpdate() {
                 <div className="createPostFlexDiv">
                     <div className="inputDiv">
                         <h4 className="inputHeader">Select Date:</h4>
-                        <input className="inputElement"
-                            onChange={(event) => { setCreatePostDateReducer(event.target.value) }}
-                            type='date'
-                        />
+                        <h3 className="inputElement"> 
+                            {reformattedDate}
+                        </h3>
                     </div>
 
                     <div className="inputDiv">
@@ -172,7 +188,7 @@ function confirmPostUpdate() {
 
 
             <div className="modalFooter">
-                <button className="centeredBtn" onClick={() => { createPost() }}>Create Post</button>
+                <button className="centeredBtn" onClick={() => { updatePost() }}>Update Post</button>
             </div>
         </>
     )
