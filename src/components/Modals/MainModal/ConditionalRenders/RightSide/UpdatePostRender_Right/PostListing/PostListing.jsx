@@ -1,8 +1,10 @@
 import React from "react";
+import { useState } from "react";
 
 function PostListing(props) {
 
     const postInfo = props.postInfo;
+
 
     //Function that will convert date format: yyyy/mm/dd --> mm/dd/yyyy
     function reformatDate(date) {
@@ -17,7 +19,7 @@ function PostListing(props) {
 
 
     return (
-        <div key={postInfo.id} className="postListing">{reformattedDate}</div>
+        <div  key={postInfo.id} className="postListing">{reformattedDate}</div>
     )
 }
 

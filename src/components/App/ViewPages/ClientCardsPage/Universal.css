@@ -123,3 +123,13 @@
 .navLink:hover {
   background-color: darkgoldenrod;
 }
+
+::-webkit-scrollbar {
+  width: 2vw;
+}
+
+/* ::-webkit-scrollbar-track {
+  background-color: aqua;
+}::-webkit-scrollbar-thumb {
+background-color: bisque;
+} */
