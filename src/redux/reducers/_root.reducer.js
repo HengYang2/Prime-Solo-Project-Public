@@ -31,6 +31,7 @@ import createPostTaskDetailsReducer from './createPostReducers/createPostTaskDet
 
 //Import postListReducer:
 import postListReducer from './postList.reducer';
+import selectedPostReducer from './selectedPost.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -57,7 +58,8 @@ const rootReducer = combineReducers({
   createPostHoursReducer,
   createPostMileageReducer,
   createPostTaskDetailsReducer,
-  postListReducer
+  postListReducer,
+  selectedPostReducer
 });
 
 export default rootReducer;
