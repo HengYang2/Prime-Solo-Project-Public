@@ -110,34 +110,24 @@ function confirmPostDelete() {
 
 
     function deletePost() {
-
-        //Check to see if all required fields are filled out:
-        // if (createPostHoursReducer == 0 || createPostHoursReducer == '') {
-        //     return console.log('Missing a required field');;
-        // }
-
-        //Create an object variable containing all createPost reducers:
-        const updatedPostData = {
-            post_id: selectedPostReducer.id,
-            client_id: selectedPostReducer.client_id,
-            hours_worked: Number(createPostHoursReducer),
-            miles_driven: Number(createPostMileageReducer),
-            task_details: createPostTaskDetailsReducer
+ 
+        //Payload Object:
+        const dataObj = {
+            id: selectedPostReducer.id,
+            client_id: selectedPostReducer.client_id
         }
 
         //Makes a saga_dispatch:
         dispatch({
-            type: "SAGA_UPDATE_POST",
-            payload: updatedPostData
+            type: "SAGA_DELETE_POST",
+            payload: dataObj
         })
-
 
         //Reset the createPost reducers:
         resetCreatePostReducers();
 
         //Reset the selectedPostReducer:
         setSelectedPost();
-
 
         //Bring the user back to the MainRender of the modal:
         setConditionalModalRender_left("MainRender_Left");
