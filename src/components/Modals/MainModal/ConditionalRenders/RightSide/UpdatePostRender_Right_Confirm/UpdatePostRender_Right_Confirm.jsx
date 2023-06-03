@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useEffect } from "react";
 
 function confirmPostUpdate() {
 
@@ -170,6 +170,7 @@ function confirmPostUpdate() {
                             type='number'
                             placeholder='0'
                             maxLength={4}
+                            defaultValue={selectedPostReducer.hours_worked}
                         />
                     </div>
 
@@ -180,6 +181,7 @@ function confirmPostUpdate() {
                             type='number'
                             placeholder='0'
                             maxLength={4}
+                            defaultValue={selectedPostReducer.miles_driven}
                         />
                     </div>
 
@@ -193,6 +195,7 @@ function confirmPostUpdate() {
                             type='text'
                             maxLength={216}
                             placeholder='Task details are optional...'
+                            defaultValue={selectedPostReducer.task_details}
                         />
                     </div>
                 </div>

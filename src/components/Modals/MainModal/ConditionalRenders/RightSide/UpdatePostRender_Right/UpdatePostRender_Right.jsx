@@ -21,7 +21,7 @@ function UpdatePostRender() {
 
     //Used hooks:
     const postListReducer = useSelector(store => store.postListReducer);
-    const selectedPostReducer =  useSelector(store => store.selectedPostReducer); 
+    const selectedPostReducer = useSelector(store => store.selectedPostReducer);
 
     const dispatch = useDispatch();
 
@@ -47,11 +47,40 @@ function UpdatePostRender() {
         })
     }
 
+
+    //Dispatch functions that need to be set for the next page render:
+    function setCreatePostHoursReducer(number) {
+        dispatch({
+            type: "SET_POST_HOURS",
+            payload: number
+        })
+    }
+    function setCreatePostMileageReducer(number) {
+        dispatch({
+            type: "SET_POST_MILEAGE",
+            payload: number
+        })
+    }
+    function setCreatePostTaskDetailsReducer(details) {
+        dispatch({
+            type: "SET_POST_TASK_DETAILS",
+            payload: details
+        })
+    }
+
     //Check that a post is selected before proceeding to the UpdatePostRender_Right_Confirm render:
     function selectedPostCheck() {
         if (selectedPostReducer == null) {
             return console.log('You need to select a post before proceeding.');
         } else {
+
+            //Set createPostHoursReducer, createPostMileageReducer, createPostTaskDetailsReducer
+            //to the values of the currently selected post:
+            setCreatePostHoursReducer(selectedPostReducer.hours_worked);
+            setCreatePostMileageReducer(selectedPostReducer.miles_driven);
+            setCreatePostTaskDetailsReducer(selectedPostReducer.task_details);
+
+            //Set render to the 'confirmPostUpdateRender_Right'
             setConditionalModalRender_right("confirmPostUpdateRender_Right")
         }
     }
@@ -63,12 +92,12 @@ function UpdatePostRender() {
             payload: null
         })
     }
-    
+
 
     return (
         <>
             <div className="modalHeader">
-                <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setSelectedPost()}}> {'<-'} </button>
+                <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setSelectedPost() }}> {'<-'} </button>
                 <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setSelectedPost(); setIsOpenMain(false) }}> X </button>
             </div>
 
@@ -84,7 +113,7 @@ function UpdatePostRender() {
             </div>
 
             <div className="modalFooter">
-                <button className="centeredBtn" onClick={() => {selectedPostCheck()}}>Select Post</button>
+                <button className="centeredBtn" onClick={() => { selectedPostCheck() }}>Select Post</button>
             </div>
         </>
     )
