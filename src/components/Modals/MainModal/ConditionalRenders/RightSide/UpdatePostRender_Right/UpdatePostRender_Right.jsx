@@ -14,14 +14,14 @@ function UpdatePostRender() {
     const editEndDateReducer = useSelector(store => store.editEndDateReducer);
     const editIsStillSubscribedReducer = useSelector(store => store.editIsStillSubscribedReducer);
     const editClientNoteReducer = useSelector(store => store.editClientNoteReducer);
-    const editCardColorReducer = useSelector(store => store.editCardColorReducer);
 
 
     const selectedClientCardReducer = useSelector(store => store.selectedClientCardReducer);
 
 
-    //Need a SAGA get request for all posts for a given client:
+    //Used hooks:
     const postListReducer = useSelector(store => store.postListReducer);
+    const selectedPostReducer =  useSelector(store => store.selectedPostReducer); 
 
     const dispatch = useDispatch();
 
@@ -46,13 +46,30 @@ function UpdatePostRender() {
             payload: boolean
         })
     }
+
+    //Check that a post is selected before proceeding to the UpdatePostRender_Right_Confirm render:
+    function selectedPostCheck() {
+        if (selectedPostReducer == null) {
+            return console.log('You need to select a post before proceeding.');
+        } else {
+            setConditionalModalRender_right("confirmPostUpdateRender_Right")
+        }
+    }
+
+    //To reset value of selectedPostReducer:
+    function setSelectedPost() {
+        dispatch({
+            type: "SET_SELECTED_POST",
+            payload: null
+        })
+    }
     
 
     return (
         <>
             <div className="modalHeader">
-                <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); }}> {'<-'} </button>
-                <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setIsOpenMain(false) }}> X </button>
+                <button className="backButton" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setSelectedPost()}}> {'<-'} </button>
+                <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); setSelectedPost(); setIsOpenMain(false) }}> X </button>
             </div>
 
             <div className="modalBody">
@@ -67,7 +84,7 @@ function UpdatePostRender() {
             </div>
 
             <div className="modalFooter">
-                <button className="centeredBtn" onClick={() => { setConditionalModalRender_right("confirmPostUpdateRender_Right");}}>Select Post</button>
+                <button className="centeredBtn" onClick={() => {selectedPostCheck()}}>Select Post</button>
             </div>
         </>
     )

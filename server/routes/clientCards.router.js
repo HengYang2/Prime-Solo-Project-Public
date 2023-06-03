@@ -87,7 +87,7 @@ router.delete(`/:id`, rejectUnauthenticated, (req, res) => {
   const sqlValues = [clientCardId, userId];
 
   const sqlText = `DELETE FROM "user_clients"
-                   WHERE id=$1 AND user_id=$2;`
+                   WHERE id=$1 AND user_id=$2 ;`
                    
   pool.query(sqlText, sqlValues)
       .then((result) => {

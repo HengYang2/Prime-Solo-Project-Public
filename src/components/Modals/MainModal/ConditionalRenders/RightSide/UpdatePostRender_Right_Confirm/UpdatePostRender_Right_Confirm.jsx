@@ -99,7 +99,16 @@ function confirmPostUpdate() {
     }
 
 
-    //Function for 
+    //To reset value of selectedPostReducer:
+    function setSelectedPost() {
+        dispatch({
+            type: "SET_SELECTED_POST",
+            payload: null
+        })
+    }
+
+
+
     function updatePost() {
 
         //Check to see if all required fields are filled out:
@@ -126,6 +135,9 @@ function confirmPostUpdate() {
         //Reset the createPost reducers:
         resetCreatePostReducers();
 
+        //Reset the selectedPostReducer:
+        setSelectedPost();
+
 
         //Bring the user back to the MainRender of the modal:
         setConditionalModalRender_left("MainRender_Left");
@@ -137,8 +149,8 @@ function confirmPostUpdate() {
     return (
         <>
             <div className="modalHeader">
-                <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers() }}> {'<-'} </button>
-                <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers(); setIsOpenMain(false) }}> X </button>
+                <button className="backButton" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("UpdatePostRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers(); setSelectedPost(); }}> {'<-'} </button>
+                <button className="exitButtonCombo" onClick={() => { setConditionalModalRender_left("MainRender_Left"); setConditionalModalRender_right("MainRender_Right"); setIsEditingClientCard(false); resetCreatePostReducers(); setSelectedPost(); setIsOpenMain(false) }}> X </button>
             </div>
 
 
@@ -146,7 +158,7 @@ function confirmPostUpdate() {
                 <div className="createPostFlexDiv">
                     <div className="inputDiv">
                         <h4 className="inputHeader">Select Date:</h4>
-                        <h3 className="inputElement"> 
+                        <h3 className="inputElement">
                             {reformattedDate}
                         </h3>
                     </div>
