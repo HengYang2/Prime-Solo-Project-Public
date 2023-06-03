@@ -46,7 +46,7 @@ function UpdatePostRender() {
             payload: boolean
         })
     }
-
+    
 
     return (
         <>
@@ -67,7 +67,7 @@ function UpdatePostRender() {
             </div>
 
             <div className="modalFooter">
-                <button className="centeredBtn" onClick={() => { createPost() }}>Select Post</button>
+                <button className="centeredBtn" onClick={() => { setConditionalModalRender_right("confirmPostUpdateRender_Right");}}>Select Post</button>
             </div>
         </>
     )

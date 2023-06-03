@@ -11,6 +11,7 @@ import UpdatePostRender_Right from "./ConditionalRenders/RightSide/UpdatePostRen
 import DeletePostRender_Right from "./ConditionalRenders/RightSide/DeletePostRender_Right/DeletePostRender_Right";
 import EditClientCardRender_Right from "./ConditionalRenders/RightSide/EditClientCardRender_Right/EditClientCardRender_Right";
 import EditClientCardRender_Left from "./ConditionalRenders/LeftSide/EditClientCardRender_Left/EditClientCardRender_Left";
+import UpdatePostRender_Right_Confirm from "./ConditionalRenders/RightSide/UpdatePostRender_Right_Confirm/UpdatePostRender_Right_Confirm";
 
 function MainModalRender(props) {
 
@@ -76,6 +77,8 @@ function MainModalRender(props) {
                 return CreatePostRender_Right();
             case 'UpdatePostRender_Right':
                 return UpdatePostRender_Right();
+            case 'confirmPostUpdateRender_Right':
+                return UpdatePostRender_Right_Confirm();
             case 'DeletePostRender_Right':
                 return DeletePostRender_Right();
             case 'EditClientCardRender_Right':
