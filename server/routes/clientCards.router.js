@@ -216,4 +216,29 @@ router.put('/posts/:id', rejectUnauthenticated, (req, res) => {
 
 
 
+//Delete a client post from 'client_posts' in the database:
+router.delete(`/posts/:id`, rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE POSTSSS ----> DELETE ROUTTTTEEEERRR!");
+
+  const postId = req.params.id;
+  const userId = req.user.id;
+
+  const sqlValues = [postId];
+
+  const sqlText = `DELETE FROM "client_posts"
+                   WHERE id=$1;`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+      console.log('Error trying to delete post -->', err);
+      res.sendStatus(500);
+      });
+});
+
+
+
 module.exports = router;
