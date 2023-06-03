@@ -9,9 +9,11 @@ import MainRender_Left from "./ConditionalRenders/LeftSide/MainRender_Left/MainR
 import CreatePostRender_Right from './ConditionalRenders/RightSide/CreatePostRender_Right/CreatePostRender_Right';
 import UpdatePostRender_Right from "./ConditionalRenders/RightSide/UpdatePostRender_Right/UpdatePostRender_Right";
 import DeletePostRender_Right from "./ConditionalRenders/RightSide/DeletePostRender_Right/DeletePostRender_Right";
+import DeletePostRender_Right_Confirm from './ConditionalRenders/RightSide/DeletePostRender_Right_Confirm/DeletePostRender_Right_Confirm';
 import EditClientCardRender_Right from "./ConditionalRenders/RightSide/EditClientCardRender_Right/EditClientCardRender_Right";
 import EditClientCardRender_Left from "./ConditionalRenders/LeftSide/EditClientCardRender_Left/EditClientCardRender_Left";
 import UpdatePostRender_Right_Confirm from "./ConditionalRenders/RightSide/UpdatePostRender_Right_Confirm/UpdatePostRender_Right_Confirm";
+
 
 function MainModalRender(props) {
 
@@ -81,6 +83,8 @@ function MainModalRender(props) {
                 return UpdatePostRender_Right_Confirm();
             case 'DeletePostRender_Right':
                 return DeletePostRender_Right();
+            case 'confirmDeletePostRender_Right':
+                return DeletePostRender_Right_Confirm();
             case 'EditClientCardRender_Right':
                 return EditClientCardRender_Right();
             default:

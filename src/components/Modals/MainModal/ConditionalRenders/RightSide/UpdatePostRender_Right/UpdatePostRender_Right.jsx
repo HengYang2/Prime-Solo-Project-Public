@@ -103,7 +103,7 @@ function UpdatePostRender() {
 
             <div className="modalBody">
                 <div className="postFlexDiv">
-                    <h4 className="postListHeader">Post Library:</h4>
+                    <h4 className="postListHeader">{'Post Library: Select Post to Update'}</h4>
                     <div className="postListDiv">
                         {postListReducer.map((post) => (
                             <PostListing key={post.id} postInfo={post} />
