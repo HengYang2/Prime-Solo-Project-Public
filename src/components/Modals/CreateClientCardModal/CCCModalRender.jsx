@@ -137,7 +137,7 @@ function CCCModalRender(props) {
                     <p className="clientNote">{clientNote}</p>
                 </div>
 
-                <div className="rightSideOfModal" style={cardColorStyles}>
+                <div className="rightSideOfModal" style={{backgroundColor: 'orange'}}>
 
                     <div className="modalHeader">
                         <button className="exitButton" onClick={onClose}> X </button>
