@@ -129,8 +129,10 @@ router.put(`/:id`, rejectUnauthenticated, (req, res) => {
 
 
 
-
-
+//Get post list from database
+//******************************//
+//NOTE:: ADD ADDITIONAL SECURITY BY CHECKING FOR USER_ID AND ADD A USER_ID COLUMN TO DATABASE!
+//******************************//
 router.get('/posts/:id', rejectUnauthenticated, (req, res) => {
 
   console.log("HEY IM IN THE CLIENT CAARDS /posts/:id ROUTTTTEEEERRR!");
@@ -159,7 +161,12 @@ router.get('/posts/:id', rejectUnauthenticated, (req, res) => {
 });
 
 
+
+
 //Creates a new post for the client:
+//******************************//
+//NOTE:: ADD ADDITIONAL SECURITY BY CHECKING FOR USER_ID AND ADD A USER_ID COLUMN TO DATABASE!
+//******************************//
 router.post('/posts', rejectUnauthenticated, (req, res) => {
 
   console.log("HEY IM IN THE CLIENT CAARDS POST/POSTSSS ROUTTTTEEEERRR!");
@@ -189,6 +196,9 @@ router.post('/posts', rejectUnauthenticated, (req, res) => {
 
 
 //Updates existing post for the client:
+//******************************//
+//NOTE:: ADD ADDITIONAL SECURITY BY CHECKING FOR USER_ID AND ADD A USER_ID COLUMN TO DATABASE!
+//******************************//
 router.put('/posts/:id', rejectUnauthenticated, (req, res) => {
 
   console.log("HEY IM IN THE CLIENT CAARDS /posts/:id PUUUUUUT ROUTER!");
@@ -216,7 +226,11 @@ router.put('/posts/:id', rejectUnauthenticated, (req, res) => {
 
 
 
+
 //Delete a client post from 'client_posts' in the database:
+//******************************//
+//NOTE:: ADD ADDITIONAL SECURITY BY CHECKING FOR USER_ID AND ADD A USER_ID COLUMN TO DATABASE!
+//******************************//
 router.delete(`/posts/:id`, rejectUnauthenticated, (req, res) => {
 
   console.log("HEY IM IN THE POSTSSS ----> DELETE ROUTTTTEEEERRR!");
