@@ -8,7 +8,7 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="navBar">
+    <div className="navbar">
       <div className='navLogo'>
         <h2 className="navLogoText">Know Your Hours</h2>
       </div>
@@ -31,7 +31,7 @@ function Nav() {
               </Link>
             </div>
 
-            <div>
+{/*         <div>
               <Link className="navLink" to="/postLibrary">
                 Post Library
               </Link>
@@ -41,7 +41,7 @@ function Nav() {
               <Link className="navLink" to="/graphData">
                 Graph Data
               </Link>
-            </div>
+            </div> */}
             <div>
               <LogOutButton className="navLink" />
             </div>

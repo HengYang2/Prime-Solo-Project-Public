@@ -16,6 +16,11 @@ function ClientCard(props) {
     }
   }
 
+  //for coloring styles
+  let cardColorStyles = {
+    backgroundColor: clientInfo.card_color
+  }
+
   isClientStillSubscribed();
 
   const dispatch = useDispatch();
@@ -46,12 +51,12 @@ function ClientCard(props) {
   //onCloseQ is a passed in function that sets isOpenQ in 'ClientCardsPage.jsx' to false:
 
   return (
-    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenMain(true), setSelectedClientCard(), setPostList() }}>
-        <h2>{clientInfo.client_initials}</h2>
-        <h3>{clientInfo.start_date}</h3>
-        <h3>to</h3>
-        <h3>{endDate}</h3>
-        <p>{clientInfo.client_note}</p>
+    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenMain(true), setSelectedClientCard(), setPostList() }} style={cardColorStyles}>
+      <h2>{clientInfo.client_initials}</h2>
+      <h3>{clientInfo.start_date}</h3>
+      <h3>to</h3>
+      <h3>{endDate}</h3>
+      <p>{clientInfo.client_note}</p>
     </div>
   );
 }

@@ -6,7 +6,7 @@ function Header(props) {
   let titleName = props.titleName;
 
   return (
-    <header className="main_header">
+    <header className="mainHeader">
       {titleName}
     </header>
   );

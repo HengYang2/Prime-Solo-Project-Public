@@ -155,7 +155,7 @@ function MainModalRender(props) {
                     {conRenEditClientCardButton()}
                 </div>
 
-                <div className="rightSideOfModal" style={cardColorStyles}>
+                <div className="rightSideOfModal" >
                     {loadConditionalModalRenderReducer_Right()}
                 </div>
             </div>

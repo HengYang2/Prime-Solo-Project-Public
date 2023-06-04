@@ -15,7 +15,7 @@
     transform: translate(-50%, -50%);
     width: 80%;
     height: 80%;
-    background-color: lightblue;
+    background-color: white;
     padding: 1em;
     z-index: 1000;
     border-radius: 25px;
@@ -339,6 +339,7 @@
     width: 95%;
     height: 20%;
     margin-left: 2.5%;
+    background-color: white;
     border: 2px solid black;
     border-radius: 10px;
 }
@@ -437,7 +438,7 @@
 .postListHeader {
     display: flex;
     align-items: center;
-    background-color: yellow;
+    background-color: orange;
     font-size: 25px;
     margin: 0%;
     height: 15%;
@@ -453,7 +454,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 2.5%;
-    background-color: orange;
+    background-color: grey;
     margin: 0%;
     height: 85%;
     border: 2px solid black;
