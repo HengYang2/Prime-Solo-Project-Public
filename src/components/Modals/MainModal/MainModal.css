@@ -1,3 +1,11 @@
+:root {
+    --cardColor1: #EF5B5B;
+    --cardColor2: #08B2E3;
+    --cardColor3: #7AC74F;
+}
+
+
+
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -15,7 +23,7 @@
     transform: translate(-50%, -50%);
     width: 80%;
     height: 80%;
-    background-color: grey;
+    background-color: var(--colorB);
     padding: 1em;
     z-index: 1000;
     border-radius: 25px;
@@ -37,11 +45,11 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-
+    color: var(--textColor);
     background-color: grey;
     width: 30%;
     height: 91%;
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 25px;
     padding: 2%;
 }
@@ -105,13 +113,14 @@
     justify-content: flex-start;
     /*align items on the main axis*/
     text-align: left;
-    background-color: orange;
+    background-color: var(--colorA);
     width: 70%;
     height: 96.5%;
     padding: 1%;
     height: 94.5%;
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 25px;
+    color: var(--textColor);
 }
 
 .exitButton {
@@ -205,24 +214,24 @@
 }
 
 #red {
-    background-color: red;
+    background-color: var(--cardColor1);
 }
 
 #blue {
-    background-color: blue;
+    background-color: var(--cardColor2);
 }
 
 #green {
-    background-color: green;
+    background-color: var(--cardColor3);
 }
 
-#yellow {
+/* #yellow {
     background-color: yellow;
 }
 
 #purple {
     background-color: purple;
-}
+} */
 
 
 /*footerOfModal*/
@@ -458,7 +467,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 2.5%;
-    background-color: blanchedalmond;
+    background-color: var(--colorD);
     margin: 0%;
     height: 85%;
     border: 2px solid black;

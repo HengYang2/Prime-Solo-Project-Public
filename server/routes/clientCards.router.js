@@ -18,7 +18,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     const sqlValues = [userId]
     const sqlText = `SELECT * FROM "user_clients"
                      WHERE user_id = $1 
-                     ORDER BY "id" DESC;`
+                     ORDER BY "id" ASC;`
                      
     pool.query(sqlText, sqlValues)
         .then((result) => {

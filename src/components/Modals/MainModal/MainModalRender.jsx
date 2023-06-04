@@ -65,9 +65,7 @@ function MainModalRender(props) {
     }, [])
 
     //Css styling for lefSideOfModal and rightSideOfModal:
-    let cardColorStyles = {
-        backgroundColor: editCardColorReducer
-    }
+    let cardColorStyles = editCardColorReducer
 
     //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
     function loadConditionalModalRenderReducer_Right() {
@@ -150,7 +148,7 @@ function MainModalRender(props) {
             <div className="modalOverlay"></div>
             <div className="modalContainer">
 
-                <div className="leftSideOfModal" style={cardColorStyles}>
+                <div className="leftSideOfModal" id={cardColorStyles}>
                     {loadConditionalModalRenderReducer_Left()}
                     {conRenEditClientCardButton()}
                 </div>

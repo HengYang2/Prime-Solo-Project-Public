@@ -29,9 +29,8 @@ function ClientCard(props) {
 
 
   //for coloring styles
-  let cardColorStyles = {
-    backgroundColor: clientInfo.card_color
-  }
+  let cardColorStyles = clientInfo.card_color;
+  
 
  
 
@@ -64,7 +63,7 @@ function ClientCard(props) {
   //onCloseQ is a passed in function that sets isOpenQ in 'ClientCardsPage.jsx' to false:
 
   return (
-    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenMain(true), setSelectedClientCard(), setPostList() }} style={cardColorStyles}>
+    <div className="clientCard" key={clientInfo.id} onClick={() => { setIsOpenMain(true), setSelectedClientCard(), setPostList() }} id={cardColorStyles}>
       <div className="clientInitialsDiv">
         <h2>{clientInfo.client_initials}</h2>
       </div>

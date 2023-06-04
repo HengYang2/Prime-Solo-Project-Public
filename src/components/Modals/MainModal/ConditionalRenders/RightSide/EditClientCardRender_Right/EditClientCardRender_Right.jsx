@@ -229,8 +229,8 @@ function EditClientCardRender_Right() {
                             <button id="red" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
                             <button id="blue" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
                             <button id="green" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
-                            <button id="yellow" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
-                            <button id="purple" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                            {/* <button id="yellow" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button>
+                            <button id="purple" className="colorButton" onClick={(event) => setEditCardColorReducer(event.target.id)}></button> */}
                         </div>
                     </div>
                 </div>

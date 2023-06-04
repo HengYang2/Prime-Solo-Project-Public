@@ -59,9 +59,7 @@ function DCCModalRender(props) {
     const onCloseD = props.onCloseD;
 
     //Css styling for lefSideOfModal and rightSideOfModal:
-    let cardColorStyles = {
-        backgroundColor: cardColor
-    }
+    let cardColorStyles = cardColor;
 
     //Dispatches for when Delete Client Card is pressed:
     const dispatch = useDispatch();
@@ -109,7 +107,7 @@ function DCCModalRender(props) {
             <div className="modalOverlay"></div>
             <div className="modalContainer">
 
-                <div className="leftSideOfModal" style={cardColorStyles}>
+                <div className="leftSideOfModal" id={cardColorStyles}>
                     <h2 className="clientInitials">{clientInitials}</h2>
                     <div className="timeWithCompany">
                         <h3 className="startDate">{reformattedStartDate}</h3>
@@ -119,7 +117,7 @@ function DCCModalRender(props) {
                     <p className="clientNote">{clientNote}</p>
                 </div>
 
-                <div className="rightSideOfModal" style={{backgroundColor: 'orange'}}>
+                <div className="rightSideOfModal">
                     <div className="modalHeader">
                         <button className="exitButton" onClick={onCloseD}> X </button>
                     </div>
