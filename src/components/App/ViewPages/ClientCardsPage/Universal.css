@@ -10,16 +10,6 @@
 
 
 
-.navbar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 15%;
-  min-height: 100%;
-  background-color: grey;
-}
-
-
 .mainContent {
   display: flex;
   flex-direction: column;
@@ -41,6 +31,8 @@
   background-color: orange;
   width: 100%;
   height: 15%;
+  border: 2px solid black;
+  border-left: 0px;
 }
 
 /* .mainFooter {
@@ -73,19 +65,57 @@
 
 .clientCard {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex: 1;
+  align-items: center;
   text-align: center;
-  font-size: 0.4em;
-  background-color: red;
-  border: 0.1em solid black;
+  gap: 5%;
+  font-size: 9px;
+  border: 1px solid black;
   min-width: 15%;
   max-width: 15%;
   height: 45%;
   flex-direction: column;
-  margin: 0%;
   border-radius: 10px;
 }
+
+.clientInitialsDiv {
+  background-color: white;
+  width: 90%;
+  border: 0.5px solid black;
+  border-radius: 5px;
+}
+
+.dateDiv {
+  background-color: white;
+  width: 90%;
+  border: 0.5px solid black;
+  border-radius: 5px;
+}
+
+.startDateH3 {
+  padding: 0%;
+}
+
+.to {
+  padding: 0%;
+}
+
+.endDateH3 {
+  padding: 0%;
+}
+
+
+.clientNoteDiv {
+  background-color: white;
+  width: 90%;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  min-height: 15%;
+  max-height: 15%;
+  overflow-y: scroll;
+}
+
 
 
 ::-webkit-scrollbar {
@@ -117,6 +147,8 @@
   gap: 10%;
   margin: 0%;
   padding: 0%;
+  border: 2px solid black;
+  border-left: 0px;
 }
 
 
@@ -129,44 +161,18 @@
   border-radius: 15px;
 }
 
-/* .clientCardGrid {
-  display: flex;
-  justify-content: flex-start;
-  background-color: orange;
-  width: 100%;
-  height: 35%;
-  gap: 2%;
-}
 
-.clientCard {
- display: flex;
-  font-size: 50px;
-  justify-content: center;
-  align-items: center;
-} */
-
-
-
-
-/* .main_header h1{
-  position: absolute;
-  /* background-color: blue; */
-/* margin-top: 2.5%;
-  margin-left: 35%;
-} */
-*/
-
-
-
-.navFlexDiv {
-  height: 80%;
-  width: 100%;
+/*Navbar stuff*/
+.navbar {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  gap: 5%;
+  width: 15%;
+  min-height: 100%;
+  background-color: grey;
+  border: 2px solid black;
 }
+
 
 .navLogo {
   display: flex;
@@ -174,8 +180,10 @@
   justify-content: center;
   text-align: center;
   /* background-color: green; */
-  height: 20%;
+  height: 15%;
   width: 100%;
+  background-color: grey;
+  padding-top: 0.1em;
 }
 
 .navLogoText {
@@ -183,30 +191,47 @@
   font-weight: 700;
   color: #f2f2f2;
   margin: 0;
+  padding: 0;
 }
 
-.navLink {
-  display: inline-block;
-  color: #f2f2f2;
-  background-color: orange;
-  text-align: center;
-  padding: 24px 10px;
-  text-decoration: none;
-  font-size: 15px;
+.navFlexDiv {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 79%;
+  background-color: grey;
+}
 
-  border: 2px solid black;
-  border-radius: 15px;
-  cursor: pointer;
-  outline: 0;
+
+.navButton {
+  background-color: white;
+  width: 85%;
+  text-align: center;
+  padding: 1em 0.5em;
+  border: 1px solid black;
+  border-radius: 10px;
+
 }
 
 .navLink:hover {
   background-color: darkgoldenrod;
 }
 
-::-webkit-scrollbar {
-  width: 2vw;
+
+.navbarFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 10%;
 }
+
+/* ::-webkit-scrollbar {
+  width: 2vw;
+} */
 
 /* ::-webkit-scrollbar-track {
   background-color: aqua;

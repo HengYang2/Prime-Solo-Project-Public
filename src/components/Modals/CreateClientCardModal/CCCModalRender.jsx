@@ -180,7 +180,7 @@ function CCCModalRender(props) {
                             wrap="soft"
                             rows={1}
                             type='text'
-                            maxLength={216}
+                            maxLength={200}
                             placeholder='Client Note'
                         />
                     </div>
