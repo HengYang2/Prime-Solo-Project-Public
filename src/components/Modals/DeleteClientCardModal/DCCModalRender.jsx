@@ -102,6 +102,16 @@ function DCCModalRender(props) {
         setIsStillSubscribed(clientCardInfo.is_still_subscribed);
     }
 
+    // function resetAllUseStates(clientCardInfo) {
+
+
+    //     setClientId(null);
+    //     setClientInitials('');
+    //     setClientNote('');
+    //     // setCardColor(clientCardInfo.card_color);
+    //     setIsStillSubscribed(false);
+    // }
+
     return (
         <>
             <div className="modalOverlay"></div>
@@ -126,7 +136,7 @@ function DCCModalRender(props) {
                     <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
                     <div className="deleteMapDiv">
                         {clientCardsReducer.map((clientCard) => (
-                            <button key={clientCard.id} onClick={() => { setAllUseStates(clientCard) }}>
+                            <button key={clientCard.id} id={clientCard.card_color} className={"deleteClientCard"} onClick={() => { setAllUseStates(clientCard) }}>
                                 <h4>{clientCard.client_initials}</h4>
                             </button>
                         ))}
@@ -134,7 +144,7 @@ function DCCModalRender(props) {
                     </div>
                 
                     <div className="modalFooter">
-                        <button className="centeredBtn" onClick={deleteClientCard}>Delete Client Card</button>
+                        <button className="centeredBtn" onClick={() => {deleteClientCard()}}>Delete Client Card</button>
                     </div>
                 </div>
             </div>

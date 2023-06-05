@@ -503,3 +503,29 @@
 .unselectedPostHighlighted {
     background-color: white;
 }
+
+.deleteClientCard {
+    margin-top: 1%;
+    background-color: #7AC74F;
+    min-width: 10%;
+    max-width: 10%;
+    min-height: 45%;
+    max-height: 45%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.deleteMapDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1%;
+    flex-wrap: wrap;
+    background-color: var(--colorD);
+    height: 65%;
+    overflow-y: scroll;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
