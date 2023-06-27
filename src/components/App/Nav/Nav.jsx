@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from './LogOutButton/LogOutButton';
+import ClientCardsButton from './ClientCardsButton/ClientCardsButton';
 // import './Nav.css';
 import { useSelector } from 'react-redux';
 
@@ -8,7 +9,7 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="navBar">
+    <div className="navbar">
       <div className='navLogo'>
         <h2 className="navLogoText">Know Your Hours</h2>
       </div>
@@ -25,13 +26,10 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <div>
-              <Link className="navLink" to="/clientCards">
-                Client Cards
-              </Link>
-            </div>
+            <ClientCardsButton />
 
-            <div>
+
+{/*         <div>
               <Link className="navLink" to="/postLibrary">
                 Post Library
               </Link>
@@ -41,13 +39,14 @@ function Nav() {
               <Link className="navLink" to="/graphData">
                 Graph Data
               </Link>
-            </div>
-            <div>
-              <LogOutButton className="navLink" />
-            </div>
+            </div> */}
+            <LogOutButton />
           </>
         )}
 
+      </div>
+      <div className='navbarFooter'>
+            App developed by Heng Yang
       </div>
     </div>
   );

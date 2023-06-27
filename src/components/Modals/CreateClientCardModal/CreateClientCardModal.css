@@ -1,3 +1,10 @@
+:root {
+    --cardColorAA: #EF5B5B;
+    --cardColorBB: #08B2E3;
+    --cardColor3CC: #7AC74F;
+}
+
+
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -204,7 +211,7 @@
 }
 
 #red {
-    background-color: red;
+    background-color: var(--cardColorAA);
 }
 #blue {
     background-color: blue;
@@ -212,12 +219,12 @@
 #green {
     background-color: green;
 }
-#yellow {
+/* #yellow {
     background-color: yellow;
 }
 #purple {
     background-color: purple;
-}
+} */
 
 
 /*footerOfModal*/
@@ -245,11 +252,11 @@
 .checkboxHeader {
   font-size: 10px;
   text-align: center;
-  margin-left: ;
+  margin-left: 
 }
 
-.checkboxElement {
-}
+/* .checkboxElement {
+} */
 
 /*CreateClientCardButton*/
 .createClientCardButton {

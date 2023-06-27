@@ -1,3 +1,11 @@
+:root {
+    --cardColor1: #EF5B5B;
+    --cardColor2: #08B2E3;
+    --cardColor3: #7AC74F;
+}
+
+
+
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -15,11 +23,11 @@
     transform: translate(-50%, -50%);
     width: 80%;
     height: 80%;
-    background-color: lightblue;
+    background-color: var(--colorB);
     padding: 1em;
     z-index: 1000;
     border-radius: 25px;
-    border: 0.3em solid black;
+    border: 3px solid black;
 
     display: flex;
     justify-content: space-evenly;
@@ -27,6 +35,7 @@
     align-items: flex-start;
     /*align items on the cross axis*/
     gap: 1em;
+    overflow-y: initial;
 
 }
 
@@ -36,11 +45,11 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-
+    color: var(--textColor);
     background-color: grey;
     width: 30%;
     height: 91%;
-    border: 0.3em solid black;
+    border: 2px solid black;
     border-radius: 25px;
     padding: 2%;
 }
@@ -104,13 +113,14 @@
     justify-content: flex-start;
     /*align items on the main axis*/
     text-align: left;
-    background-color: grey;
+    background-color: var(--colorA);
     width: 70%;
     height: 96.5%;
     padding: 1%;
     height: 94.5%;
-    border: 0.3em solid black;
+    border: 2px solid black;
     border-radius: 25px;
+    color: var(--textColor);
 }
 
 .exitButton {
@@ -204,24 +214,24 @@
 }
 
 #red {
-    background-color: red;
+    background-color: var(--cardColor1);
 }
 
 #blue {
-    background-color: blue;
+    background-color: var(--cardColor2);
 }
 
 #green {
-    background-color: green;
+    background-color: var(--cardColor3);
 }
 
-#yellow {
+/* #yellow {
     background-color: yellow;
 }
 
 #purple {
     background-color: purple;
-}
+} */
 
 
 /*footerOfModal*/
@@ -265,7 +275,7 @@
 }
 
 
-.modalHeader{
+.modalHeader {
     text-align: center;
     /* background-color: blue; */
     height: 10%;
@@ -274,11 +284,13 @@
     justify-content: center;
     gap: 85%;
 }
-.modalBody{
-    /* background-color: red; */
+
+.modalBody {
+    /* background-color: green; */
     height: 75%;
 }
-.modalFooter{
+
+.modalFooter {
     display: flex;
     align-items: center;
     /* background-color: yellow; */
@@ -290,7 +302,7 @@
     display: inline-block;
     height: 60%;
     width: 5%;
-    margin-left: 0% ;
+    margin-left: 0%;
     margin-bottom: 0%;
     border: 2px solid black;
     border-radius: 20px;
@@ -300,17 +312,21 @@
     display: inline-block;
     height: 60%;
     width: 5%;
-    margin-left: 90% ;
+    margin-left: 90%;
     margin-bottom: 0%;
     border: 2px solid black;
     border-radius: 20px;
+    background-color: white;
 }
 
 .backButton {
+    background-color: white;
     display: inline-block;
     height: 60%;
     width: 5%;
     margin-left: 0;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 
@@ -336,6 +352,7 @@
     width: 95%;
     height: 20%;
     margin-left: 2.5%;
+    background-color: white;
     border: 2px solid black;
     border-radius: 10px;
 }
@@ -384,11 +401,12 @@
     height: 100%;
     display: inline-flex;
     flex-direction: column;
-    align-items:center ;
+    align-items: center;
     margin-left: 5%;
     border: 2px solid black;
     border-radius: 10px;
 }
+
 .checkboxHeader {
     width: 100%;
 }
@@ -421,11 +439,93 @@
     border: 2px solid black;
     border-radius: 10px;
 } */
+.postFlexDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0%;
+    width: 100%;
+    height: 100%;
+}
 
 .postListHeader {
-    background-color: red;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    font-size: 25px;
+    margin: 0%;
+    height: 15%;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-left: 2.5%;
 }
 
 .postListDiv {
-    /* background-color: aqua; */
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.5%;
+    background-color: var(--colorD);
+    margin: 0%;
+    height: 85%;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-left: 0%;
+    overflow-y: scroll;
+}
+
+.postListing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    min-height: 15%;
+    width: 90%;
+    margin-top: 1%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.postListing:hover {
+    border-color: darkgoldenrod;
+}
+
+/* .postListing {
+    background-color: darkorange;
+} */
+
+.selectedPostHighlighted {
+    background-color: grey;
+}
+
+.unselectedPostHighlighted {
+    background-color: white;
+}
+
+.deleteClientCard {
+    margin-top: 1%;
+    background-color: #7AC74F;
+    min-width: 10%;
+    max-width: 10%;
+    min-height: 45%;
+    max-height: 45%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.deleteMapDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1%;
+    flex-wrap: wrap;
+    background-color: var(--colorD);
+    height: 65%;
+    overflow-y: scroll;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    border: 2px solid black;
+    border-radius: 10px;
 }

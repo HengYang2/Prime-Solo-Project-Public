@@ -59,9 +59,7 @@ function DCCModalRender(props) {
     const onCloseD = props.onCloseD;
 
     //Css styling for lefSideOfModal and rightSideOfModal:
-    let cardColorStyles = {
-        backgroundColor: cardColor
-    }
+    let cardColorStyles = cardColor;
 
     //Dispatches for when Delete Client Card is pressed:
     const dispatch = useDispatch();
@@ -104,12 +102,22 @@ function DCCModalRender(props) {
         setIsStillSubscribed(clientCardInfo.is_still_subscribed);
     }
 
+    // function resetAllUseStates(clientCardInfo) {
+
+
+    //     setClientId(null);
+    //     setClientInitials('');
+    //     setClientNote('');
+    //     // setCardColor(clientCardInfo.card_color);
+    //     setIsStillSubscribed(false);
+    // }
+
     return (
         <>
             <div className="modalOverlay"></div>
             <div className="modalContainer">
 
-                <div className="leftSideOfModal" style={cardColorStyles}>
+                <div className="leftSideOfModal" id={cardColorStyles}>
                     <h2 className="clientInitials">{clientInitials}</h2>
                     <div className="timeWithCompany">
                         <h3 className="startDate">{reformattedStartDate}</h3>
@@ -119,7 +127,7 @@ function DCCModalRender(props) {
                     <p className="clientNote">{clientNote}</p>
                 </div>
 
-                <div className="rightSideOfModal" style={cardColorStyles}>
+                <div className="rightSideOfModal">
                     <div className="modalHeader">
                         <button className="exitButton" onClick={onCloseD}> X </button>
                     </div>
@@ -128,7 +136,7 @@ function DCCModalRender(props) {
                     <h1 className="inputHeader">Select The Desired Client Card to be Deleted:</h1>
                     <div className="deleteMapDiv">
                         {clientCardsReducer.map((clientCard) => (
-                            <button key={clientCard.id} onClick={() => { setAllUseStates(clientCard) }}>
+                            <button key={clientCard.id} id={clientCard.card_color} className={"deleteClientCard"} onClick={() => { setAllUseStates(clientCard) }}>
                                 <h4>{clientCard.client_initials}</h4>
                             </button>
                         ))}
@@ -136,7 +144,7 @@ function DCCModalRender(props) {
                     </div>
                 
                     <div className="modalFooter">
-                        <button className="centeredBtn" onClick={deleteClientCard}>Delete Client Card</button>
+                        <button className="centeredBtn" onClick={() => {deleteClientCard()}}>Delete Client Card</button>
                     </div>
                 </div>
             </div>

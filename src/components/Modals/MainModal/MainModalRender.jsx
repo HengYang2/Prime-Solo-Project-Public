@@ -9,8 +9,11 @@ import MainRender_Left from "./ConditionalRenders/LeftSide/MainRender_Left/MainR
 import CreatePostRender_Right from './ConditionalRenders/RightSide/CreatePostRender_Right/CreatePostRender_Right';
 import UpdatePostRender_Right from "./ConditionalRenders/RightSide/UpdatePostRender_Right/UpdatePostRender_Right";
 import DeletePostRender_Right from "./ConditionalRenders/RightSide/DeletePostRender_Right/DeletePostRender_Right";
+import DeletePostRender_Right_Confirm from './ConditionalRenders/RightSide/DeletePostRender_Right_Confirm/DeletePostRender_Right_Confirm';
 import EditClientCardRender_Right from "./ConditionalRenders/RightSide/EditClientCardRender_Right/EditClientCardRender_Right";
 import EditClientCardRender_Left from "./ConditionalRenders/LeftSide/EditClientCardRender_Left/EditClientCardRender_Left";
+import UpdatePostRender_Right_Confirm from "./ConditionalRenders/RightSide/UpdatePostRender_Right_Confirm/UpdatePostRender_Right_Confirm";
+
 
 function MainModalRender(props) {
 
@@ -62,9 +65,7 @@ function MainModalRender(props) {
     }, [])
 
     //Css styling for lefSideOfModal and rightSideOfModal:
-    let cardColorStyles = {
-        backgroundColor: editCardColorReducer
-    }
+    let cardColorStyles = editCardColorReducer
 
     //Function for loading conditonal renders based on 'conditonalModalRender' reducer:
     function loadConditionalModalRenderReducer_Right() {
@@ -76,8 +77,12 @@ function MainModalRender(props) {
                 return CreatePostRender_Right();
             case 'UpdatePostRender_Right':
                 return UpdatePostRender_Right();
+            case 'confirmPostUpdateRender_Right':
+                return UpdatePostRender_Right_Confirm();
             case 'DeletePostRender_Right':
                 return DeletePostRender_Right();
+            case 'confirmDeletePostRender_Right':
+                return DeletePostRender_Right_Confirm();
             case 'EditClientCardRender_Right':
                 return EditClientCardRender_Right();
             default:
@@ -143,12 +148,12 @@ function MainModalRender(props) {
             <div className="modalOverlay"></div>
             <div className="modalContainer">
 
-                <div className="leftSideOfModal" style={cardColorStyles}>
+                <div className="leftSideOfModal" id={cardColorStyles}>
                     {loadConditionalModalRenderReducer_Left()}
                     {conRenEditClientCardButton()}
                 </div>
 
-                <div className="rightSideOfModal" style={cardColorStyles}>
+                <div className="rightSideOfModal" >
                     {loadConditionalModalRenderReducer_Right()}
                 </div>
             </div>

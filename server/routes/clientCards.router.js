@@ -17,7 +17,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
     const sqlValues = [userId]
     const sqlText = `SELECT * FROM "user_clients"
-                     WHERE user_id = $1;`
+                     WHERE user_id = $1 
+                     ORDER BY "id" ASC;`
                      
     pool.query(sqlText, sqlValues)
         .then((result) => {
@@ -87,7 +88,7 @@ router.delete(`/:id`, rejectUnauthenticated, (req, res) => {
   const sqlValues = [clientCardId, userId];
 
   const sqlText = `DELETE FROM "user_clients"
-                   WHERE id=$1 AND user_id=$2;`
+                   WHERE id=$1 AND user_id=$2 ;`
                    
   pool.query(sqlText, sqlValues)
       .then((result) => {
@@ -129,8 +130,10 @@ router.put(`/:id`, rejectUnauthenticated, (req, res) => {
 
 
 
-
-
+//Get post list from database
+//******************************//
+//NOTE:: ADD ADDITIONAL SECURITY BY CHECKING FOR USER_ID AND ADD A USER_ID COLUMN TO DATABASE!
+//******************************//
 router.get('/posts/:id', rejectUnauthenticated, (req, res) => {
 
   console.log("HEY IM IN THE CLIENT CAARDS /posts/:id ROUTTTTEEEERRR!");
@@ -159,7 +162,12 @@ router.get('/posts/:id', rejectUnauthenticated, (req, res) => {
 });
 
 
+
+
 //Creates a new post for the client:
+//******************************//
+//NOTE:: ADD ADDITIONAL SECURITY BY CHECKING FOR USER_ID AND ADD A USER_ID COLUMN TO DATABASE!
+//******************************//
 router.post('/posts', rejectUnauthenticated, (req, res) => {
 
   console.log("HEY IM IN THE CLIENT CAARDS POST/POSTSSS ROUTTTTEEEERRR!");
@@ -182,6 +190,66 @@ router.post('/posts', rejectUnauthenticated, (req, res) => {
       })
       .catch((err) => {
       console.log('Error trying to post post:', err);
+      res.sendStatus(500);
+      });
+});
+
+
+
+//Updates existing post for the client:
+//******************************//
+//NOTE:: ADD ADDITIONAL SECURITY BY CHECKING FOR USER_ID AND ADD A USER_ID COLUMN TO DATABASE!
+//******************************//
+router.put('/posts/:id', rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE CLIENT CAARDS /posts/:id PUUUUUUT ROUTER!");
+
+  const updated_hours_worked = req.body.hours_worked;
+  const updated_miles_driven = req.body.miles_driven;
+  const updated_task_details = req.body.task_details;
+  const post_id = req.params.id
+
+  const sqlValues = [updated_hours_worked, updated_miles_driven, updated_task_details, post_id]
+  const sqlText = `UPDATE "client_posts"
+                   SET hours_worked=$1, miles_driven=$2, task_details=$3
+                   WHERE id=$4;`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          console.log("POST UDATE SUCCESSFUL!");
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+      console.log('Error trying to get client cards:', err);
+      res.sendStatus(500);
+      });
+});
+
+
+
+
+//Delete a client post from 'client_posts' in the database:
+//******************************//
+//NOTE:: ADD ADDITIONAL SECURITY BY CHECKING FOR USER_ID AND ADD A USER_ID COLUMN TO DATABASE!
+//******************************//
+router.delete(`/posts/:id`, rejectUnauthenticated, (req, res) => {
+
+  console.log("HEY IM IN THE POSTSSS ----> DELETE ROUTTTTEEEERRR!");
+
+  const postId = req.params.id;
+  const userId = req.user.id;
+
+  const sqlValues = [postId];
+
+  const sqlText = `DELETE FROM "client_posts"
+                   WHERE id=$1;`
+                   
+  pool.query(sqlText, sqlValues)
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+      console.log('Error trying to delete post -->', err);
       res.sendStatus(500);
       });
 });

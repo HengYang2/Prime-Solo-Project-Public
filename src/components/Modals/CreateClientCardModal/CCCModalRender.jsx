@@ -69,9 +69,7 @@ function CCCModalRender(props) {
     const onClose = props.onClose;
 
     //Css styling for lefSideOfModal and rightSideOfModal:
-    let cardColorStyles = {
-        backgroundColor: cardColor
-    }
+    let cardColorStyles = cardColor;
 
     //Dispatches for when Create Client Card is pressed:
     const dispatch = useDispatch();
@@ -127,7 +125,7 @@ function CCCModalRender(props) {
             <div className="modalOverlay"></div>
             <div className="modalContainer">
 
-                <div className="leftSideOfModal" style={cardColorStyles}>
+                <div className="leftSideOfModal" id={cardColorStyles}>
                     <h2 className="clientInitials">{clientInitials}</h2>
                     <div className="timeWithCompany">
                         <h3 className="startDate">{reformattedStartDate}</h3>
@@ -137,7 +135,7 @@ function CCCModalRender(props) {
                     <p className="clientNote">{clientNote}</p>
                 </div>
 
-                <div className="rightSideOfModal" style={cardColorStyles}>
+                <div className="rightSideOfModal">
 
                     <div className="modalHeader">
                         <button className="exitButton" onClick={onClose}> X </button>
@@ -180,7 +178,7 @@ function CCCModalRender(props) {
                             wrap="soft"
                             rows={1}
                             type='text'
-                            maxLength={216}
+                            maxLength={200}
                             placeholder='Client Note'
                         />
                     </div>
@@ -191,8 +189,8 @@ function CCCModalRender(props) {
                             <button id="red" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
                             <button id="blue" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
                             <button id="green" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
-                            <button id="yellow" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
-                            <button id="purple" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
+                            {/* <button id="yellow" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button>
+                            <button id="purple" className="colorButton" onClick={(event) => setCardColor(event.target.id)}></button> */}
                         </div>
                     </div>
 

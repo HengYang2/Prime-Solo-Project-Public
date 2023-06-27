@@ -1,19 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './Universal.css';
-import './ClientCardGrid.css';
-import Header from '../../Header/Header';
 import { useEffect, useState } from 'react';
 
 
+//Import need components and css:
+import Navbar from '../../Nav/Nav';
+import Header from '../../Header/Header';
+import './Universal.css';
 
-//Import CreateClientCardModal:
+
+
+//Import modals:
 import CreateClientCardModal from '../../../Modals/CreateClientCardModal/CreateClientCardModal';
 import DeleteClientCardModal from '../../../Modals/DeleteClientCardModal/DeleteClientCardModal'
 import MainModal from '../../../Modals/MainModal/MainModal';
-
-//Import nav bar component:
-import Nav from '../../Nav/Nav';
 
 //Import ClientCard component:
 import ClientCard from './ClientCard/ClientCard';
@@ -42,14 +42,12 @@ function ClientCardsPage() {
     dispatch({ type: 'FETCH_CLIENTCARDS' });
   }, []);
 
-  //Function to open Modal:
-
 
   // console.log('clientCardsReducer VALUE --->', clientCardsReducer);
   return (
-    <div className="container">
-      <Nav />
-      <div className='rightside_page_render'>
+    <div className="viewportContainer">
+      <Navbar />
+      <div className='mainContent'>
         <Header
           titleName={titleName}
         />
@@ -74,7 +72,7 @@ function ClientCardsPage() {
             selectedClientCard={selectedClientCard}
           />
           <button className='clientCardFooterBtn' onClick={() => { setIsOpen(true) }}>Create New Client</button>
-          <button className='clientCardFooterBtn' onClick={() => { setIsOpenD(true) }}>Delete New Client</button>
+          <button className='clientCardFooterBtn' onClick={() => { setIsOpenD(true) }}>Delete Client</button>
         </section>
       </div>
     </div>

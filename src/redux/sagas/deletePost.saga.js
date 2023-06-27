@@ -2,8 +2,7 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 
-// worker Saga: will be fired on "FETCH_USER" actions
-function* createPost(action) {
+function* deletePost(action) {
 
   try {
     // const config = {
@@ -11,18 +10,17 @@ function* createPost(action) {
     //   withCredentials: true,
     // };
 
-    const response = yield axios.post('/api/clientCards/posts', action.payload);
+    const response = yield axios.delete(`/api/clientCards/posts/${action.payload.id}`);
    
    //Fetch all posts for the client card again - refreshing client post list:
     yield put({ type: 'FETCH_POST_LIST', payload: action.payload.client_id});
   } catch (error) {
-    console.log('Client card post request failed', error);
+    console.log('Client card delete request failed', error);
   }
 }
 
-function* createPostSaga() {
-  yield takeLatest('SAGA_CREATE_POST', createPost);
+function* deletePostSaga() {
+  yield takeLatest('SAGA_DELETE_POST', deletePost);
 }
 
-export default createPostSaga;
-
+export default deletePostSaga;
