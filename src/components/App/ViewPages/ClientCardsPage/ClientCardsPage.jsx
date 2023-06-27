@@ -16,7 +16,7 @@ import DeleteClientCardModal from '../../../Modals/DeleteClientCardModal/DeleteC
 import MainModal from '../../../Modals/MainModal/MainModal';
 
 //Import ClientCard component:
-import ClientCard from './ClientCard/ClientCard';
+import ClientCard from './ClientCard/clientCard';
 
 
 function ClientCardsPage() {
