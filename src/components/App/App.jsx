@@ -104,7 +104,7 @@ function App() {
               <Redirect to="/clientCards" />
               :
               // Otherwise, show the Landing page
-              <LandingPage />
+              <LoginPage />
             }
           </Route>
 
