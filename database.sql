@@ -14,10 +14,10 @@ CREATE TABLE "user" (
 
 CREATE TABLE "user_clients" (
     "id" SERIAL PRIMARY KEY,
-    "user_id" INTEGER REFERENCES "user",
+    "user_id" INTEGER REFERENCES "user"(id) ON DELETE CASCADE,
     "client_initials" VARCHAR (4) NOT NULL,
-    "start_date" date NOT NULL,
-    "end_date" date,
+    "start_date" DATE NOT NULL DEFAULT CURRENT_DATE,
+    "end_date" DATE DEFAULT CURRENT_DATE,
     "is_still_subscribed" BOOLEAN DEFAULT TRUE,
     "client_note" VARCHAR (200) NOT NULL,
     "card_color" VARCHAR NOT NULL,
@@ -26,8 +26,8 @@ CREATE TABLE "user_clients" (
 
 CREATE TABLE "client_posts" (
     "id" SERIAL PRIMARY KEY,
-    "client_id" INTEGER NOT NULL,
-    "date" date NOT NULL,
+    "client_id" INTEGER REFERENCES "user_clients"(id) ON DELETE CASCADE,
+    "date" DATE NOT NULL,
     "hours_worked" INTEGER NOT NULL,
     "miles_driven" INTEGER NOT NULL,
     "task_details" VARCHAR (500) NOT NULL
